@@ -31,7 +31,7 @@ public class HelloController {
     @FXML
     void click_new_button(ActionEvent even)throws IOException
     {
-        button_add.setText("GROS ZIZIIIIIIIIII");
+        button_add.setText("GROS CACAAAAAAAAAAAA");
     }
 
 }
