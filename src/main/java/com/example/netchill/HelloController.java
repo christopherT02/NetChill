@@ -38,6 +38,16 @@ public class HelloController {
     }
 
 
+    @FXML
+    void click_addMovie_account(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("add_movie.fxml"));
+        root=fxmlLoader.load();
+        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
+        scene=new Scene(root);
+        lstage.setScene(scene);
+        lstage.show();
+    }
+
     public void updateLabel(String name)
     {
         button_account.setText(name);

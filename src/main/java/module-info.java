@@ -2,7 +2,6 @@ module com.example.netchill {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires java.sql;
     requires java.datatransfer;
 
 
