@@ -39,7 +39,7 @@
                   <Button fx:id="button_account" mnemonicParsing="false" onAction="#click_button_account" prefHeight="71.0" text="Account" />
               </buttons>
             </ButtonBar>
-            <Button layoutX="855.0" layoutY="17.0" mnemonicParsing="false" onAction="#click_addMovie_account" prefHeight="67.0" prefWidth="100.0" text="Gift Card" />
+            <Button layoutX="855.0" layoutY="17.0" mnemonicParsing="false" onAction="#click_addMovie" prefHeight="67.0" prefWidth="100.0" text="Gift Card" />
           <Button layoutX="229.0" layoutY="15.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="200.0" text="Home page" />
             <Button layoutX="522.0" layoutY="17.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="200.0" text="Movies" />
          </children>

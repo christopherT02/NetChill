@@ -39,7 +39,7 @@ public class HelloController {
 
 
     @FXML
-    void click_addMovie_account(ActionEvent event) throws IOException {
+    void click_addMovie(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("add_movie.fxml"));
         root=fxmlLoader.load();
         lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
