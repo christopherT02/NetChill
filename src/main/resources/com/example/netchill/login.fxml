@@ -9,35 +9,35 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.loginController">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
             <Text layoutX="658.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Text>
-            <TextField layoutX="689.0" layoutY="206.0" />
-            <TextField layoutX="689.0" layoutY="254.0" />
+            <TextField fx:id="txt_field_ID" layoutX="689.0" layoutY="206.0" />
+            <TextField fx:id="txt_field_password" layoutX="689.0" layoutY="254.0" />
             <Text layoutX="604.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
             <Text layoutX="591.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-            <Button layoutX="643.0" layoutY="322.0" mnemonicParsing="false" text="Submit" />
-            <Button layoutX="896.0" layoutY="374.0" mnemonicParsing="false" text="Go to sign in" />
+            <Button layoutX="643.0" layoutY="322.0" mnemonicParsing="false" onAction="#click_button_submit" text="Submit" />
+            <Button layoutX="896.0" layoutY="374.0" mnemonicParsing="false" onAction="#click_button_sign_in" text="Sign in" />
          </children></AnchorPane>
    </center>
    <bottom>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="676.0" layoutY="42.0" text="About us" />
          </children>
       </AnchorPane>
    </bottom>
    <top>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="83.0" fitWidth="209.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
-          <Button layoutX="229.0" layoutY="15.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="200.0" text="Home page" />
+          <Button layoutX="229.0" layoutY="15.0" mnemonicParsing="false" onAction="#click_button_home_page" prefHeight="67.0" prefWidth="200.0" text="Home page" />
          </children>
       </AnchorPane>
    </top>
