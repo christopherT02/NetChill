@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.sql.*;
 
@@ -37,8 +36,6 @@ public class moviesController {
     @FXML
     private TableView<Movie> availableMoviesTable;
 
-    @FXML
-    private Button btnInit;
 
 
     public ObservableList<Movie> getMovieList()
@@ -126,6 +123,12 @@ public class moviesController {
 
 
 
+    }
+
+    @FXML
+    void initialize()
+    {
+        showAvailableMovies();
     }
 
 }

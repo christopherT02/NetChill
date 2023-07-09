@@ -62,7 +62,11 @@
                   <Image url="@glass.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="btnInit" layoutX="1272.0" layoutY="31.0" mnemonicParsing="false" onAction="#showAvailableMovies" text="Initialize infos" />
+            <Button layoutX="206.0" layoutY="493.0" mnemonicParsing="false" text="More details">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
    </center>
    <bottom>

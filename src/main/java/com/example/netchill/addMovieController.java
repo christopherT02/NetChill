@@ -233,8 +233,8 @@ public class addMovieController {
     }
 
     @FXML
-    public void initData() throws IOException {
-
+    void initialize() throws IOException
+    {
         //display available cinemas
         displayAvailableCinemas();
 
