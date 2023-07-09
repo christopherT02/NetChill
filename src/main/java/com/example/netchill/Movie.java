@@ -1,6 +1,7 @@
 package com.example.netchill;
 
 public class Movie {
+    Customer customer = new Customer();
     private String id_name;
     private int time;
     private double price;

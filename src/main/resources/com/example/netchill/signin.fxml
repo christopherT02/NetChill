@@ -11,47 +11,47 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.signinController">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
             <Text layoutX="658.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN IN">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Text>
-            <TextField layoutX="689.0" layoutY="206.0" promptText="example@mail.com" />
-            <TextField layoutX="689.0" layoutY="254.0" />
-            <Text layoutX="604.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mail" />
-            <Text layoutX="591.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-            <Button layoutX="673.0" layoutY="455.0" mnemonicParsing="false" text="Submit" />
-            <Button layoutX="891.0" layoutY="492.0" mnemonicParsing="false" text="Go to login" />
-            <TextField layoutX="689.0" layoutY="311.0" promptText="Example" />
-            <TextField layoutX="687.0" layoutY="401.0" promptText="1234123412341234" />
-            <Text layoutX="604.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-            <Text layoutX="589.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card number" />
-            <Text layoutX="579.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card type" />
-            <RadioButton layoutX="666.0" layoutY="360.0" mnemonicParsing="false" text="VISA">
+            <TextField fx:id="txt_field_email" layoutX="689.0" layoutY="206.0" promptText="example@mail.com" />
+            <TextField fx:id="txt_field_password" layoutX="689.0" layoutY="254.0" />
+            <Text layoutX="604.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mail*" />
+            <Text layoutX="591.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password*" />
+            <Button layoutX="673.0" layoutY="455.0" mnemonicParsing="false" onAction="#click_button_submit" text="Submit" />
+            <Button layoutX="891.0" layoutY="492.0" mnemonicParsing="false" onAction="#click_button_gotoLogin" text="Go to login" />
+            <TextField fx:id="txt_field_name" layoutX="689.0" layoutY="311.0" promptText="Example" />
+            <TextField fx:id="txt_field_cardNumber" layoutX="687.0" layoutY="401.0" promptText="1234123412341234" />
+            <Text layoutX="604.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name*" />
+            <Text layoutX="589.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card number*" />
+            <Text layoutX="579.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card type*" />
+            <RadioButton fx:id="radio_button" layoutX="666.0" layoutY="360.0" mnemonicParsing="false" text="VISA">
                <toggleGroup>
                   <ToggleGroup fx:id="cardType" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton layoutX="751.0" layoutY="360.0" mnemonicParsing="false" text="AMEX" toggleGroup="$cardType" />
-            <RadioButton layoutX="846.0" layoutY="360.0" mnemonicParsing="false" text="MasterCard" toggleGroup="$cardType" />
+            <RadioButton fx:id="radio_button" layoutX="751.0" layoutY="360.0" mnemonicParsing="false" text="AMEX" toggleGroup="$cardType" />
+            <RadioButton fx:id="radio_button" layoutX="846.0" layoutY="360.0" mnemonicParsing="false" text="MasterCard" toggleGroup="$cardType" />
          </children></AnchorPane>
    </center>
    <bottom>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="676.0" layoutY="42.0" text="About us" />
          </children>
       </AnchorPane>
    </bottom>
    <top>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="83.0" fitWidth="209.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
-          <Button layoutX="229.0" layoutY="15.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="200.0" text="Home page" />
+          <Button layoutX="229.0" layoutY="15.0" mnemonicParsing="false" onAction="#click_homePage" prefHeight="67.0" prefWidth="200.0" text="Home page" />
          </children>
       </AnchorPane>
    </top>

@@ -16,6 +16,7 @@ import java.sql.*;
 
 public class addMovieController {
 
+    Customer customer = new Customer();
     @FXML
     private ImageView imViewPoster;
     private Image posterImage;

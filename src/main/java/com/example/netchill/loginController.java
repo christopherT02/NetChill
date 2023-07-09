@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.sql.*;
 
 public class loginController {
+    Customer customer = new Customer();
     @FXML
     private TextField txt_field_ID;
 
@@ -55,26 +56,20 @@ public class loginController {
         }
         else
         {
-            System.out.println("OUI");
 
             try {
-                System.out.println("61");
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
-                System.out.println("64");
 
 
                 Statement stat = con.createStatement();
                 ResultSet rs = stat.executeQuery("SELECT * FROM `account` ");
-                System.out.println("65");
 
                 while (rs.next())
                 {
-                    System.out.println("Nous testons\n");
                     if(txt_field_ID.getText().equals(rs.getString("Email")) && txt_field_password.getText().equals(rs.getString("Password")))
                     {
 
-                        System.out.println("OUIIII");
                         ResultSet rs2 = stat.executeQuery("SELECT Name FROM customer WHERE customer.Email = '"+rs.getString("Email")+"'");
                         while(rs2.next()) name_customer = rs2.getString("Name");
                         account_exist=true;
@@ -88,7 +83,6 @@ public class loginController {
 
             if(account_exist) //compte existant
             {
-                System.out.println("OUI2");
 
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
                 root=fxmlLoader.load();

@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class HelloController {
 
+    Customer customer = new Customer();
     @FXML
     private AnchorPane midPane;
 
@@ -29,12 +30,25 @@ public class HelloController {
 
     @FXML
     void click_button_account(ActionEvent event) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-        root=fxmlLoader.load();
-        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
-        scene=new Scene(root);
-        lstage.setScene(scene);
-        lstage.show();
+        if(button_account.getText().equals("Account"))
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+            root=fxmlLoader.load();
+            lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
+            scene=new Scene(root);
+            lstage.setScene(scene);
+            lstage.show();
+        }
+        else
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("customer_information.fxml"));
+            root=fxmlLoader.load();
+            lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
+            scene=new Scene(root);
+            lstage.setScene(scene);
+            lstage.show();
+        }
+
     }
 
 
