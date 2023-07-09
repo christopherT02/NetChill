@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -15,8 +16,10 @@ import javafx.scene.input.TransferMode;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 
 public class addMovieController {
@@ -42,6 +45,8 @@ public class addMovieController {
     @FXML
     private ChoiceBox<Integer> menuRoom;
 
+    @FXML
+    private Button btnInit;
 
 
     // a inclure dans la liaison entre les pages
@@ -146,13 +151,10 @@ public class addMovieController {
             e.printStackTrace();
         }
 
-
-
-
     }
 
     @FXML
-    void click_tets_btn(ActionEvent event) throws IOException {
+    void displayAvailableCinemas() throws IOException {
 
         //add existing cinemas into the choicebox
         try {
@@ -229,6 +231,17 @@ public class addMovieController {
             System.out.println(e3);
         }
     }
+
+    @FXML
+    public void initData() throws IOException {
+
+        //display available cinemas
+        displayAvailableCinemas();
+
+        //activate drag and drop for the poster
+        dragAndDrop();
+    }
+
 
 
 

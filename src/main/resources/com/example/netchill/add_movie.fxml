@@ -63,6 +63,7 @@
                   <Font size="20.0" />
                </font>
             </Text>
+            <Button fx:id="btnInit" layoutX="1320.0" layoutY="37.0" mnemonicParsing="false" onAction="#initData" text="Initialize" />
          </children></AnchorPane>
    </center>
    <bottom>
@@ -78,13 +79,13 @@
             <ImageView fitHeight="83.0" fitWidth="209.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
             <ButtonBar layoutX="1006.0" layoutY="8.0" prefHeight="87.0" prefWidth="380.0">
               <buttons>
-                <Button mnemonicParsing="false" onAction="#dragAndDrop" prefHeight="75.0" prefWidth="193.0" text="Basket" />
+                <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="193.0" text="Basket" />
                   <Button mnemonicParsing="false" prefHeight="71.0" text="Account" />
               </buttons>
             </ButtonBar>
             <Button layoutX="855.0" layoutY="17.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="100.0" text="Gift Card" />
           <Button layoutX="229.0" layoutY="15.0" mnemonicParsing="false" onAction="#click_button_home_page" prefHeight="67.0" prefWidth="200.0" text="Home page" />
-            <Button layoutX="522.0" layoutY="17.0" mnemonicParsing="false" onAction="#click_tets_btn" prefHeight="67.0" prefWidth="200.0" text="Movies" />
+            <Button layoutX="522.0" layoutY="17.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="200.0" text="Movies" />
          </children>
       </AnchorPane>
    </top>

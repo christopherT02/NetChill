@@ -44,4 +44,14 @@ public class Movie {
                 ", description='" + description + '\'' +
                 '}';
     }
+
+    public Movie(String id_name, int time, double price, String description) {
+        this.id_name = id_name;
+        this.time = time;
+        this.price = price;
+        this.description = description;
+    }
+
+    public Movie() {
+    }
 }
