@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.moviesController">
+   <center>
+      <AnchorPane fx:id="midPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imPoster" fitHeight="216.0" fitWidth="192.0" layoutX="40.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
+            <Separator layoutX="634.0" layoutY="44.0" orientation="VERTICAL" prefHeight="522.0" prefWidth="10.0" />
+            <Text layoutX="277.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title : ">
+               <font>
+                  <Font size="20.0" />
+               </font></Text>
+            <Text layoutX="277.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
+               <font>
+                  <Font size="20.0" />
+               </font></Text>
+            <Text layoutX="277.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration : ">
+               <font>
+                  <Font size="20.0" />
+               </font></Text>
+            <Text fx:id="txtTitle" layoutX="277.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Text>
+            <Text fx:id="txtDescription" layoutX="277.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="350.0" />
+            <Text fx:id="txtTime" layoutX="277.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="16.0" />
+               </font></Text>
+            <TableView fx:id="availableMoviesTable" layoutX="672.0" layoutY="92.0" onMouseClicked="#selectAvailableMovie" prefHeight="478.0" prefWidth="689.0">
+              <columns>
+                <TableColumn fx:id="availableMovieTitleCol" prefWidth="171.0" text="Title" />
+                <TableColumn fx:id="availableMovieDescriptionCol" prefWidth="393.0" text="Description" />
+                  <TableColumn fx:id="availableMovieDurationCol" minWidth="0.0" prefWidth="129.0" text="Duration" />
+              </columns>
+            </TableView>
+            <TextField fx:id="researchInput" layoutX="672.0" layoutY="50.0" prefHeight="25.0" prefWidth="272.0" promptText="movie name">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="678.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@glass.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="206.0" layoutY="493.0" mnemonicParsing="false" text="More details">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="676.0" layoutY="42.0" text="About us" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <top>
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="83.0" fitWidth="209.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+            <ButtonBar layoutX="1006.0" layoutY="8.0" prefHeight="87.0" prefWidth="380.0">
+              <buttons>
+                <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="193.0" text="Basket" />
+                  <Button fx:id="button_account" mnemonicParsing="false" prefHeight="71.0" text="Account" />
+              </buttons>
+            </ButtonBar>
+            <Button layoutX="855.0" layoutY="17.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="100.0" text="Gift Card" />
+          <Button layoutX="229.0" layoutY="15.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="200.0" text="Home page" />
+            <Button layoutX="522.0" layoutY="17.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="200.0" text="Movies" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>
