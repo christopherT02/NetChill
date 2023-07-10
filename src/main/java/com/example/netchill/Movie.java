@@ -36,15 +36,17 @@ public class Movie {
         this.description = description;
     }
 
+
     @Override
     public String toString() {
         return "Movie{" +
-                "id_name='" + id_name + '\'' +
+                ", id_name='" + id_name + '\'' +
                 ", time=" + time +
                 ", price=" + price +
                 ", description='" + description + '\'' +
                 '}';
     }
+
 
     public Movie(String id_name, int time, double price, String description) {
         this.id_name = id_name;

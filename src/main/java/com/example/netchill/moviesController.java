@@ -56,9 +56,6 @@ public class moviesController {
                         rs.getInt("Time"),
                         rs.getDouble("Price"),
                         rs.getString("Description"));
-                //movD.setId_name(rs.getString("ID_name_movie"));
-                //movD.setDescription(rs.getString("Description"));
-                //movD.setTime(rs.getInt("Time"));
 
                 listAvailableMovies.add(movD);
             }
