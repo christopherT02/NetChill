@@ -5,7 +5,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -65,7 +65,6 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <TextField fx:id="txtFNumberTickets" layoutX="930.0" layoutY="273.0" promptText="ex : 1, 2..." />
             <Text fx:id="txtTotalAmount" layoutX="836.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0">
                <font>
                   <Font name="System Bold" size="20.0" />
@@ -76,6 +75,7 @@
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Button>
+            <Spinner fx:id="spinnerNbOfTicket" layoutX="930.0" layoutY="273.0" prefHeight="25.0" prefWidth="67.0" />
          </children></AnchorPane>
    </center>
    <bottom>

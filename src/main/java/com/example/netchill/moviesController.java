@@ -38,9 +38,10 @@ public class moviesController {
 
     private Movie movD = new Movie();
 
+    private ObservableList<Movie> availableMovieList;
 
 
-    public ObservableList<Movie> getMovieList()
+    public void getMovieList()
     {
         ObservableList<Movie> listAvailableMovies = FXCollections.observableArrayList();
 
@@ -66,16 +67,57 @@ public class moviesController {
             System.out.println(e);
         }
 
-        return listAvailableMovies;
+        availableMovieList = listAvailableMovies;
     }
 
-    private ObservableList<Movie> availableMovieList;
+    @FXML
+    public void researchMovie()
+    {
+        ObservableList<Movie> listAvailableMovies = FXCollections.observableArrayList();
+
+        String sqlQuery = "SELECT * FROM `movie`";
+
+        String input = researchInput.getText();
+        System.out.println(input);
+
+        //if the input is empty, show all movies available
+        if(input.isEmpty())
+        {
+            getMovieList();
+            showAvailableMovies();
+            return;
+        }
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery(sqlQuery);
+            while(rs.next())
+            {
+                movD = new Movie(rs.getString("ID_name_movie"),
+                        rs.getInt("Time"),
+                        rs.getDouble("Price"),
+                        rs.getString("Description"));
+
+                //compare the movie get in the DB with the input
+                if(movD.getId_name().startsWith(input))
+                    listAvailableMovies.add(movD);
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        availableMovieList = listAvailableMovies;
+        showAvailableMovies();
+    }
+
 
     @FXML
     public void showAvailableMovies()
     {
-        availableMovieList = getMovieList();
-
         availableMovieTitleCol.setCellValueFactory(new PropertyValueFactory<>("id_name"));
         availableMovieDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         availableMovieDurationCol.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -121,14 +163,14 @@ public class moviesController {
         } catch (Exception ee) {
             System.out.println("non image " +ee);
         }
-
-
-
     }
+
+
 
     @FXML
     void initialize()
     {
+        getMovieList();
         showAvailableMovies();
     }
 

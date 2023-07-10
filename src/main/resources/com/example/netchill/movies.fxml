@@ -49,7 +49,7 @@
                   <TableColumn fx:id="availableMovieDurationCol" minWidth="0.0" prefWidth="103.0" text="Duration" />
               </columns>
             </TableView>
-            <TextField fx:id="researchInput" layoutX="672.0" layoutY="50.0" prefHeight="25.0" prefWidth="272.0" promptText="movie name">
+            <TextField fx:id="researchInput" layoutX="672.0" layoutY="50.0" onAction="#researchMovie" prefHeight="25.0" prefWidth="272.0" promptText="movie name">
                <padding>
                   <Insets left="30.0" />
                </padding>
