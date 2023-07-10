@@ -16,7 +16,7 @@
    <center>
       <AnchorPane fx:id="midPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="imPoster2" fitHeight="361.0" fitWidth="282.0" layoutX="34.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imPoster2" fitHeight="523.0" fitWidth="298.0" layoutX="34.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
             <Separator layoutX="695.0" layoutY="48.0" orientation="VERTICAL" prefHeight="522.0" prefWidth="10.0" />
             <Text layoutX="340.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title : ">
                <font>
@@ -75,7 +75,7 @@
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Button>
-            <Spinner fx:id="spinnerNbOfTicket" layoutX="930.0" layoutY="273.0" prefHeight="25.0" prefWidth="67.0" />
+            <Spinner fx:id="spinnerNbOfTicket" layoutX="930.0" layoutY="273.0" onMouseClicked="#show_total_price" prefHeight="25.0" prefWidth="67.0" />
          </children></AnchorPane>
    </center>
    <bottom>

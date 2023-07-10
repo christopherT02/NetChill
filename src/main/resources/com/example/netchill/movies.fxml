@@ -62,7 +62,7 @@
                   <Image url="@glass.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="206.0" layoutY="493.0" mnemonicParsing="false" text="More details">
+            <Button layoutX="206.0" layoutY="493.0" mnemonicParsing="false" onAction="#btn_moreDetails_click" text="More details">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>

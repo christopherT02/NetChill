@@ -82,7 +82,8 @@ public class addMovieController {
     }
 
     //verification of the file's extension
-    private boolean isImageFile(File file) {
+    private boolean isImageFile(File file)
+    {
         String name = file.getName().toLowerCase();
         return name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png");
     }
@@ -189,7 +190,6 @@ public class addMovieController {
         int id_cinema=0;
 
         System.out.println("cinema sel : " +cinemaSelected);
-
 
         //get the cinema ID
         try {

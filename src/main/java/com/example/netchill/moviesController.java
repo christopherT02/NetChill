@@ -2,7 +2,12 @@ package com.example.netchill;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -11,7 +16,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 
@@ -39,6 +46,10 @@ public class moviesController {
     private Movie movD = new Movie();
 
     private ObservableList<Movie> availableMovieList;
+
+    private Parent root;
+    private Stage lstage;
+    private Scene scene;
 
 
     public void getMovieList()
@@ -127,20 +138,21 @@ public class moviesController {
 
     public void selectAvailableMovie()
     {
-        Movie mov = availableMoviesTable.getSelectionModel().getSelectedItem();
+        movD = availableMoviesTable.getSelectionModel().getSelectedItem();
+
         int index = availableMoviesTable.getSelectionModel().getSelectedIndex();
 
         if((index -1) < -1)
             return;
 
-        txtTitle.setText(mov.getId_name());
-        txtDescription.setText(mov.getDescription());
-        txtTime.setText(mov.getTime() + "min");
+        txtTitle.setText(movD.getId_name());
+        txtDescription.setText(movD.getDescription());
+        txtTime.setText(movD.getTime() + "min");
 
         //query to get the poster
-        String sqlQuery = "SELECT `Image_movie` FROM `movie` WHERE ID_name_movie = '"+mov.getId_name()+"'";
+        String sqlQuery = "SELECT `Image_movie` FROM `movie` WHERE ID_name_movie = '"+movD.getId_name()+"'";
 
-        System.out.println(mov.getId_name());
+        System.out.println(movD.getId_name());
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -163,6 +175,26 @@ public class moviesController {
         } catch (Exception ee) {
             System.out.println("non image " +ee);
         }
+
+    }
+
+    //change to the new window
+    @FXML
+    public void btn_moreDetails_click(ActionEvent event) throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("movie.fxml"));
+        root=fxmlLoader.load();
+        movieController controller = fxmlLoader.getController();
+
+        //give infos about the selected movie to the new page
+        controller.setMovieSelected(movD);
+        //call this function because it doesnt work in the "initialize()3
+        controller.init();
+
+        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
+        scene=new Scene(root);
+        lstage.setScene(scene);
+        lstage.show();
     }
 
 
