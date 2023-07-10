@@ -36,6 +36,8 @@ public class moviesController {
     @FXML
     private TableView<Movie> availableMoviesTable;
 
+    private Movie movD = new Movie();
+
 
 
     public ObservableList<Movie> getMovieList()
@@ -52,7 +54,7 @@ public class moviesController {
             ResultSet rs = stat.executeQuery(sqlQuery);
             while(rs.next())
             {
-                Movie movD = new Movie(rs.getString("ID_name_movie"),
+                movD = new Movie(rs.getString("ID_name_movie"),
                         rs.getInt("Time"),
                         rs.getDouble("Price"),
                         rs.getString("Description"));
@@ -110,6 +112,8 @@ public class moviesController {
                 Blob tempo = rs.getBlob("Image_movie");
                 InputStream tempo2 = tempo.getBinaryStream();
                 Image poster = new Image(tempo2);
+
+                movD.setPoster(poster);
 
                 imPoster.setImage(poster);
             }

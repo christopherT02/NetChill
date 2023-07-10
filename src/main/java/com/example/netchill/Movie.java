@@ -1,11 +1,14 @@
 package com.example.netchill;
 
+import javafx.scene.image.Image;
+
 public class Movie {
     Customer customer = new Customer();
     private String id_name;
     private int time;
     private double price;
     private String description;
+    private Image poster;
 
     //getter-setter
     public String getId_name() {
@@ -36,6 +39,11 @@ public class Movie {
         this.description = description;
     }
 
+    public Image getPoster() {return poster;}
+    public void setPoster(Image poster) {this.poster = poster;}
+
+
+
 
     @Override
     public String toString() {
@@ -53,6 +61,7 @@ public class Movie {
         this.time = time;
         this.price = price;
         this.description = description;
+        this.poster = null;
     }
 
     public Movie() {
