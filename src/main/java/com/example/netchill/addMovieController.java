@@ -44,6 +44,7 @@ public class addMovieController {
 
     @FXML
     private ChoiceBox<String> menuCinema;
+
     @FXML
     private ChoiceBox<Integer> menuRoom;
 
@@ -90,6 +91,7 @@ public class addMovieController {
 
     //method that add a Movie in the DataBase
     public void addMovieToBdd() throws FileNotFoundException {
+
         Movie movieToAdd = new Movie();
 
         movieToAdd.setId_name(txtMovieName.getText());

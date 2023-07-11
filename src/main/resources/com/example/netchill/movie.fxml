@@ -45,37 +45,43 @@
                </font>
             </Text>
             <ChoiceBox fx:id="menuCinema" layoutX="956.0" layoutY="111.0" prefHeight="25.0" prefWidth="215.0" />
-            <Text layoutX="751.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of tickets :">
+            <Text layoutX="751.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of tickets :">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="751.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price of 1 ticket :">
+            <Text layoutX="751.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price of 1 ticket :">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="751.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL :">
+            <Text layoutX="751.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL :">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Text fx:id="txtUnitTicketPrice" layoutX="910.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0">
+            <Text fx:id="txtUnitTicketPrice" layoutX="910.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Text fx:id="txtTotalAmount" layoutX="836.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0">
+            <Text fx:id="txtTotalAmount" layoutX="836.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Button layoutX="956.0" layoutY="469.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="156.0" text="choose seat">
+            <Button layoutX="964.0" layoutY="493.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="156.0" text="choose seat">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Button>
-            <Spinner fx:id="spinnerNbOfTicket" layoutX="930.0" layoutY="273.0" onMouseClicked="#show_total_price" prefHeight="25.0" prefWidth="67.0" />
+            <Spinner fx:id="spinnerNbOfTicket" layoutX="930.0" layoutY="315.0" onMouseClicked="#show_total_price" prefHeight="25.0" prefWidth="67.0" />
+            <Text layoutX="754.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your schedules :">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <ChoiceBox fx:id="menuSchedule" layoutX="978.0" layoutY="171.0" prefHeight="25.0" prefWidth="196.0" />
          </children></AnchorPane>
    </center>
    <bottom>

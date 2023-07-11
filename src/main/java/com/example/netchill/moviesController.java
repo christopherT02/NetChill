@@ -33,6 +33,8 @@ public class moviesController {
     private ImageView imPoster;
     @FXML
     private TextField researchInput;
+    @FXML
+    private Button btn_MoreDetails;
 
     @FXML
     private TableColumn<Movie, String> availableMovieDescriptionCol;
@@ -84,6 +86,12 @@ public class moviesController {
     @FXML
     public void researchMovie()
     {
+        btn_MoreDetails.setDisable(true);
+        txtDescription.setText(null);
+        txtTime.setText(null);
+        txtTitle.setText(null);
+        imPoster.setImage(null);
+
         ObservableList<Movie> listAvailableMovies = FXCollections.observableArrayList();
 
         String sqlQuery = "SELECT * FROM `movie`";
@@ -96,6 +104,7 @@ public class moviesController {
         {
             getMovieList();
             showAvailableMovies();
+
             return;
         }
 
@@ -138,6 +147,8 @@ public class moviesController {
 
     public void selectAvailableMovie()
     {
+        btn_MoreDetails.setDisable(false);
+
         movD = availableMoviesTable.getSelectionModel().getSelectedItem();
 
         int index = availableMoviesTable.getSelectionModel().getSelectedIndex();
@@ -148,12 +159,15 @@ public class moviesController {
         txtTitle.setText(movD.getId_name());
         txtTime.setText(movD.getTime() + "min");
 
-        //TODO cut hte string after the nth character
-        //if(movD.getDescription().length() < 500)
+        String tempoString = null;
+        //if the description is too long, cut the string
+        if(movD.getDescription().length() > 750) {
+            tempoString = movD.getDescription().substring(0, 750);
+            tempoString+="...";
+            txtDescription.setText(tempoString);
+        }else
             txtDescription.setText(movD.getDescription());
-        //else{
-            //String tempo = movD.getDescription().split(500);
-        //}
+
 
         //query to get the poster
         String sqlQuery = "SELECT `Image_movie` FROM `movie` WHERE ID_name_movie = '"+movD.getId_name()+"'";
@@ -210,6 +224,7 @@ public class moviesController {
     {
         getMovieList();
         showAvailableMovies();
+        btn_MoreDetails.setDisable(true);
     }
 
 }
