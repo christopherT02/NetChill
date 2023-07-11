@@ -68,7 +68,7 @@ public class movieController {
                     "FROM movie " +
                     "JOIN room ON movie.ID_name_movie = room.ID_movie_display " +
                     "JOIN cinema ON room.ID_cinema = cinema.ID_cinema " +
-                    "WHERE movie.ID_name_movie = '"+movieSelected.getId_name()+"'"); //TODO test with various cinema
+                    "WHERE movie.ID_name_movie = '"+movieSelected.getId_name()+"'");
 
             ArrayList<String> cinemas = new ArrayList<>();
 
@@ -116,6 +116,6 @@ public class movieController {
     @FXML
     void initialize()
     {
-        //txtDescription2.setText(movieSelected.getDescription());
+
     }
 }

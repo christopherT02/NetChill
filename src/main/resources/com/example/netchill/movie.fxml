@@ -26,7 +26,7 @@
                <font>
                   <Font size="20.0" />
                </font></Text>
-            <Text layoutX="340.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration : ">
+            <Text layoutX="20.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration : ">
                <font>
                   <Font size="20.0" />
                </font></Text>
@@ -34,8 +34,8 @@
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Text>
-            <Text fx:id="txtDescription2" layoutX="340.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="341.0" />
-            <Text fx:id="txtTime2" layoutX="340.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="106.0">
+            <Text fx:id="txtDescription2" layoutX="340.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="JUSTIFY" wrappingWidth="341.0" />
+            <Text fx:id="txtTime2" layoutX="20.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="106.0">
                <font>
                   <Font size="16.0" />
                </font></Text>

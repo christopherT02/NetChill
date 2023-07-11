@@ -7,48 +7,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.chooseSeatController">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="midPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="139.0" layoutY="156.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="37.0" layoutX="617.0" layoutY="44.0" stroke="BLACK" strokeType="INSIDE" width="183.0" />
-            <Text layoutX="686.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SCREEN" />
-            <Button layoutX="300.0" layoutY="156.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="440.0" layoutY="156.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="601.0" layoutY="156.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="139.0" layoutY="258.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="300.0" layoutY="258.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="440.0" layoutY="258.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="601.0" layoutY="258.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="749.0" layoutY="156.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="910.0" layoutY="156.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="1050.0" layoutY="156.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="1211.0" layoutY="156.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="749.0" layoutY="258.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="910.0" layoutY="258.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="1050.0" layoutY="258.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="1211.0" layoutY="258.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="96.0" text="Button" />
-            <Button layoutX="614.0" layoutY="489.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="190.0" text="Add to backet" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1e9f2" height="42.0" layoutX="580.0" layoutY="41.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
+            <Text layoutX="663.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SCREEN">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
          </children></AnchorPane>
    </center>
    <bottom>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="676.0" layoutY="42.0" text="About us" />
          </children>
       </AnchorPane>
    </bottom>
    <top>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="83.0" fitWidth="209.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
             <ButtonBar layoutX="1006.0" layoutY="8.0" prefHeight="87.0" prefWidth="380.0">
               <buttons>
                 <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="193.0" text="Basket" />
-                  <Button mnemonicParsing="false" prefHeight="71.0" text="Account" />
+                  <Button fx:id="button_account" mnemonicParsing="false" prefHeight="71.0" text="Account" />
               </buttons>
             </ButtonBar>
             <Button layoutX="855.0" layoutY="17.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="100.0" text="Gift Card" />

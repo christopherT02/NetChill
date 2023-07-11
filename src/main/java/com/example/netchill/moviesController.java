@@ -146,8 +146,14 @@ public class moviesController {
             return;
 
         txtTitle.setText(movD.getId_name());
-        txtDescription.setText(movD.getDescription());
         txtTime.setText(movD.getTime() + "min");
+
+        //TODO cut hte string after the nth character
+        //if(movD.getDescription().length() < 500)
+            txtDescription.setText(movD.getDescription());
+        //else{
+            //String tempo = movD.getDescription().split(500);
+        //}
 
         //query to get the poster
         String sqlQuery = "SELECT `Image_movie` FROM `movie` WHERE ID_name_movie = '"+movD.getId_name()+"'";
@@ -188,7 +194,7 @@ public class moviesController {
 
         //give infos about the selected movie to the new page
         controller.setMovieSelected(movD);
-        //call this function because it doesnt work in the "initialize()3
+        //call this function because it doesnt work in the "initialize()" function
         controller.init();
 
         lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
