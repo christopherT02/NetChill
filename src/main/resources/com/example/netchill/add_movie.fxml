@@ -2,12 +2,12 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -15,54 +15,47 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="590.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add new movie">
+            <Rectangle fx:id="rectDD" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutX="684.0" layoutY="324.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="198.0" />
+            <Text layoutX="590.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a new movie">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <Text layoutX="431.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Movie name">
+            <Text layoutX="541.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Movie name">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField fx:id="txtMovieName" layoutX="574.0" layoutY="137.0" promptText="name" />
-            <Text layoutX="431.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+            <TextField fx:id="txtMovieName" layoutX="684.0" layoutY="137.0" promptText="name" />
+            <Text layoutX="541.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField fx:id="txtDescription" layoutX="574.0" layoutY="184.0" promptText="description here" />
-            <Text layoutX="431.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
+            <TextField fx:id="txtDescription" layoutX="684.0" layoutY="184.0" promptText="description here" />
+            <Text layoutX="541.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField fx:id="txtTime" layoutX="574.0" layoutY="232.0" promptText="X min" />
-            <Text layoutX="431.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+            <TextField fx:id="txtTime" layoutX="684.0" layoutY="232.0" promptText="X min" />
+            <Text layoutX="541.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField fx:id="txtPrice" layoutX="574.0" layoutY="279.0" promptText="£ X.XX" />
-            <Text layoutX="431.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Poster">
+            <TextField fx:id="txtPrice" layoutX="684.0" layoutY="279.0" promptText="£ X.XX" />
+            <Text layoutX="541.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Poster">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Button layoutX="663.0" layoutY="520.0" mnemonicParsing="false" onAction="#addMovieToBdd" prefHeight="39.0" prefWidth="74.0" text="Submit" />
-            <ImageView fx:id="imViewPoster" fitHeight="150.0" fitWidth="200.0" layoutX="549.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true" />
-            <ChoiceBox fx:id="menuCinema" layoutX="993.0" layoutY="184.0" prefWidth="150.0" />
-            <Text layoutX="861.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cinema">
+            <Button layoutX="641.0" layoutY="498.0" mnemonicParsing="false" onAction="#addMovieToBdd" prefHeight="44.0" prefWidth="118.0" text="Submit">
                <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
-            <ChoiceBox fx:id="menuRoom" layoutX="993.0" layoutY="278.0" prefWidth="150.0" />
-            <Text layoutX="861.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font></Button>
+            <ImageView fx:id="imViewPoster" fitHeight="150.0" fitWidth="200.0" layoutX="684.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true" />
+            <Text layoutX="540.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Drag and Drop)" />
          </children></AnchorPane>
    </center>
    <bottom>

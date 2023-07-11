@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -46,10 +47,7 @@ public class addMovieController {
     private ChoiceBox<String> menuCinema;
 
     @FXML
-    private ChoiceBox<Integer> menuRoom;
-
-    @FXML
-    private Button btnInit;
+    private Rectangle rectDD;
 
 
     // a inclure dans la liaison entre les pages
@@ -72,6 +70,8 @@ public class addMovieController {
                 if (isImageFile(file)) {
                     posterImage = new Image(file.toURI().toString());
                     imViewPoster.setImage(posterImage);
+
+                    rectDD.setVisible(false);
 
                     System.out.println("chemin : " + file.toURI());
                     success = true;
@@ -131,31 +131,6 @@ public class addMovieController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-        //update room data
-        String queryUpdate = "UPDATE `room` SET `ID_movie_display`= ? WHERE ID_nb_room = "+ menuRoom.getValue();
-
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
-             PreparedStatement preparedStatement = con.prepareStatement(queryUpdate)) {
-
-            preparedStatement.setString(1, movieToAdd.getId_name());
-
-            // execute update
-            int lignesModifiees = preparedStatement.executeUpdate();
-
-            // Show number of row modified
-            System.out.println("Nombre de lignes modifiées : " + lignesModifiees);
-
-            //close connexion and ressources
-            preparedStatement.close();
-            con.close();
-
-            System.out.println("Room data successfully send.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
     }
 
     @FXML
@@ -177,7 +152,6 @@ public class addMovieController {
                 cinemas.add(rs.getString("name_cinema"));
             }
             menuCinema.getItems().addAll(cinemas);
-            menuCinema.setOnAction(this::showAvailableRoom);
 
             con.close();
         } catch (Exception e2) {
@@ -185,56 +159,6 @@ public class addMovieController {
         }
     }
 
-    @FXML
-    public void showAvailableRoom(ActionEvent event)
-    {
-        String cinemaSelected = menuCinema.getValue();
-        int id_cinema=0;
-
-        System.out.println("cinema sel : " +cinemaSelected);
-
-        //get the cinema ID
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
-
-            Statement stat = con.createStatement();
-            ResultSet rs = stat.executeQuery("SELECT `ID_cinema` FROM `cinema` WHERE `name_cinema` = '" + cinemaSelected+"'");
-            while(rs.next())
-            {
-                System.out.println("id cinema : "+ id_cinema);
-                id_cinema = rs.getInt("ID_cinema");
-                System.out.println("id cinema : "+ id_cinema);
-            }
-            con.close();
-        } catch (Exception e2) {
-            System.out.println(e2);
-        }
-
-        //add the available room of the selected cinema in the menu
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
-
-            Statement stat = con.createStatement();
-            ResultSet rs = stat.executeQuery("SELECT * FROM `room` WHERE `ID_cinema` = '" + id_cinema+"'");
-
-            ArrayList<Integer> rooms = new ArrayList<>();
-
-            while (rs.next())
-            {
-                if(rs.getString("ID_movie_display").isEmpty())
-                    rooms.add(rs.getInt("ID_nb_room"));
-
-                System.out.println("yyeess " +rs.getInt("ID_nb_room"));
-            }
-            menuRoom.getItems().addAll(rooms);
-            con.close();
-
-        } catch (Exception e3) {
-            System.out.println(e3);
-        }
-    }
 
     @FXML
     void initialize() throws IOException

@@ -18,6 +18,9 @@ public class movieController {
     private ImageView imPoster2;
 
     @FXML
+    private Button btnCS;
+
+    @FXML
     private ChoiceBox<String> menuCinema;
     @FXML
     private ChoiceBox<Time> menuSchedule;
@@ -130,13 +133,14 @@ public class movieController {
                 schedules.add(rs.getTime("start"));
             }
 
-
             menuSchedule.getItems().addAll(schedules);
 
             con.close();
         } catch (Exception e2) {
             System.out.println(e2);
         }
+
+        menuSchedule.setOnAction(this::changeStateBtn);
     }
 
     //display the number of tickets you want to buy
@@ -156,12 +160,18 @@ public class movieController {
         txtTotalAmount.setText("£" + total);
     }
 
+    public void changeStateBtn(ActionEvent event)
+    {
+        btnCS.setDisable(false);
+    }
+
 
     public void init()
     {
         init_movie_infos();
         init_cinemas_info();
         showSpinnerValue();
+        btnCS.setDisable(true);
     }
     @FXML
     void initialize()
