@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
@@ -39,12 +40,12 @@
                <font>
                   <Font size="16.0" />
                </font></Text>
-            <Text layoutX="751.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your cinema :">
+            <Text layoutX="752.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your cinema :">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <ChoiceBox fx:id="menuCinema" layoutX="956.0" layoutY="111.0" prefHeight="25.0" prefWidth="215.0" />
+            <ChoiceBox fx:id="menuCinema" layoutX="957.0" layoutY="67.0" prefHeight="25.0" prefWidth="215.0" />
             <Text layoutX="751.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of tickets :">
                <font>
                   <Font size="20.0" />
@@ -70,18 +71,24 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Button fx:id="btnCS" layoutX="964.0" layoutY="493.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="156.0" text="choose seat">
+            <Button fx:id="btnCS" layoutX="964.0" layoutY="493.0" mnemonicParsing="false" onAction="#btn_chooseSeat_click" prefHeight="50.0" prefWidth="156.0" text="choose seat">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Button>
             <Spinner fx:id="spinnerNbOfTicket" layoutX="930.0" layoutY="315.0" onMouseClicked="#show_total_price" prefHeight="25.0" prefWidth="67.0" />
-            <Text layoutX="754.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your schedules :">
+            <Text layoutX="755.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your schedules :">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <ChoiceBox fx:id="menuSchedule" layoutX="978.0" layoutY="171.0" prefHeight="25.0" prefWidth="196.0" />
+            <ChoiceBox fx:id="menuSchedule" layoutX="979.0" layoutY="127.0" prefHeight="25.0" prefWidth="196.0" />
+            <DatePicker fx:id="datePck" layoutX="930.0" layoutY="178.0" onAction="#setCheck2" prefHeight="25.0" prefWidth="244.0" />
+            <Text layoutX="755.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your date : ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
          </children></AnchorPane>
    </center>
    <bottom>

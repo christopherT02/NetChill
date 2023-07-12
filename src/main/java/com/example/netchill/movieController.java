@@ -2,18 +2,26 @@ package com.example.netchill;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import org.w3c.dom.events.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class movieController {
 
     private Movie movieSelected;
 
+    @FXML
+    private DatePicker datePck;
     @FXML
     private ImageView imPoster2;
 
@@ -38,6 +46,14 @@ public class movieController {
     private Text txtTotalAmount;
     @FXML
     private Text txtUnitTicketPrice;
+
+    private boolean check1 = false;
+    private boolean check2 = false;
+    private LocalDate datePicked = null;
+
+    private Parent root;
+    private Stage lstage;
+    private Scene scene;
 
     ///getter - setter
     public Movie getMovieSelected() {
@@ -140,7 +156,7 @@ public class movieController {
             System.out.println(e2);
         }
 
-        menuSchedule.setOnAction(this::changeStateBtn);
+        menuSchedule.setOnAction(this::setCheck1);
     }
 
     //display the number of tickets you want to buy
@@ -160,9 +176,46 @@ public class movieController {
         txtTotalAmount.setText("£" + total);
     }
 
-    public void changeStateBtn(ActionEvent event)
+    public void changeStateBtn()
     {
-        btnCS.setDisable(false);
+        if(check1 && check2)
+            btnCS.setDisable(false);
+    }
+
+    private int idSessionsSelected;
+    public void setCheck1(ActionEvent event){check1=true;
+        changeStateBtn();
+
+        //get session ID
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery("SELECT session.ID_session " +
+                    "FROM cinema " +
+                    "JOIN room ON cinema.ID_cinema = room.ID_cinema " +
+                    "JOIN session ON room.ID_nb_room = session.ID_nb_room " +
+                    "WHERE session.ID_name_movie = '"+ movieSelected.getId_name()+"' AND session.start = '"+menuSchedule.getValue()+"'");
+
+            while(rs.next())
+            {
+                System.out.println("-----------------------" + rs.getInt("ID_session"));
+                idSessionsSelected = rs.getInt("ID_session");
+            }
+
+            con.close();
+        } catch (Exception e2) {
+            System.out.println(e2);
+        }
+
+    }
+    @FXML
+    public void setCheck2(ActionEvent event){check2=true;
+        changeStateBtn();
+        datePicked = datePck.getValue();
+
+        System.out.println(datePicked);
     }
 
 
@@ -173,6 +226,33 @@ public class movieController {
         showSpinnerValue();
         btnCS.setDisable(true);
     }
+
+
+
+
+
+    @FXML
+    public void btn_chooseSeat_click(ActionEvent event) throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("choose_seat.fxml"));
+        root=fxmlLoader.load();
+        chooseSeatController controller = fxmlLoader.getController();
+
+        //give infos about the selected movie to the new page
+        controller.setMovieChoosed(movieSelected);
+        //give infos about the selected date chosen
+        controller.setDatePicked(datePicked);
+        //give info about the selected session
+        controller.setIdSessionSelected(idSessionsSelected);
+        //call this function because it doesnt work in the "initialize()" function
+        controller.init();
+
+        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
+        scene=new Scene(root);
+        lstage.setScene(scene);
+        lstage.show();
+    }
+
     @FXML
     void initialize()
     {
