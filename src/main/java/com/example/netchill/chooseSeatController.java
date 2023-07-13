@@ -77,7 +77,7 @@ public class chooseSeatController {
 
             Statement stat = con.createStatement();
             ResultSet rs = stat.executeQuery("SELECT * FROM `ticket` " +
-                    "JOIN seat ON seat.ID_session = ticket.ID_session " +
+                    "JOIN seat ON seat.ID_seat = ticket.ID_seat " +
                     "WHERE `Date_ticket`= '"+datePicked+"' AND seat.ID_session = '"+idSessionSelected+"'");
 
             while(rs.next())
@@ -155,6 +155,29 @@ public class chooseSeatController {
         }
     }
 
+
+    @FXML
+    public void button_PaymentClick()
+    {
+        //add seat data in the DB
+        String insertQuery = "INSERT INTO `seat` (`ID_seat`, `ID_session`, `available_seat`, `seat_number`) VALUES (NULL, ?, ?, ?)";
+
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+             PreparedStatement preparedStatement = con.prepareStatement(insertQuery)) {
+
+            //Parameters
+            preparedStatement.setInt(1, idSessionSelected);
+            preparedStatement.setInt(2, 1);
+            preparedStatement.setInt(3, seatChoice.getValue());
+
+            preparedStatement.executeUpdate();
+
+            System.out.println("Seat data successfully send.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
