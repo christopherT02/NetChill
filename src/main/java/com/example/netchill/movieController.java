@@ -244,6 +244,7 @@ public class movieController {
         controller.setDatePicked(datePicked);
         //give info about the selected session
         controller.setIdSessionSelected(idSessionsSelected);
+        controller.setNb_places(spinnerNbOfTicket.getValue());
         //call this function because it doesnt work in the "initialize()" function
         controller.init();
 
