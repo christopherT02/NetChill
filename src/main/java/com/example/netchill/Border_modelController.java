@@ -176,5 +176,3 @@ public class Border_modelController {
     }
 
 }
-
-

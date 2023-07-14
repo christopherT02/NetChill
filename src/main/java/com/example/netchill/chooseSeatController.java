@@ -136,7 +136,7 @@ public class chooseSeatController {
 
     public void displayAllSeats(Integer[] seatAvailable, int nbSeats)
     {
-        Color cl = Color.BLACK;
+        Color cl = Color.WHITE;
         Color cll = Color.GRAY;
 
         int posx = 250;
@@ -159,6 +159,7 @@ public class chooseSeatController {
                 txt.setLayoutX(posx+5);
                 txt.setLayoutY(posy-10);
                 txt.setText(String.valueOf(cmpte));
+                txt.setFill(Color.WHITE);
 
 
                 if(seatAvailable[cmpte] == 1)

@@ -19,6 +19,9 @@ import java.util.ArrayList;
 public class movieController {
 
     private Movie movieSelected;
+    private Customer customer = new Customer();
+    @FXML
+    private Label label_unuse;
 
     @FXML
     private DatePicker datePck;
@@ -227,6 +230,15 @@ public class movieController {
         btnCS.setDisable(true);
     }
 
+    @FXML
+    public void update_customer_movies(String name,String email,String card_nb)
+    {
+        customer.set_all_info_customer(name,email,card_nb);
+        label_unuse.setText(customer.getName_customer());
+        label_unuse.setVisible(false);
+        System.out.println("DANS movies : "+customer.getName_customer());
+    }
+
 
 
 
@@ -252,6 +264,8 @@ public class movieController {
         scene=new Scene(root);
         lstage.setScene(scene);
         lstage.show();
+
+
     }
 
     @FXML

@@ -16,219 +16,219 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="bpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.Border_modelController">
-   <top>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
-         <children>
-            <ButtonBar layoutX="1024.0" layoutY="8.0" prefHeight="87.0" prefWidth="362.0">
-               <buttons>
-                  <ImageView fitHeight="68.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="C:\ESPACE PERSO\Londres\JAVAFX_TEST\NetChill\logo_account.jpg" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="button_account" mnemonicParsing="false" onAction="#click_button_account" prefHeight="108.0" style="-fx-background-color: black;" text="Account" textFill="#d41a77">
-                     <font>
+    <top>
+        <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+            <children>
+                <ButtonBar layoutX="1024.0" layoutY="8.0" prefHeight="87.0" prefWidth="362.0">
+                    <buttons>
+                        <ImageView fitHeight="68.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="file:logo_account.jpg" />
+                            </image>
+                        </ImageView>
+                        <Button fx:id="button_account" mnemonicParsing="false" onAction="#click_button_account" prefHeight="108.0" style="-fx-background-color: black;" text="Account" textFill="#d41a77">
+                            <font>
+                                <Font size="36.0" />
+                            </font></Button>
+                    </buttons>
+                </ButtonBar>
+                <Button layoutX="662.0" layoutY="-2.0" mnemonicParsing="false" onAction="#click_button_giftCard" prefHeight="102.0" prefWidth="250.0" style="-fx-background-color: black;" text="Gift Card" textFill="#d41a77">
+                    <font>
                         <Font size="36.0" />
-                     </font></Button>
-               </buttons>
-            </ButtonBar>
-            <Button layoutX="662.0" layoutY="-2.0" mnemonicParsing="false" onAction="#click_button_giftCard" prefHeight="102.0" prefWidth="250.0" style="-fx-background-color: black;" text="Gift Card" textFill="#d41a77">
-               <font>
-                  <Font size="36.0" />
-               </font></Button>
-            <Button layoutX="-16.0" layoutY="2.0" mnemonicParsing="false" onAction="#click_button_homepage" prefHeight="99.0" prefWidth="250.0" style="-fx-background-color: black;" text="NetChill">
-               <font>
-                  <Font name="Rockwell Extra Bold" size="40.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
+                    </font></Button>
+                <Button layoutX="-16.0" layoutY="2.0" mnemonicParsing="false" onAction="#click_button_homepage" prefHeight="99.0" prefWidth="250.0" style="-fx-background-color: black;" text="NetChill">
+                    <font>
+                        <Font name="Rockwell Extra Bold" size="40.0" />
+                    </font>
+                    <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="1.0" blue="0.6000000238418579" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </textFill></Button>
+                <Button layoutX="328.0" layoutY="-1.0" mnemonicParsing="false" onAction="#click_button_movie" prefHeight="100.0" prefWidth="250.0" style="-fx-background-color: black;" text="Movies" textFill="#d41a77">
+                    <font>
+                        <Font size="36.0" />
+                    </font></Button>
+                <Separator layoutX="215.0" layoutY="9.0" orientation="VERTICAL" prefHeight="79.0" prefWidth="2.0" />
+                <Separator layoutX="1020.0" layoutY="12.0" orientation="VERTICAL" prefHeight="79.0" prefWidth="2.0" />
+                <Separator layoutX="1.0" layoutY="97.0" prefHeight="5.0" prefWidth="1400.0" />
+            </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <Button mnemonicParsing="false" onAction="#click_button_netchill" prefHeight="137.0" prefWidth="452.0" style="-fx-background-color: black;" text="NetChill" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="Lucida Handwriting Italic" size="64.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
                         <Stop>
-                           <color>
-                              <Color red="1.0" blue="0.6000000238418579" />
-                           </color>
+                            <color>
+                                <Color red="1.0" blue="0.6000000238418579" />
+                            </color>
                         </Stop>
                         <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
+                            <color>
+                                <Color red="1.0" green="1.0" blue="1.0" />
+                            </color>
                         </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill></Button>
-            <Button layoutX="328.0" layoutY="-1.0" mnemonicParsing="false" onAction="#click_button_movie" prefHeight="100.0" prefWidth="250.0" style="-fx-background-color: black;" text="Movies" textFill="#d41a77">
-               <font>
-                  <Font size="36.0" />
-               </font></Button>
-            <Separator layoutX="215.0" layoutY="9.0" orientation="VERTICAL" prefHeight="79.0" prefWidth="2.0" />
-            <Separator layoutX="1020.0" layoutY="12.0" orientation="VERTICAL" prefHeight="79.0" prefWidth="2.0" />
-            <Separator layoutX="1.0" layoutY="97.0" prefHeight="5.0" prefWidth="1400.0" />
-         </children>
-      </AnchorPane>
-   </top>
-   <center>
-      <Button mnemonicParsing="false" onAction="#click_button_netchill" prefHeight="137.0" prefWidth="452.0" style="-fx-background-color: black;" text="NetChill" BorderPane.alignment="CENTER">
-         <font>
-            <Font name="Lucida Handwriting Italic" size="64.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" blue="0.6000000238418579" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill></Button>
-   </center>
-   <bottom>
-      <AnchorPane prefHeight="100.0" prefWidth="1400.0" style="-fx-background-color: black;" BorderPane.alignment="TOP_LEFT">
-         <children>
-            <HBox layoutX="2.0" layoutY="2.0" prefHeight="95.0" prefWidth="1400.0" spacing="100.0" style="-fx-background-color: black;">
-               <padding>
-                  <Insets left="100.0" top="35.0" />
-               </padding>
-               <children>
-                  <Label prefWidth="123.0" text="Need help?">
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="1.0" blue="0.6000000238418579" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label prefWidth="123.0" text="Contact">
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="1.0" blue="0.6000000238418579" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label prefWidth="123.0" text="About us">
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="1.0" blue="0.6000000238418579" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label prefWidth="123.0" text="Cookies">
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="1.0" blue="0.6000000238418579" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label prefWidth="123.0" text="Condition">
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="1.0" blue="0.6000000238418579" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="27.0" prefWidth="123.0" text="Charter">
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="1.0" blue="0.6000000238418579" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <Separator prefHeight="6.0" prefWidth="1400.0" />
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </AnchorPane>
-   </bottom>
+                    </stops>
+                </LinearGradient>
+            </textFill></Button>
+    </center>
+    <bottom>
+        <AnchorPane prefHeight="100.0" prefWidth="1400.0" style="-fx-background-color: black;" BorderPane.alignment="TOP_LEFT">
+            <children>
+                <HBox layoutX="2.0" layoutY="2.0" prefHeight="95.0" prefWidth="1400.0" spacing="100.0" style="-fx-background-color: black;">
+                    <padding>
+                        <Insets left="100.0" top="35.0" />
+                    </padding>
+                    <children>
+                        <Label prefWidth="123.0" text="Need help?">
+                            <textFill>
+                                <LinearGradient endX="1.0" endY="1.0">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color red="1.0" blue="0.6000000238418579" />
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </textFill>
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label prefWidth="123.0" text="Contact">
+                            <textFill>
+                                <LinearGradient endX="1.0" endY="1.0">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color red="1.0" blue="0.6000000238418579" />
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </textFill>
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label prefWidth="123.0" text="About us">
+                            <textFill>
+                                <LinearGradient endX="1.0" endY="1.0">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color red="1.0" blue="0.6000000238418579" />
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </textFill>
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label prefWidth="123.0" text="Cookies">
+                            <textFill>
+                                <LinearGradient endX="1.0" endY="1.0">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color red="1.0" blue="0.6000000238418579" />
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </textFill>
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label prefWidth="123.0" text="Condition">
+                            <textFill>
+                                <LinearGradient endX="1.0" endY="1.0">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color red="1.0" blue="0.6000000238418579" />
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </textFill>
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="27.0" prefWidth="123.0" text="Charter">
+                            <textFill>
+                                <LinearGradient endX="1.0" endY="1.0">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color red="1.0" blue="0.6000000238418579" />
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </textFill>
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <Separator prefHeight="6.0" prefWidth="1400.0" />
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </AnchorPane>
+    </bottom>
 </BorderPane>

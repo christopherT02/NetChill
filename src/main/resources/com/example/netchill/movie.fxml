@@ -1,117 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.movieController">
-   <center>
-      <AnchorPane fx:id="midPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="imPoster2" fitHeight="523.0" fitWidth="298.0" layoutX="34.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
-            <Separator layoutX="695.0" layoutY="48.0" orientation="VERTICAL" prefHeight="522.0" prefWidth="10.0" />
-            <Text layoutX="340.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title : ">
-               <font>
-                  <Font size="20.0" />
-               </font></Text>
-            <Text layoutX="340.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
-               <font>
-                  <Font size="20.0" />
-               </font></Text>
-            <Text layoutX="20.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration : ">
-               <font>
-                  <Font size="20.0" />
-               </font></Text>
-            <Text fx:id="txtTitle2" layoutX="340.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font></Text>
-            <Text fx:id="txtDescription2" layoutX="340.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="JUSTIFY" wrappingWidth="341.0" />
-            <Text fx:id="txtTime2" layoutX="20.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="106.0">
-               <font>
-                  <Font size="16.0" />
-               </font></Text>
-            <Text layoutX="752.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your cinema :">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
-            <ChoiceBox fx:id="menuCinema" layoutX="957.0" layoutY="67.0" prefHeight="25.0" prefWidth="215.0" />
-            <Text layoutX="751.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of tickets :">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
-            <Text layoutX="751.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price of 1 ticket :">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
-            <Text layoutX="751.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL :">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Text>
-            <Text fx:id="txtUnitTicketPrice" layoutX="910.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Text>
-            <Text fx:id="txtTotalAmount" layoutX="836.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Text>
-            <Button fx:id="btnCS" layoutX="964.0" layoutY="493.0" mnemonicParsing="false" onAction="#btn_chooseSeat_click" prefHeight="50.0" prefWidth="156.0" text="choose seat">
-               <font>
-                  <Font name="System Bold Italic" size="20.0" />
-               </font>
-            </Button>
-            <Spinner fx:id="spinnerNbOfTicket" layoutX="930.0" layoutY="315.0" onMouseClicked="#show_total_price" prefHeight="25.0" prefWidth="67.0" />
-            <Text layoutX="755.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your schedules :">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
-            <ChoiceBox fx:id="menuSchedule" layoutX="979.0" layoutY="127.0" prefHeight="25.0" prefWidth="196.0" />
-            <DatePicker fx:id="datePck" layoutX="930.0" layoutY="178.0" onAction="#setCheck2" prefHeight="25.0" prefWidth="244.0" />
-            <Text layoutX="755.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your date : ">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
-         </children></AnchorPane>
-   </center>
-   <bottom>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="676.0" layoutY="42.0" text="About us" />
-         </children>
-      </AnchorPane>
-   </bottom>
-   <top>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="83.0" fitWidth="209.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
-            <ButtonBar layoutX="1006.0" layoutY="8.0" prefHeight="87.0" prefWidth="380.0">
-              <buttons>
-                <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="193.0" text="Basket" />
-                  <Button fx:id="button_account" mnemonicParsing="false" prefHeight="71.0" text="Account" />
-              </buttons>
-            </ButtonBar>
-            <Button layoutX="855.0" layoutY="17.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="100.0" text="Gift Card" />
-          <Button layoutX="229.0" layoutY="15.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="200.0" text="Home page" />
-            <Button layoutX="522.0" layoutY="17.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="200.0" text="Movies" />
-         </children>
-      </AnchorPane>
-   </top>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1400.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.movieController">
+   <children>
+      <ImageView fx:id="imPoster2" fitHeight="523.0" fitWidth="298.0" layoutX="44.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
+      <Separator layoutX="705.0" layoutY="58.0" orientation="VERTICAL" prefHeight="522.0" prefWidth="10.0" />
+      <Text fill="WHITE" layoutX="350.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title : ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="350.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="30.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration : ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtTitle2" fill="WHITE" layoutX="350.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtDescription2" fill="WHITE" layoutX="350.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="JUSTIFY" wrappingWidth="341.0" />
+      <Text fx:id="txtTime2" fill="WHITE" layoutX="30.0" layoutY="589.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="106.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="762.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your cinema :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="menuCinema" layoutX="967.0" layoutY="77.0" prefHeight="25.0" prefWidth="215.0" />
+      <Text fill="WHITE" layoutX="761.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of tickets :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="761.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price of 1 ticket :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="761.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL :">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtUnitTicketPrice" fill="WHITE" layoutX="920.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtTotalAmount" fill="WHITE" layoutX="846.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnCS" layoutX="974.0" layoutY="503.0" mnemonicParsing="false" onAction="#btn_chooseSeat_click" prefHeight="50.0" prefWidth="156.0" text="choose seat">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Button>
+      <Spinner fx:id="spinnerNbOfTicket" layoutX="940.0" layoutY="325.0" onMouseClicked="#show_total_price" prefHeight="25.0" prefWidth="67.0" />
+      <Text fill="WHITE" layoutX="765.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your schedules :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="menuSchedule" layoutX="989.0" layoutY="137.0" prefHeight="25.0" prefWidth="196.0" />
+      <DatePicker fx:id="datePck" layoutX="940.0" layoutY="188.0" onAction="#setCheck2" prefHeight="25.0" prefWidth="244.0" />
+      <Text fill="WHITE" layoutX="765.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your date : ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

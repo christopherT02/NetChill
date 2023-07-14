@@ -202,6 +202,7 @@ public class moviesController {
     @FXML
     public void btn_moreDetails_click(ActionEvent event) throws IOException
     {
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("movie.fxml"));
         root=fxmlLoader.load();
         movieController controller = fxmlLoader.getController();
@@ -215,6 +216,20 @@ public class moviesController {
         scene=new Scene(root);
         lstage.setScene(scene);
         lstage.show();
+
+        /*
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("movie.fxml"));
+        Parent root = loader.load();
+        movieController movie = loader.getController();
+
+        //give infos about the selected movie to the new page
+        movie.setMovieSelected(movD);
+        movie.init();
+        movie.update_customer_movies(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+
+        //TODO : afficher au milieu
+        bpane.setCenter(root);
+        */
     }
 
 

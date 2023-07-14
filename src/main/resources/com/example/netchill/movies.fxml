@@ -32,13 +32,13 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="txtTitle" layoutX="277.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0">
+      <Text fx:id="txtTitle" fill="WHITE" layoutX="277.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Text>
-      <Text fx:id="txtDescription" layoutX="277.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="350.0" />
-      <Text fx:id="txtTime" layoutX="277.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0">
+      <Text fx:id="txtDescription" fill="WHITE" layoutX="277.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="350.0" />
+      <Text fx:id="txtTime" fill="WHITE" layoutX="277.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font size="16.0" />
          </font>
