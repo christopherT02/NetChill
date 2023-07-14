@@ -272,6 +272,7 @@ public class chooseSeatController {
             controller.setIdSessionSelected(idSessionSelected);
             controller.setNb_places(nb_places);
             controller.setIncrementor(incrementor);
+            controller.setTicketList(ticketList);
             //call this function because it doesnt work in the "initialize()" function
             controller.init();
 
