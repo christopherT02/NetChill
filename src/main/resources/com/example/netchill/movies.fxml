@@ -50,7 +50,7 @@
             <TableColumn fx:id="availableMovieDurationCol" minWidth="0.0" prefWidth="129.0" text="Duration" />
          </columns>
       </TableView>
-      <TextField fx:id="researchInput" layoutX="672.0" layoutY="50.0" prefHeight="26.0" prefWidth="344.5" promptText="movie name">
+      <TextField fx:id="researchInput" layoutX="672.0" layoutY="50.0" onAction="#researchMovie" prefHeight="26.0" prefWidth="344.5" promptText="movie name">
          <padding>
             <Insets left="30.0" />
          </padding>
@@ -63,7 +63,7 @@
             <Image url="@glass.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="276.0" layoutY="502.0" mnemonicParsing="false" text="See more">
+      <Button fx:id="btn_MoreDetails" layoutX="276.0" layoutY="502.0" mnemonicParsing="false" onAction="#btn_moreDetails_click" text="See more">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>

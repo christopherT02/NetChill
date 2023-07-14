@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,6 +22,9 @@ import java.sql.*;
 public class moviesController {
     @FXML
     private Text txtDescription;
+    private Customer customer = new Customer();
+    @FXML
+    private Label label_unuse;
     @FXML
     private Text txtTime;
     @FXML
@@ -218,7 +218,14 @@ public class moviesController {
     }
 
 
-
+    @FXML
+    public void update_customer_movies(String name,String email,String card_nb)
+    {
+        customer.set_all_info_customer(name,email,card_nb);
+        label_unuse.setText(customer.getName_customer());
+        label_unuse.setVisible(false);
+        System.out.println("DANS movies : "+customer.getName_customer());
+    }
     @FXML
     void initialize()
     {
