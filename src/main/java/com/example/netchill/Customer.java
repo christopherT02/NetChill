@@ -1,10 +1,26 @@
 package com.example.netchill;
 
+//TODO model in MVC
 public class Customer {
     private String name_customer;
     private String Email_customer;
     private String Card_nb_customer;
 
+    public Customer()
+    {
+        name_customer="Guest";
+        Email_customer="guest@mail.fr";
+        Card_nb_customer="0000000000000000";
+    }
+    public void setCustomer_or_employee(int customer_or_employee) {
+        this.customer_or_employee = customer_or_employee;
+    }
+
+    public int getCustomer_or_employee() {
+        return customer_or_employee;
+    }
+
+    private int customer_or_employee;
     public String getName_customer() {
         return name_customer;
     }

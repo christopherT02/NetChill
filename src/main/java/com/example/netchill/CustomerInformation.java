@@ -15,8 +15,6 @@ import java.io.IOException;
 
 public class CustomerInformation {
     Customer customer = new Customer();
-    @FXML
-    private Button button_account;
 
     @FXML
     private Label info_customer_adress;
@@ -42,36 +40,26 @@ public class CustomerInformation {
     private AnchorPane midPane;
 
     @FXML
-    void click_button_account(ActionEvent event) {
+    private Label label_unuse;
 
-    }
 
-    @FXML
-    void click_button_basket(ActionEvent event) {
 
-    }
 
-    @FXML
-    void click_button_giftCard(ActionEvent event) {
 
-    }
 
-    @FXML
-    void click_button_homepage(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        root=fxmlLoader.load();
-        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
-        scene=new Scene(root);
-        lstage.setScene(scene);
-        lstage.show();
-    }
 
     @FXML
     void click_button_signout(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        customer.setName_customer("Guest");
+        customer.setEmail_customer("guest@mail.fr");
+        customer.setCard_nb_customer("0000000000000000");
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
-        HelloController controller = fxmlLoader.getController();
-        controller.updateLabel("Account"); // Mettre à jour le texte du Label
+        Border_modelController border = fxmlLoader.getController();
+        border.update_customer_border(customer.getName_customer(), customer.getEmail_customer(), customer.getCard_nb_customer());
+
+        border.initialize(3);
         lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
         scene=new Scene(root);
         lstage.setScene(scene);
@@ -79,7 +67,12 @@ public class CustomerInformation {
     }
 
     @FXML
-    void click_button_movie(ActionEvent event) {
-
+    public void update_customer_custoInfo(String name,String email,String card_nb)
+    {
+        customer.set_all_info_customer(name,email,card_nb);
+        label_unuse.setText(customer.getName_customer());
+        label_unuse.setVisible(false);
+        System.out.println("DANS customer info : "+customer.getName_customer());
     }
+
 }

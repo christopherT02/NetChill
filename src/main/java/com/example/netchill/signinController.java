@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -29,6 +30,8 @@ public class signinController {
     private RadioButton radio_button;
 
     @FXML
+    private Label label_unuse;
+    @FXML
     private TextField txt_field_cardNumber;
 
     @FXML
@@ -42,8 +45,12 @@ public class signinController {
 
     @FXML
     void click_button_gotoLogin(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
+        Border_modelController border = fxmlLoader.getController();
+        border.update_customer_border(customer.getName_customer(), customer.getEmail_customer(), customer.getCard_nb_customer());
+
+        border.initialize(2);
         lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
         scene=new Scene(root);
         lstage.setScene(scene);
@@ -78,7 +85,7 @@ public class signinController {
                     {
                         new_account = false;
                         System.out.println("Account already exist !\n");
-                        //TODO AFFICHER DE MANIERE DYNAMIQUE UN MESSAGE QUI DIT QUE LE COMPTE EXISTE DEJA
+                        //TODO AFFICHER DE MANIERE DYNAMIQUE UN MESSAGE QUI DIT QUE LE COMPTE EXISTE DEJA + rajouter l'interdiction de faire un mail qui fini par @cinema.fr
                     }
                 }
 
@@ -114,6 +121,10 @@ public class signinController {
 
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
                 root=fxmlLoader.load();
+                Border_modelController border = fxmlLoader.getController();
+                border.update_customer_border(customer.getName_customer(), customer.getEmail_customer(), customer.getCard_nb_customer());
+
+                border.initialize(3);
                 lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
                 scene=new Scene(root);
                 lstage.setScene(scene);
@@ -128,14 +139,14 @@ public class signinController {
         }
     }
 
+
     @FXML
-    void click_homePage(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        root=fxmlLoader.load();
-        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
-        scene=new Scene(root);
-        lstage.setScene(scene);
-        lstage.show();
+    public void update_customer_signin(String name,String email,String card_nb)
+    {
+        customer.set_all_info_customer(name,email,card_nb);
+        label_unuse.setText(customer.getName_customer());
+        label_unuse.setVisible(false);
+        System.out.println("DANS signin : "+customer.getName_customer());
     }
 }
 

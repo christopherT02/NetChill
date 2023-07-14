@@ -3,56 +3,54 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.signinController">
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-         <children>
-            <Text layoutX="658.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN IN">
-               <font>
-                  <Font name="System Bold" size="34.0" />
-               </font>
-            </Text>
-            <TextField fx:id="txt_field_email" layoutX="689.0" layoutY="206.0" promptText="example@mail.com" />
-            <TextField fx:id="txt_field_password" layoutX="689.0" layoutY="254.0" />
-            <Text layoutX="604.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mail*" />
-            <Text layoutX="591.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password*" />
-            <Button layoutX="673.0" layoutY="455.0" mnemonicParsing="false" onAction="#click_button_submit" text="Submit" />
-            <Button layoutX="891.0" layoutY="492.0" mnemonicParsing="false" onAction="#click_button_gotoLogin" text="Go to login" />
-            <TextField fx:id="txt_field_name" layoutX="689.0" layoutY="311.0" promptText="Example" />
-            <TextField fx:id="txt_field_cardNumber" layoutX="687.0" layoutY="401.0" promptText="1234123412341234" />
-            <Text layoutX="604.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name*" />
-            <Text layoutX="589.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card number*" />
-            <Text layoutX="579.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card type*" />
-            <RadioButton fx:id="radio_button" layoutX="666.0" layoutY="360.0" mnemonicParsing="false" text="VISA">
-               <toggleGroup>
-                  <ToggleGroup fx:id="cardType" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="radio_button" layoutX="751.0" layoutY="360.0" mnemonicParsing="false" text="AMEX" toggleGroup="$cardType" />
-            <RadioButton fx:id="radio_button" layoutX="846.0" layoutY="360.0" mnemonicParsing="false" text="MasterCard" toggleGroup="$cardType" />
-         </children></AnchorPane>
-   </center>
-   <bottom>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="676.0" layoutY="42.0" text="About us" />
-         </children>
-      </AnchorPane>
-   </bottom>
-   <top>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="83.0" fitWidth="209.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
-          <Button layoutX="229.0" layoutY="15.0" mnemonicParsing="false" onAction="#click_homePage" prefHeight="67.0" prefWidth="200.0" text="Home page" />
-         </children>
-      </AnchorPane>
-   </top>
-</BorderPane>
+<AnchorPane prefHeight="600.0" prefWidth="1400.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.signinController">
+   <children>
+      <TextField fx:id="txt_field_email" layoutX="616.0" layoutY="227.0" promptText="example@mail.com" />
+      <TextField fx:id="txt_field_password" layoutX="616.0" layoutY="275.0" />
+      <Text fill="WHITE" layoutX="531.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email*" />
+      <Text fill="WHITE" layoutX="518.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password*" />
+      <TextField fx:id="txt_field_name" layoutX="616.0" layoutY="332.0" promptText="Example" />
+      <TextField fx:id="txt_field_cardNumber" layoutX="614.0" layoutY="422.0" promptText="1234 1234 1234 1234" />
+      <Text fill="WHITE" layoutX="531.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name*" />
+      <Text fill="WHITE" layoutX="516.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card number*" />
+      <Text fill="WHITE" layoutX="506.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card type*" />
+      <RadioButton fx:id="radio_button" layoutX="593.0" layoutY="381.0" mnemonicParsing="false" text="VISA" textFill="WHITE">
+         <toggleGroup>
+            <ToggleGroup fx:id="cardType" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="radio_button" layoutX="678.0" layoutY="381.0" mnemonicParsing="false" text="AMEX" textFill="WHITE" toggleGroup="$cardType" />
+      <RadioButton fx:id="radio_button" layoutX="773.0" layoutY="381.0" mnemonicParsing="false" text="MasterCard" textFill="WHITE" toggleGroup="$cardType" />
+      <Separator layoutX="10.0" layoutY="171.0" prefHeight="0.0" prefWidth="1400.0" />
+      <Label layoutX="571.0" layoutY="146.0" text="Log in" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="801.0" layoutY="146.0" text="Sign in" textFill="RED">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="659.0" layoutY="476.0" mnemonicParsing="false" onAction="#click_button_submit" prefHeight="38.0" prefWidth="82.0" text="Submit" />
+      <Label layoutX="660.0" layoutY="521.0" text="*required fields" textFill="WHITE" />
+      <Button layoutX="605.0" layoutY="548.0" mnemonicParsing="false" onAction="#click_button_gotoLogin" style="-fx-background-color: black;" text="Have an account? Log in" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label layoutX="651.0" layoutY="50.0" text="Log in" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+      </Label>
+      <Separator layoutX="614.0" layoutY="576.0" prefHeight="3.0" prefWidth="150.0" />
+      <Label fx:id="label_unuse" layoutX="34.0" layoutY="590.0" />
+   </children>
+</AnchorPane>

@@ -1,9 +1,16 @@
 package com.example.netchill;
 
-public class Movie {
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Movie implements Initializable {
     Customer customer = new Customer();
     private String id_name;
     private int time;
+
     private double price;
     private String description;
 
@@ -54,5 +61,15 @@ public class Movie {
     }
 
     public Movie() {
+    }
+
+    public void update_customer_movie(String name,String email,String card_nb)
+    {
+        customer.set_all_info_customer(name,email,card_nb);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("Name "+customer.getName_customer());
     }
 }

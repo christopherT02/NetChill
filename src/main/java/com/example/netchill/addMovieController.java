@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,6 +29,9 @@ public class addMovieController {
     private Scene scene;
 
     Customer customer = new Customer();
+
+    @FXML
+    private Label label_unuse;
     @FXML
     private ImageView imViewPoster;
     private Image posterImage;
@@ -51,7 +55,7 @@ public class addMovieController {
     private Button btnInit;
 
 
-    // a inclure dans la liaison entre les pages
+
     public void dragAndDrop()
     {
         //drag & drop for the poster
@@ -234,6 +238,15 @@ public class addMovieController {
         }
     }
 
+
+    @FXML
+    public void update_customer_addMovie(String name,String email,String card_nb)
+    {
+        customer.set_all_info_customer(name,email,card_nb);
+        label_unuse.setText(customer.getName_customer());
+        label_unuse.setVisible(false);
+        System.out.println("DANS add movie : "+customer.getName_customer());
+    }
     @FXML
     void initialize() throws IOException
     {
@@ -242,24 +255,6 @@ public class addMovieController {
 
         //activate drag and drop for the poster
         dragAndDrop();
-    }
-
-
-
-
-
-
-
-
-
-    @FXML
-    void click_button_home_page(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        root=fxmlLoader.load();
-        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
-        scene=new Scene(root);
-        lstage.setScene(scene);
-        lstage.show();
     }
 
 

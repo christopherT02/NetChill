@@ -3,21 +3,20 @@ package com.example.netchill;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 
 public class moviesController {
     @FXML
     private Text txtDescription;
+
     @FXML
     private Text txtTime;
     @FXML
@@ -26,7 +25,8 @@ public class moviesController {
     private ImageView imPoster;
     @FXML
     private TextField researchInput;
-
+    @FXML
+    private Label label_unuse;
     @FXML
     private TableColumn<Movie, String> availableMovieDescriptionCol;
     @FXML
@@ -36,6 +36,7 @@ public class moviesController {
     @FXML
     private TableView<Movie> availableMoviesTable;
 
+    private Customer customer = new Customer();
 
 
     public ObservableList<Movie> getMovieList()
@@ -125,9 +126,19 @@ public class moviesController {
 
     }
 
+
+    @FXML
+    public void update_customer_movies(String name,String email,String card_nb)
+    {
+        customer.set_all_info_customer(name,email,card_nb);
+        label_unuse.setText(customer.getName_customer());
+        label_unuse.setVisible(false);
+        System.out.println("DANS movies : "+customer.getName_customer());
+    }
     @FXML
     void initialize()
     {
+
         showAvailableMovies();
     }
 

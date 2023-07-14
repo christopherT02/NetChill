@@ -3,6 +3,7 @@ package com.example.netchill;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,6 +13,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class HelloController {
 
@@ -24,57 +27,20 @@ public class HelloController {
     private Stage lstage;
 
     private Scene scene;
+    @FXML
+    private Label label_unuse;
+
 
     @FXML
     private Button button_account;
 
-    @FXML
-    void click_button_account(ActionEvent event) throws IOException{
-        if(button_account.getText().equals("Account"))
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-            root=fxmlLoader.load();
-            lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
-            scene=new Scene(root);
-            lstage.setScene(scene);
-            lstage.show();
-        }
-        else
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("customer_information.fxml"));
-            root=fxmlLoader.load();
-            lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
-            scene=new Scene(root);
-            lstage.setScene(scene);
-            lstage.show();
-        }
-
-    }
-
-
-    @FXML
-    void click_addMovie_account(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("add_movie.fxml"));
-        root=fxmlLoader.load();
-        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
-        scene=new Scene(root);
-        lstage.setScene(scene);
-        lstage.show();
-    }
-
-    public void updateLabel(String name)
+    public void update_customer_homepage(String name,String email,String card_nb)
     {
-        button_account.setText(name);
+        customer.set_all_info_customer(name,email,card_nb);
+        label_unuse.setText(customer.getName_customer());
+        label_unuse.setVisible(false);
+        System.out.println("DANS HELLO CONTROLLER : "+customer.getName_customer());
     }
 
-    @FXML
-    void click_Movies(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("movies.fxml"));
-        root=fxmlLoader.load();
-        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
-        scene=new Scene(root);
-        lstage.setScene(scene);
-        lstage.show();
-    }
 
 }
