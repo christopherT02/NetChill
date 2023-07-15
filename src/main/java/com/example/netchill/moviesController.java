@@ -69,7 +69,8 @@ public class moviesController {
             ResultSet rs = stat.executeQuery(sqlQuery);
             while(rs.next())
             {
-                movD = new Movie(rs.getString("ID_name_movie"),
+
+                Movie movD = new Movie(rs.getString("ID_name_movie"),
                         rs.getInt("Time"),
                         rs.getDouble("Price"),
                         rs.getString("Description"));
@@ -117,7 +118,7 @@ public class moviesController {
             ResultSet rs = stat.executeQuery(sqlQuery);
             while(rs.next())
             {
-                movD = new Movie(rs.getString("ID_name_movie"),
+                Movie movD = new Movie(rs.getString("ID_name_movie"),
                         rs.getInt("Time"),
                         rs.getDouble("Price"),
                         rs.getString("Description"));
@@ -150,30 +151,30 @@ public class moviesController {
     {
         btn_MoreDetails.setDisable(false);
 
-        movD = availableMoviesTable.getSelectionModel().getSelectedItem();
+        netchill.setMovD(availableMoviesTable.getSelectionModel().getSelectedItem());
 
         int index = availableMoviesTable.getSelectionModel().getSelectedIndex();
 
         if((index -1) < -1)
             return;
 
-        txtTitle.setText(movD.getId_name());
-        txtTime.setText(movD.getTime() + "min");
+        txtTitle.setText(netchill.getMovD().getId_name());
+        txtTime.setText(netchill.getMovD().getTime() + "min");
 
         String tempoString = null;
         //if the description is too long, cut the string
-        if(movD.getDescription().length() > 750) {
-            tempoString = movD.getDescription().substring(0, 750);
+        if(netchill.getMovD().getDescription().length() > 750) {
+            tempoString = netchill.getMovD().getDescription().substring(0, 750);
             tempoString+="...";
             txtDescription.setText(tempoString);
         }else
-            txtDescription.setText(movD.getDescription());
+            txtDescription.setText(netchill.getMovD().getDescription());
 
 
         //query to get the poster
-        String sqlQuery = "SELECT `Image_movie` FROM `movie` WHERE ID_name_movie = '"+movD.getId_name()+"'";
+        String sqlQuery = "SELECT `Image_movie` FROM `movie` WHERE ID_name_movie = '"+netchill.getMovD().getId_name()+"'";
 
-        System.out.println(movD.getId_name());
+        System.out.println(netchill.getMovD().getId_name());
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -188,7 +189,7 @@ public class moviesController {
                 InputStream tempo2 = tempo.getBinaryStream();
                 Image poster = new Image(tempo2);
 
-                movD.setPoster(poster);
+                netchill.getMovD().setPoster(poster);
 
                 imPoster.setImage(poster);
             }
@@ -207,13 +208,15 @@ public class moviesController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
-        border.initialize(5);
 
         border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+        border.initialize(5);
+
         lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
         scene=new Scene(root);
         lstage.setScene(scene);
         lstage.show();
+
 
 
         /*

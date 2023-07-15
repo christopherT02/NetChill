@@ -61,9 +61,9 @@ public class Payment_pageController implements Initializable {
 
 
 
-    /*
+
     @FXML
-    void click_buttonPay(ActionEvent event) throws SQLException, IOException {
+    void click_buttonPay(ActionEvent event){}/* throws SQLException, IOException {
         double prix = 20;
         if(txt_field_Name.getText().equals("") || txt_field_cvc.getText().equals("") || txt_field_Cardnb.getText().equals("") || choiceBox_day.getValue().equals("") ||choiceBox_month.getValue().equals("") ||choiceBox_year.getValue().equals("") )
         {

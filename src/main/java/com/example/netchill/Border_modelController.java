@@ -173,11 +173,12 @@ public class Border_modelController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("movie.fxml"));
             Parent root = loader.load();
             movieController control = loader.getController();
+            netchill.setIncrementor(0);
             control.update_customer_movie(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
-            //give infos about the selected movie to the new page
-            control.setMovieSelected(movD);
-            //call this function because it doesnt work in the "initialize()" function
             control.init();
+            //give infos about the selected movie to the new page
+            //call this function because it doesnt work in the "initialize()" function
+
 
 
             bpane.setCenter(root);
@@ -188,6 +189,7 @@ public class Border_modelController {
             Parent root = loader.load();
             chooseSeatController control = loader.getController();
             control.update_customer_chooseSeat(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+            control.init();
             bpane.setCenter(root);
         }
         else if (login_signin==7) { // payment page

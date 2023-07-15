@@ -82,4 +82,11 @@ public class Netchill {
         date_for_ticket=date;
         System.out.println("All information updated");
     }
+
+
+    public void add_ticket_liste(Ticket newticket)
+    {
+        ticketList.add(newticket);
+    }
+
 }

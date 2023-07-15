@@ -26,26 +26,6 @@ public class chooseSeatController {
     @FXML
     private Label label_unuse;
 
-
-    //getter - setter
-    public Movie getMovieChoosed() {return movieChoosed;}
-    public void setMovieChoosed(Movie movieChoosed) {this.movieChoosed = movieChoosed;}
-
-    public LocalDate getDatePicked() {return datePicked;}
-    public void setDatePicked(LocalDate datePicked) {this.datePicked = datePicked;}
-
-    public int getIdSessionSelected() {return idSessionSelected;}
-    public void setIdSessionSelected(int idSessionSelected) {this.idSessionSelected = idSessionSelected;}
-
-    public int getNb_places() {return nb_places;}
-    public void setNb_places(int nb_places) {this.nb_places = nb_places;}
-
-    public ArrayList<Ticket> getTicketList() {return ticketList;}
-    public void setTicketList(ArrayList<Ticket> ticketList) {this.ticketList = ticketList;}
-
-    public int getIncrementor() {return incrementor;}
-    public void setIncrementor(int incrementor) {this.incrementor = incrementor;}
-
     @FXML
     private AnchorPane midPane;
     @FXML
@@ -61,7 +41,7 @@ public class chooseSeatController {
     public void init()
     {
         setupTheDisplay();
-        incrementor++;
+        netchill.setIncrementor(netchill.getIncrementor()+1);
     }
 
 
@@ -77,7 +57,7 @@ public class chooseSeatController {
             Statement stat = con.createStatement();
             ResultSet rs = stat.executeQuery("SELECT `Nb_place` FROM `room` " +
                     "JOIN session ON session.ID_nb_room = room.ID_nb_room " +
-                    "WHERE session.ID_session = '"+ idSessionSelected +"'");
+                    "WHERE session.ID_session = '"+ netchill.getID_session_selected() +"'");
 
             while(rs.next())
             {
@@ -101,7 +81,7 @@ public class chooseSeatController {
             Statement stat = con.createStatement();
             ResultSet rs = stat.executeQuery("SELECT * FROM `ticket` " +
                     "JOIN seat ON seat.ID_seat = ticket.ID_seat " +
-                    "WHERE `Date_ticket`= '"+datePicked+"' AND seat.ID_session = '"+idSessionSelected+"'");
+                    "WHERE `Date_ticket`= '"+netchill.getDate_for_ticket()+"' AND seat.ID_session = '"+netchill.getID_session_selected()+"'");
 
             while(rs.next())
             {
@@ -190,7 +170,7 @@ public class chooseSeatController {
              PreparedStatement preparedStatement = con.prepareStatement(insertQuery)) {
 
             //Parameters
-            preparedStatement.setInt(1, idSessionSelected);
+            preparedStatement.setInt(1, netchill.getID_session_selected());
             preparedStatement.setInt(2, 1);
             preparedStatement.setInt(3, seatChoice.getValue());
 
@@ -230,12 +210,12 @@ public class chooseSeatController {
              PreparedStatement preparedStatement = con.prepareStatement(insertQuery2)) {
 
             //Parameters
-            preparedStatement.setString(1, movieChoosed.getId_name());
+            preparedStatement.setString(1, netchill.getMovD().getId_name());
             preparedStatement.setInt(2, 0); //TODO : utiliser l'ID du customer connecte
-            preparedStatement.setInt(3, nb_places);
-            preparedStatement.setDouble(4, movieChoosed.getPrice());
-            preparedStatement.setDate(5, Date.valueOf(datePicked));
-            preparedStatement.setInt(6, idSessionSelected);
+            preparedStatement.setInt(3, netchill.getNb_ticket());
+            preparedStatement.setDouble(4, netchill.getMovD().getPrice());
+            preparedStatement.setDate(5, Date.valueOf(netchill.getDate_for_ticket()));
+            preparedStatement.setInt(6, netchill.getID_session_selected());
             preparedStatement.setInt(7, id_seatCreated);
 
             preparedStatement.executeUpdate();
@@ -246,36 +226,34 @@ public class chooseSeatController {
             e.printStackTrace();
         }
 
-        Ticket ticket = new Ticket(movieChoosed, id_seatCreated, datePicked, idSessionSelected);
-        ticketList.add(ticket);
+        Ticket ticket = new Ticket(netchill.getMovD(), id_seatCreated, netchill.getDate_for_ticket(), netchill.getID_session_selected());
+        netchill.add_ticket_liste(ticket);
 
         nextPage(event);
     }
 
     public void nextPage(ActionEvent event) throws IOException
     {
-        if(incrementor == nb_places)
+        if(netchill.getIncrementor() == netchill.getNb_ticket())
         {
             ///call the payement page
-            System.out.println("CALL THE PAYMENT PAGE PLZ");
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
+            root=fxmlLoader.load();
+            Border_modelController border = fxmlLoader.getController();
+            border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+            border.initialize(7);
+            lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
+            scene=new Scene(root);
+            lstage.setScene(scene);
+            lstage.show();
         }
         else {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("choose_seat.fxml"));
+            System.out.println("INCREMENTOR "+netchill.getIncrementor()+" NB TICKET "+netchill.getNb_ticket());
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
             root=fxmlLoader.load();
-            chooseSeatController controller = fxmlLoader.getController();
-
-            //give infos about the selected movie to the new page
-            controller.setMovieChoosed(movieChoosed);
-            //give infos about the selected date chosen
-            controller.setDatePicked(datePicked);
-            //give info about the selected session
-            controller.setIdSessionSelected(idSessionSelected);
-            controller.setNb_places(nb_places);
-            controller.setIncrementor(incrementor);
-            controller.setTicketList(ticketList);
-            //call this function because it doesnt work in the "initialize()" function
-            controller.init();
-
+            Border_modelController border = fxmlLoader.getController();
+            border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+            border.initialize(6);
             lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
             scene=new Scene(root);
             lstage.setScene(scene);
@@ -289,7 +267,7 @@ public class chooseSeatController {
         netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
         label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);
-        System.out.println("DANS choose seat : "+netchill.getCustomer().getName_customer());
+        System.out.println("DANS choose seat : "+netchill.getCustomer().getName_customer()+ "ID seance choisie "+ netchill.getID_session_selected());
     }
 
 }

@@ -51,30 +51,24 @@ public class movieController {
 
     private boolean check1 = false;
     private boolean check2 = false;
-    private LocalDate datePicked = null;
+
 
     private Parent root;
     private Stage lstage;
     private Scene scene;
 
-    ///getter - setter
-    public Movie getMovieSelected() {
-        return movieSelected;
-    }
-    public void setMovieSelected(Movie movieSelected) {
-        this.movieSelected = movieSelected;
-    }
+
 
 
 
     public void init_movie_infos()
     {
-        txtDescription2.setText(movieSelected.getDescription());
-        txtTime2.setText(movieSelected.getTime() + "min");
-        txtTitle2.setText(movieSelected.getId_name());
-        txtUnitTicketPrice.setText("£"+movieSelected.getPrice());
+        txtDescription2.setText(netchill.getMovD().getDescription());
+        txtTime2.setText(netchill.getMovD().getTime() + "min");
+        txtTitle2.setText(netchill.getMovD().getId_name());
+        txtUnitTicketPrice.setText("£"+netchill.getMovD().getPrice());
 
-        imPoster2.setImage(movieSelected.getPoster());
+        imPoster2.setImage(netchill.getMovD().getPoster());
     }
 
     public void init_cinemas_info()
@@ -90,7 +84,7 @@ public class movieController {
                     "JOIN session ON movie.ID_name_movie = session.ID_name_movie " +
                     "JOIN room ON session.ID_nb_room = room.ID_nb_room " +
                     "JOIN cinema ON room.ID_cinema = cinema.ID_cinema "+
-                    "WHERE movie.ID_name_movie = '"+movieSelected.getId_name()+"'");
+                    "WHERE movie.ID_name_movie = '"+netchill.getMovD().getId_name()+"'");
 
             ArrayList<String> cinemas = new ArrayList<>();
 
@@ -139,7 +133,7 @@ public class movieController {
                     "FROM cinema " +
                     "JOIN room ON cinema.ID_cinema = room.ID_cinema " +
                     "JOIN session ON room.ID_nb_room = session.ID_nb_room " +
-                    "WHERE session.ID_name_movie = '"+movieSelected.getId_name()+"'" +
+                    "WHERE session.ID_name_movie = '"+netchill.getMovD().getId_name()+"'" +
                     "AND cinema.name_cinema = '" + menuCinema.getValue() + "'");
 
             ArrayList<Time> schedules = new ArrayList<>();
@@ -173,7 +167,7 @@ public class movieController {
     @FXML
     public void show_total_price()
     {
-        Double total = spinnerNbOfTicket.getValue() * movieSelected.getPrice();
+        Double total = spinnerNbOfTicket.getValue() * netchill.getMovD().getPrice();
 
         txtTotalAmount.setText("£" + total);
     }
@@ -184,7 +178,6 @@ public class movieController {
             btnCS.setDisable(false);
     }
 
-    private int idSessionsSelected;
     public void setCheck1(ActionEvent event){check1=true;
         changeStateBtn();
 
@@ -198,12 +191,12 @@ public class movieController {
                     "FROM cinema " +
                     "JOIN room ON cinema.ID_cinema = room.ID_cinema " +
                     "JOIN session ON room.ID_nb_room = session.ID_nb_room " +
-                    "WHERE session.ID_name_movie = '"+ movieSelected.getId_name()+"' AND session.start = '"+menuSchedule.getValue()+"'");
+                    "WHERE session.ID_name_movie = '"+ netchill.getMovD().getId_name()+"' AND session.start = '"+menuSchedule.getValue()+"'");
 
             while(rs.next())
             {
                 System.out.println("-----------------------" + rs.getInt("ID_session"));
-                idSessionsSelected = rs.getInt("ID_session");
+                netchill.setID_session_selected(rs.getInt("ID_session"));
             }
 
             con.close();
@@ -215,9 +208,9 @@ public class movieController {
     @FXML
     public void setCheck2(ActionEvent event){check2=true;
         changeStateBtn();
-        datePicked = datePck.getValue();
+        netchill.setDate_for_ticket(datePck.getValue());
 
-        System.out.println(datePicked);
+        System.out.println(netchill.getDate_for_ticket());
     }
 
 
@@ -236,7 +229,7 @@ public class movieController {
         netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
         label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);
-        System.out.println("DANS movie : "+netchill.getCustomer().getName_customer());
+        System.out.println("DANS movie : "+netchill.getCustomer().getName_customer() + "FILM "+netchill.getMovD().getId_name());
     }
 
 
@@ -246,20 +239,13 @@ public class movieController {
     @FXML
     public void btn_chooseSeat_click(ActionEvent event) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("choose_seat.fxml"));
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
-        chooseSeatController controller = fxmlLoader.getController();
-
-        //give infos about the selected movie to the new page
-        controller.setMovieChoosed(movieSelected);
-        //give infos about the selected date chosen
-        controller.setDatePicked(datePicked);
-        //give info about the selected session
-        controller.setIdSessionSelected(idSessionsSelected);
-        controller.setNb_places(spinnerNbOfTicket.getValue());
-        //call this function because it doesnt work in the "initialize()" function
-        controller.init();
-
+        Border_modelController border = fxmlLoader.getController();
+        netchill.setNb_ticket(spinnerNbOfTicket.getValue());
+        border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+        border.initialize(6);
         lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
         scene=new Scene(root);
         lstage.setScene(scene);
