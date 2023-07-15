@@ -63,8 +63,10 @@ public class Payment_pageController implements Initializable {
 
 
     @FXML
-    void click_buttonPay(ActionEvent event){}/* throws SQLException, IOException {
+    void click_buttonPay(ActionEvent event) throws SQLException, IOException {
         double prix = 20;
+
+
         if(txt_field_Name.getText().equals("") || txt_field_cvc.getText().equals("") || txt_field_Cardnb.getText().equals("") || choiceBox_day.getValue().equals("") ||choiceBox_month.getValue().equals("") ||choiceBox_year.getValue().equals("") )
         {
             label_required.setTextFill(Color.web("#ff0000"));
@@ -98,10 +100,10 @@ public class Payment_pageController implements Initializable {
 
                 while (rs.next())
                 {
-                    String dateString="";
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    Date dateToCompare = dateFormat.parse(dateString);
-                    if(txt_field_Cardnb.getText().equals(rs.getString("Card_number")) && type_card.equals(rs.getString("Type_card")) && txt_field_Name.getText().equals(rs.getString("Name_owner")) && dateToCompare.equals(rs.getDate("Expiration_date"))) //TODO rajouter le fait qu'il a assez d'argent !!
+                    Date date = rs.getDate("Expiration_date");
+                    String date_field = date.toString();
+
+                    if(txt_field_Cardnb.getText().equals(rs.getString("Card_number")) && type_card.equals(rs.getString("Type_card")) && txt_field_Name.getText().equals(rs.getString("Name_owner")) && date_field.equals(txt_field_dateexp.getText()) && rs.getDouble("Balance")>prix) //TODO rajouter le fait qu'il a assez d'argent !!
                     {
                         String sql = "UPDATE bank SET Balance = ? WHERE Card_number = ?";
                         PreparedStatement statement = con.prepareStatement(sql);
@@ -126,7 +128,7 @@ public class Payment_pageController implements Initializable {
             }
         }
     }
-*/
+
 
 
     @FXML
