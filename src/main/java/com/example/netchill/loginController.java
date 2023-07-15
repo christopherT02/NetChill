@@ -67,7 +67,7 @@ public class loginController {
 
 
                 Statement stat = con.createStatement();
-                ResultSet rs = stat.executeQuery("SELECT * FROM `account` ");   //TODO : remplacer account par employee ?
+                ResultSet rs = stat.executeQuery("SELECT * FROM `account` ");
 
                 while (rs.next())
                 {

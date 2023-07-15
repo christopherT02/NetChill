@@ -217,21 +217,6 @@ public class moviesController {
         lstage.setScene(scene);
         lstage.show();
 
-
-
-        /*
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("movie.fxml"));
-        Parent root = loader.load();
-        movieController movie = loader.getController();
-
-        //give infos about the selected movie to the new page
-        movie.setMovieSelected(movD);
-        movie.init();
-        movie.update_customer_movies(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
-
-        //TODO : afficher au milieu
-        bpane.setCenter(root);
-        */
     }
 
 
