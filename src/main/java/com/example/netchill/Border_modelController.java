@@ -49,17 +49,10 @@ public class Border_modelController {
     void click_button_account(ActionEvent event) throws IOException {
 
         String test_employee="";
-        int length = button_account.getText().length();
-        boolean too_small = true;
-        if(length<8)
-        {
-            too_small=false;
-        }
-        else
-        {
-            test_employee = button_account.getText().substring(0,9);
+        int length = netchill.getCustomer().getEmail_customer().length();
+        test_employee = netchill.getCustomer().getEmail_customer().substring(length-10);
 
-        }
+
 
         if(button_account.getText().equals("Account") || button_account.getText().equals("Guest"))
         {
@@ -69,11 +62,10 @@ public class Border_modelController {
             //login.update_customer_login(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
             login.update_customer_login(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
-        } else if (test_employee.equals("Employee_") || too_small) {
+        } else if (test_employee.equals("@cinema.fr") ) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeeInfo.fxml"));
             Parent root = loader.load();
             EmployeeInfo_Controller employeeinfo = loader.getController();
-            //employeeinfo.update_customer_employeeinfo(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
             employeeinfo.update_customer_employeeinfo(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         } else
@@ -206,7 +198,17 @@ public class Border_modelController {
     void initialize(int i) throws IOException
     {
         System.out.println("Name Border : "+netchill.getCustomer().getName_customer());
-        button_account.setText(netchill.getCustomer().getName_customer());
+        String test_employee="";
+        int length = netchill.getCustomer().getEmail_customer().length();
+        test_employee = netchill.getCustomer().getEmail_customer().substring(length-10);
+        if(test_employee.equals("@cinema.fr"))
+        {
+            button_account.setText("Emp_"+netchill.getCustomer().getName_customer());
+        }
+        else
+        {
+            button_account.setText(netchill.getCustomer().getName_customer());
+        }
         login_signin=i;
         test();
     }

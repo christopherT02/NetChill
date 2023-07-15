@@ -48,8 +48,6 @@ public class addMovieController {
     @FXML
     private TextField txtTime;
 
-    @FXML
-    private ChoiceBox<String> menuCinema;
 
     @FXML
     private Rectangle rectDD;
@@ -138,31 +136,6 @@ public class addMovieController {
         }
     }
 
-    @FXML
-    void displayAvailableCinemas() throws IOException {
-
-        //add existing cinemas into the choicebox
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
-
-            Statement stat = con.createStatement();
-            ResultSet rs = stat.executeQuery("SELECT * FROM `cinema` ");
-
-            ArrayList<String> cinemas = new ArrayList<>();
-
-            while (rs.next())
-            {
-                System.out.println(rs.getString("name_cinema"));
-                cinemas.add(rs.getString("name_cinema"));
-            }
-            menuCinema.getItems().addAll(cinemas);
-
-            con.close();
-        } catch (Exception e2) {
-            System.out.println(e2);
-        }
-    }
 
 
 
@@ -178,8 +151,6 @@ public class addMovieController {
     @FXML
     void initialize() throws IOException
     {
-        //display available cinemas
-        displayAvailableCinemas();
 
         //activate drag and drop for the poster
         dragAndDrop();
