@@ -65,20 +65,23 @@ public class Border_modelController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
             Parent root = loader.load();
             loginController login = loader.getController();
-            login.update_customer_login(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            //login.update_customer_login(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            login.update_customer_login(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         } else if (test_employee.equals("Employee_") || too_small) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeeInfo.fxml"));
             Parent root = loader.load();
             EmployeeInfo_Controller employeeinfo = loader.getController();
-            employeeinfo.update_customer_employeeinfo(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            //employeeinfo.update_customer_employeeinfo(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            employeeinfo.update_customer_employeeinfo(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         } else
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("customer_information.fxml"));
             Parent root = loader.load();
             CustomerInformation customerInformation = loader.getController();
-            customerInformation.update_customer_custoInfo(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            //customerInformation.update_customer_custoInfo(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            customerInformation.update_customer_custoInfo(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         }
     }
@@ -111,7 +114,8 @@ public class Border_modelController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
         Parent root = loader.load();
         HelloController helloController = loader.getController();
-        helloController.update_customer_homepage(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+        //helloController.update_customer_homepage(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+        helloController.update_customer_homepage(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
         bpane.setCenter(root);
     }
 
@@ -122,7 +126,9 @@ public class Border_modelController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("movies.fxml"));
         Parent root = loader.load();
         moviesController movies = loader.getController();
-        movies.update_customer_movies(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+        //movies.update_customer_movies(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+        movies.update_customer_movies(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+
         bpane.setCenter(root);
     }
 
@@ -142,14 +148,16 @@ public class Border_modelController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
             Parent root = loader.load();
             loginController login = loader.getController();
-            login.update_customer_login(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            //login.update_customer_login(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            login.update_customer_login(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         } else if (login_signin==3) { //homepage
             login_signin=0;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
             Parent root = loader.load();
             HelloController helloController = loader.getController();
-            helloController.update_customer_homepage(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            //helloController.update_customer_homepage(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            helloController.update_customer_homepage(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         } else if (login_signin==4) {
             login_signin=0;
