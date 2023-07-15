@@ -64,7 +64,7 @@ public class Payment_pageController implements Initializable {
 
     @FXML
     void click_buttonPay(ActionEvent event) throws SQLException, IOException {
-        double prix = 20;
+        double price = netchill.getMovD().getPrice()*netchill.getNb_ticket();
 
 
         if(txt_field_Name.getText().equals("") || txt_field_cvc.getText().equals("") || txt_field_Cardnb.getText().equals("") || choiceBox_day.getValue().equals("") ||choiceBox_month.getValue().equals("") ||choiceBox_year.getValue().equals("") )
@@ -103,11 +103,11 @@ public class Payment_pageController implements Initializable {
                     Date date = rs.getDate("Expiration_date");
                     String date_field = date.toString();
 
-                    if(txt_field_Cardnb.getText().equals(rs.getString("Card_number")) && type_card.equals(rs.getString("Type_card")) && txt_field_Name.getText().equals(rs.getString("Name_owner")) && date_field.equals(txt_field_dateexp.getText()) && rs.getDouble("Balance")>prix) //TODO rajouter le fait qu'il a assez d'argent !!
+                    if(txt_field_Cardnb.getText().equals(rs.getString("Card_number")) && type_card.equals(rs.getString("Type_card")) && txt_field_Name.getText().equals(rs.getString("Name_owner")) && date_field.equals(txt_field_dateexp.getText()) && rs.getDouble("Balance")>price) //TODO rajouter le fait qu'il a assez d'argent !!
                     {
                         String sql = "UPDATE bank SET Balance = ? WHERE Card_number = ?";
                         PreparedStatement statement = con.prepareStatement(sql);
-                        double final_price=rs.getDouble("Balance") - prix;
+                        double final_price=rs.getDouble("Balance") - price;
                         statement.setDouble(1, final_price);
                         statement.setString(2, txt_field_Cardnb.getText());
 
