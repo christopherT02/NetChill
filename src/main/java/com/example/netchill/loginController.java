@@ -14,9 +14,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class loginController {
-    Customer customer = new Customer();
+    private Netchill netchill = new Netchill();
     @FXML
     private TextField txt_field_ID;
 
@@ -37,8 +39,7 @@ public class loginController {
        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
-        border.update_customer_border(customer.getName_customer(), customer.getEmail_customer(), customer.getCard_nb_customer());
-
+        border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
         border.initialize(1);
         lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
         scene=new Scene(root);
@@ -75,9 +76,11 @@ public class loginController {
                         ResultSet rs2 = stat.executeQuery("SELECT * FROM employee WHERE employee.ID_mail = '"+rs.getString("Email")+"'");
                         while(rs2.next())
                         {
-                            customer.setName_customer(rs2.getString("Name"));
-                            customer.setEmail_customer(rs2.getString("ID_mail"));
-                            customer.setCard_nb_customer("0000000000000000");
+                            Customer custom = netchill.getCustomer();
+                            custom.setName_customer(rs2.getString("Name"));
+                            custom.setEmail_customer(rs2.getString("ID_mail"));
+                            custom.setCard_nb_customer("0000000000000000");
+                            netchill.setCustomer(custom);
 
                         }
                         account_exist=true;
@@ -97,8 +100,7 @@ public class loginController {
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
                 root=fxmlLoader.load();
                 Border_modelController border = fxmlLoader.getController();
-                border.update_customer_border(customer.getName_customer(), customer.getEmail_customer(), customer.getCard_nb_customer());
-
+                border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
                 border.initialize(3);
                 lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
                 scene=new Scene(root);
@@ -128,9 +130,12 @@ public class loginController {
                         ResultSet rs2 = stat.executeQuery("SELECT * FROM customer WHERE customer.Email = '"+rs.getString("Email")+"'");
                         while(rs2.next())
                         {
-                            customer.setName_customer(rs2.getString("Name"));
-                            customer.setEmail_customer(rs2.getString("Email"));
-                            customer.setCard_nb_customer(rs2.getString("Card_number"));
+                            Customer custom = netchill.getCustomer();
+                            custom.setName_customer(rs2.getString("Name"));
+                            custom.setEmail_customer(rs2.getString("Email"));
+                            custom.setCard_nb_customer(rs2.getString("Card_number"));
+                            netchill.setCustomer(custom);
+
 
                         }
                         account_exist=true;
@@ -144,13 +149,12 @@ public class loginController {
 
             if(account_exist) //compte existant
             {
-                System.out.println(customer.getName_customer());
+                System.out.println(netchill.getCustomer().getName_customer());
 
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
                 root=fxmlLoader.load();
                 Border_modelController border = fxmlLoader.getController();
-                border.update_customer_border(customer.getName_customer(), customer.getEmail_customer(), customer.getCard_nb_customer());
-
+                border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
                 border.initialize(3);
                 lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
                 scene=new Scene(root);
@@ -165,13 +169,14 @@ public class loginController {
 
         }
     }
+
     @FXML
-    public void update_customer_login(String name,String email,String card_nb)
+    public void update_customer_login(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
-        customer.set_all_info_customer(name,email,card_nb);
-        label_unuse_login.setText(customer.getName_customer());
+        netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
+        label_unuse_login.setText(netchill.getCustomer().getName_customer());
         label_unuse_login.setVisible(false);
-        System.out.println("DANS login : "+customer.getName_customer());
+        System.out.println("DANS login : "+netchill.getCustomer().getName_customer());
     }
 
 }

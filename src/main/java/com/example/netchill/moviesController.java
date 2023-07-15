@@ -18,11 +18,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class moviesController {
     @FXML
     private Text txtDescription;
-    private Customer customer = new Customer();
+    private Netchill netchill = new Netchill();
     @FXML
     private Label label_unuse;
     @FXML
@@ -45,7 +47,6 @@ public class moviesController {
     @FXML
     private TableView<Movie> availableMoviesTable;
 
-    private Movie movD = new Movie();
 
     private ObservableList<Movie> availableMovieList;
 
@@ -203,19 +204,17 @@ public class moviesController {
     public void btn_moreDetails_click(ActionEvent event) throws IOException
     {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("movie.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
-        movieController controller = fxmlLoader.getController();
+        Border_modelController border = fxmlLoader.getController();
+        border.initialize(5);
 
-        //give infos about the selected movie to the new page
-        controller.setMovieSelected(movD);
-        //call this function because it doesnt work in the "initialize()" function
-        controller.init();
-
+        border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
         lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
         scene=new Scene(root);
         lstage.setScene(scene);
         lstage.show();
+
 
         /*
         FXMLLoader loader = new FXMLLoader(getClass().getResource("movie.fxml"));
@@ -233,13 +232,14 @@ public class moviesController {
     }
 
 
+
     @FXML
-    public void update_customer_movies(String name,String email,String card_nb)
+    public void update_customer_movies(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
-        customer.set_all_info_customer(name,email,card_nb);
-        label_unuse.setText(customer.getName_customer());
+        netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
+        label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);
-        System.out.println("DANS movies : "+customer.getName_customer());
+        System.out.println("DANS movies : "+netchill.getCustomer().getName_customer());
     }
     @FXML
     void initialize()

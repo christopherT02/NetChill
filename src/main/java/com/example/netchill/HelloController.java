@@ -14,11 +14,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class HelloController {
 
-    Customer customer = new Customer();
+    private Netchill netchill = new Netchill();
     @FXML
     private AnchorPane midPane;
 
@@ -34,12 +36,14 @@ public class HelloController {
     @FXML
     private Button button_account;
 
-    public void update_customer_homepage(String name,String email,String card_nb)
+
+    @FXML
+    public void update_customer_homepage(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
-        customer.set_all_info_customer(name,email,card_nb);
-        label_unuse.setText(customer.getName_customer());
+        netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
+        label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);
-        System.out.println("DANS HELLO CONTROLLER : "+customer.getName_customer());
+        System.out.println("DANS HELLO CONTROLLER : "+netchill.getCustomer().getName_customer());
     }
 
 
