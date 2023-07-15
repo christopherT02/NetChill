@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,6 +19,8 @@ public class EmployeeInfo_Controller {
     private Netchill netchill = new Netchill();
     @FXML
     private Label txt_welcome;
+    @FXML
+    private MenuButton menuPossibilities;
 
     Parent root;
     Scene scene;
@@ -43,8 +46,16 @@ public class EmployeeInfo_Controller {
 
     }
     @FXML
-    void click_delete_movie(ActionEvent event) {
-
+    void click_delete_movie(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
+        root=fxmlLoader.load();
+        Border_modelController border = fxmlLoader.getController();
+        border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+        border.initialize(8);
+        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
+        scene=new Scene(root);
+        lstage.setScene(scene);
+        lstage.show();
     }
 
     @FXML

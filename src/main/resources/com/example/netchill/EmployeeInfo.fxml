@@ -13,7 +13,7 @@
          <font>
             <Font size="14.0" />
          </font></Button>
-      <MenuButton layoutX="541.0" layoutY="207.0" mnemonicParsing="false" prefHeight="118.0" prefWidth="318.0" text="Click to see possibilities">
+      <MenuButton fx:id="menuPossibilities" layoutX="541.0" layoutY="207.0" mnemonicParsing="false" onAction="#click_delete_movie" prefHeight="118.0" prefWidth="318.0" text="Click to see possibilities">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#click_add_movie" text="Add movie" />
           <MenuItem mnemonicParsing="false" onAction="#click_delete_movie" text="Delete movie" />

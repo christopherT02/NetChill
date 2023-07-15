@@ -69,7 +69,7 @@ public class Border_modelController {
             //login.update_customer_login(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
             login.update_customer_login(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
-        } else if (test_employee.equals("Employee_") || too_small) {
+        } else if (test_employee.equals("Employee_") || too_small) {    //TODO : modif too_smal
             FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeeInfo.fxml"));
             Parent root = loader.load();
             EmployeeInfo_Controller employeeinfo = loader.getController();
@@ -195,6 +195,14 @@ public class Border_modelController {
         else if (login_signin==7) { // payment page
             login_signin=0;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment_page.fxml"));
+            Parent root = loader.load();
+            Payment_pageController control = loader.getController();
+            control.update_customer_payment(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+            bpane.setCenter(root);
+        }
+        else if (login_signin==8) { // delete movie
+            login_signin=0;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("delete_movie.fxml"));
             Parent root = loader.load();
             Payment_pageController control = loader.getController();
             control.update_customer_payment(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
