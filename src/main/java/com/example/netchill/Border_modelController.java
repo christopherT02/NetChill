@@ -194,10 +194,10 @@ public class Border_modelController {
         }
         else if (login_signin==8) { // delete movie
             login_signin=0;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("delete_movie_Controller.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("delete_movie.fxml"));
             Parent root = loader.load();
-            addMovieController control = loader.getController();
-            control.update_customer_addMovie(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+            delete_movie_Controller control = loader.getController();
+            control.update_customer_deletemovie(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         }
     }
