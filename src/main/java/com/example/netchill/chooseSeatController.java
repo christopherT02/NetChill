@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -20,12 +21,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class chooseSeatController {
-    private Movie movieChoosed = null;
-    private LocalDate datePicked = null;
-    private int idSessionSelected;
-    private int nb_places;
-    private ArrayList<Ticket> ticketList = new ArrayList<>();
-    private int incrementor;
+    private Netchill netchill = new Netchill();
+
+    @FXML
+    private Label label_unuse;
 
 
     //getter - setter
@@ -282,6 +281,15 @@ public class chooseSeatController {
             lstage.setScene(scene);
             lstage.show();
         }
+    }
+
+    @FXML
+    public void update_customer_chooseSeat(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
+    {
+        netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
+        label_unuse.setText(netchill.getCustomer().getName_customer());
+        label_unuse.setVisible(false);
+        System.out.println("DANS choose seat : "+netchill.getCustomer().getName_customer());
     }
 
 }

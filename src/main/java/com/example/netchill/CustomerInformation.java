@@ -12,9 +12,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class CustomerInformation {
-    Customer customer = new Customer();
+    private Netchill netchill = new Netchill();
 
     @FXML
     private Label info_customer_adress;
@@ -66,13 +68,14 @@ public class CustomerInformation {
         lstage.show();
     }
 
+
     @FXML
-    public void update_customer_custoInfo(String name,String email,String card_nb)
+    public void update_customer_custoInfo(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
-        customer.set_all_info_customer(name,email,card_nb);
-        label_unuse.setText(customer.getName_customer());
+        netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
+        label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);
-        System.out.println("DANS customer info : "+customer.getName_customer());
+        System.out.println("DANS customer info : "+netchill.getCustomer().getName_customer());
     }
 
 }

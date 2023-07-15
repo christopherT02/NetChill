@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Payment_pageController implements Initializable {
@@ -46,7 +48,7 @@ public class Payment_pageController implements Initializable {
 
     @FXML
     private Label label_unuse;
-    private Customer customer = new Customer();
+    private Netchill netchill = new Netchill();
     @FXML
     private TextField txt_field_cvc;
 
@@ -126,14 +128,18 @@ public class Payment_pageController implements Initializable {
     }
 */
 
+
     @FXML
-    public void update_customer_payment(String name,String email,String card_nb)
+    public void update_customer_payment(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
-        customer.set_all_info_customer(name,email,card_nb);
-        label_unuse.setText(customer.getName_customer());
+        netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
+        label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);
-        System.out.println("DANS Payment : "+customer.getName_customer());
+        System.out.println("DANS Payment : "+netchill.getCustomer().getName_customer());
     }
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

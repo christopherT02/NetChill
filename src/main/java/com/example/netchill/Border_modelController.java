@@ -11,10 +11,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Border_modelController {
-
-    Customer customer = new Customer();
+    private Netchill netchill = new Netchill();
     private int login_signin;
 
     public void setLogin_signin(int login_signin) {
@@ -65,7 +66,7 @@ public class Border_modelController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
             Parent root = loader.load();
             loginController login = loader.getController();
-            login.update_customer_login(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            login.update_customer_login(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         } else if (test_employee.equals("Employee_") || too_small) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeeInfo.fxml"));
@@ -151,7 +152,7 @@ public class Border_modelController {
             HelloController helloController = loader.getController();
             helloController.update_customer_homepage(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
             bpane.setCenter(root);
-        } else if (login_signin==4) {
+        } else if (login_signin==4) { // add a new movie
             login_signin=0;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("add_movie.fxml"));
             Parent root = loader.load();
@@ -159,20 +160,51 @@ public class Border_modelController {
             control.update_customer_addMovie(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
             bpane.setCenter(root);
         }
+        else if (login_signin==5) { // display one movie
+            login_signin=0;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("movie.fxml"));
+            Parent root = loader.load();
+            movieController control = loader.getController();
+            control.update_customer_movie(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            //give infos about the selected movie to the new page
+            control.setMovieSelected(movD);
+            //call this function because it doesnt work in the "initialize()" function
+            control.init();
+
+
+            bpane.setCenter(root);
+        }
+        else if (login_signin==6) { // choose the seat
+            login_signin=0;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("choose_seat.fxml"));
+            Parent root = loader.load();
+            chooseSeatController control = loader.getController();
+            control.update_customer_chooseSeat(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            bpane.setCenter(root);
+        }
+        else if (login_signin==7) { // payment page
+            login_signin=0;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment_page.fxml"));
+            Parent root = loader.load();
+            Payment_pageController control = loader.getController();
+            control.update_customer_payment(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            bpane.setCenter(root);
+        }
     }
 
     @FXML
     void initialize(int i) throws IOException
     {
-        System.out.println("Name Border : "+customer.getName_customer());
-        button_account.setText(customer.getName_customer());
+        System.out.println("Name Border : "+netchill.getCustomer().getName_customer());
+        button_account.setText(netchill.getCustomer().getName_customer());
         login_signin=i;
         test();
     }
+
     @FXML
-    public void update_customer_border(String name,String email,String card_nb)
+    public void update_customer_border(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
-        customer.set_all_info_customer(name,email,card_nb);
+        netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
     }
 
 }
