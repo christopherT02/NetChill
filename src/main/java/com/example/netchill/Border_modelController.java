@@ -142,7 +142,7 @@ public class Border_modelController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("signin.fxml"));
             Parent root = loader.load();
             signinController signin = loader.getController();
-            signin.update_customer_signin(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            signin.update_customer_signin(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         } else if(login_signin==2){
             login_signin=0;
@@ -165,7 +165,7 @@ public class Border_modelController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("add_movie.fxml"));
             Parent root = loader.load();
             addMovieController control = loader.getController();
-            control.update_customer_addMovie(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            control.update_customer_addMovie(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         }
         else if (login_signin==5) { // display one movie
@@ -173,7 +173,7 @@ public class Border_modelController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("movie.fxml"));
             Parent root = loader.load();
             movieController control = loader.getController();
-            control.update_customer_movie(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            control.update_customer_movie(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             //give infos about the selected movie to the new page
             control.setMovieSelected(movD);
             //call this function because it doesnt work in the "initialize()" function
@@ -187,7 +187,7 @@ public class Border_modelController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("choose_seat.fxml"));
             Parent root = loader.load();
             chooseSeatController control = loader.getController();
-            control.update_customer_chooseSeat(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            control.update_customer_chooseSeat(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         }
         else if (login_signin==7) { // payment page
@@ -195,7 +195,7 @@ public class Border_modelController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment_page.fxml"));
             Parent root = loader.load();
             Payment_pageController control = loader.getController();
-            control.update_customer_payment(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+            control.update_customer_payment(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         }
     }
