@@ -99,7 +99,7 @@ public class signinController {
             {
 
 
-            //send movie data in the DB
+            //send account data in the DB
             String insertQuery = "INSERT INTO `customer` (`ID_customer`, `Name`, `Email`, `Card_number`) VALUES (NULL, ?, ?, ?)";
             String insertQuery2 = "INSERT INTO `account` (`Email`, `Password`) VALUES (?, ?)";
             try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", ""))
