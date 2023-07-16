@@ -2,10 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -17,17 +15,7 @@
       <Text fill="WHITE" layoutX="531.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email*" />
       <Text fill="WHITE" layoutX="518.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password*" />
       <TextField fx:id="txt_field_name" layoutX="616.0" layoutY="332.0" promptText="Example" />
-      <TextField fx:id="txt_field_cardNumber" layoutX="614.0" layoutY="422.0" promptText="1234 1234 1234 1234" />
       <Text fill="WHITE" layoutX="531.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name*" />
-      <Text fill="WHITE" layoutX="516.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card number*" />
-      <Text fill="WHITE" layoutX="506.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card type*" />
-      <RadioButton fx:id="radio_button" layoutX="593.0" layoutY="381.0" mnemonicParsing="false" text="VISA" textFill="WHITE">
-         <toggleGroup>
-            <ToggleGroup fx:id="cardType" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="radio_button" layoutX="678.0" layoutY="381.0" mnemonicParsing="false" text="AMEX" textFill="WHITE" toggleGroup="$cardType" />
-      <RadioButton fx:id="radio_button" layoutX="773.0" layoutY="381.0" mnemonicParsing="false" text="MasterCard" textFill="WHITE" toggleGroup="$cardType" />
       <Separator layoutX="10.0" layoutY="171.0" prefHeight="0.0" prefWidth="1400.0" />
       <Label layoutX="571.0" layoutY="146.0" text="Log in" textFill="WHITE">
          <font>
@@ -39,9 +27,9 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="659.0" layoutY="476.0" mnemonicParsing="false" onAction="#click_button_submit" prefHeight="38.0" prefWidth="82.0" text="Submit" />
-      <Label layoutX="660.0" layoutY="521.0" text="*required fields" textFill="WHITE" />
-      <Button layoutX="605.0" layoutY="548.0" mnemonicParsing="false" onAction="#click_button_gotoLogin" style="-fx-background-color: black;" text="Have an account? Log in" textFill="WHITE">
+      <Button layoutX="649.0" layoutY="392.0" mnemonicParsing="false" onAction="#click_button_submit" prefHeight="38.0" prefWidth="82.0" text="Submit" />
+      <Label fx:id="required_fields" layoutX="649.0" layoutY="438.0" text="*required fields" textFill="WHITE" />
+      <Button layoutX="605.0" layoutY="480.0" mnemonicParsing="false" onAction="#click_button_gotoLogin" style="-fx-background-color: black;" text="Have an account? Log in" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font></Button>
@@ -50,7 +38,7 @@
             <Font name="System Bold" size="34.0" />
          </font>
       </Label>
-      <Separator layoutX="614.0" layoutY="576.0" prefHeight="3.0" prefWidth="150.0" />
+      <Separator layoutX="615.0" layoutY="508.0" prefHeight="3.0" prefWidth="150.0" />
       <Label fx:id="label_unuse" layoutX="34.0" layoutY="590.0" />
    </children>
 </AnchorPane>

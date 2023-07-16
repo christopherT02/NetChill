@@ -79,29 +79,21 @@ public class Border_modelController {
         }
     }
 
-    @FXML
-    void click_button_basket(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(HelloApplication.class.getResource("screen1.fxml"));
-        bpane.setCenter(root);
-    }
 
     @FXML
     void click_button_giftCard(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(HelloApplication.class.getResource("screen1.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Gift_card.fxml"));
+        Parent root = loader.load();
+        GiftCardController helloController = loader.getController();
+        //helloController.update_customer_homepage(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
+        helloController.update_customer_giftCard(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
         bpane.setCenter(root);
+
     }
 
-    /*@FXML
 
-    void click_button_homepage(ActionEvent event)throws IOException {
-
-        HelloController homepage = new HelloController();
-        homepage.update_customer_homepage(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
-        Parent root = FXMLLoader.load(HelloApplication.class.getResource("hello-view.fxml"));
-        bpane.setCenter(root);
-    }*/
     @FXML
     void click_button_homepage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));

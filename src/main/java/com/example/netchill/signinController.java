@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,6 +22,9 @@ public class signinController {
     private Netchill netchill = new Netchill();
     @FXML
     private ToggleGroup cardType;
+
+    @FXML
+    private Label required_fields;
 
     private Parent root;
 
@@ -64,9 +68,10 @@ public class signinController {
 
         boolean new_account = true;
 
-        if(txt_field_name.getText().equals("") || txt_field_email.getText().equals("")|| txt_field_password.getText().equals("") || txt_field_cardNumber.getText().equals(""))
+        if(txt_field_name.getText().equals("") || txt_field_email.getText().equals("")|| txt_field_password.getText().equals(""))
         {
             System.out.println("Tous les champs doivent etre remplis ");
+            required_fields.setTextFill(Color.RED);
         }
         else///all text_field are filled
         {

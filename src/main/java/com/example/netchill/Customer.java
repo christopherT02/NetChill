@@ -4,13 +4,12 @@ package com.example.netchill;
 public class Customer {
     private String name_customer;
     private String Email_customer;
-    private String Card_nb_customer;
+    private Basket basket = new Basket();
 
     public Customer()
     {
         name_customer="Guest";
         Email_customer="guest@mail.fr";
-        Card_nb_customer="0000000000000000";
     }
     public void setCustomer_or_employee(int customer_or_employee) {
         this.customer_or_employee = customer_or_employee;
@@ -29,9 +28,6 @@ public class Customer {
         return Email_customer;
     }
 
-    public String getCard_nb_customer() {
-        return Card_nb_customer;
-    }
 
     public void setName_customer(String name_customer) {
         this.name_customer = name_customer;
@@ -41,14 +37,10 @@ public class Customer {
         Email_customer = email_customer;
     }
 
-    public void setCard_nb_customer(String card_nb_customer) {
-        Card_nb_customer = card_nb_customer;
-    }
 
-    public void set_all_info_customer(String name,String email,String card_nb_customer)
+    public void set_all_info_customer(String name,String email)
     {
         name_customer=name;
         Email_customer = email;
-        Card_nb_customer = card_nb_customer;
     }
 }

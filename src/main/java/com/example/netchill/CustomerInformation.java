@@ -56,7 +56,6 @@ public class CustomerInformation {
 
         customer.setName_customer("Guest");
         customer.setEmail_customer("guest@mail.fr");
-        customer.setCard_nb_customer("0000000000000000");
 
         netchill.setCustomer(customer);
 

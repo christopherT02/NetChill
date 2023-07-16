@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,6 +20,10 @@ import java.util.ArrayList;
 
 public class loginController {
     private Netchill netchill = new Netchill();
+
+    @FXML
+    private Label required_fields;
+
     @FXML
     private TextField txt_field_ID;
 
@@ -57,6 +62,9 @@ public class loginController {
         String name_customer = new String();
         if(txt_field_ID.getText().equals("") || txt_field_password.getText().equals(""))
         {
+            required_fields.setText("*Required Fields");
+            required_fields.setTextFill(Color.RED);
+
             System.out.println("Les champs ne peuvent pas être vide"); //idee afficher un label dynamique + améliorer les tests
         } else if (type_of_email.equals("@cinema.fr")) {
             //it's an employee
@@ -79,7 +87,6 @@ public class loginController {
                             Customer custom = netchill.getCustomer();
                             custom.setName_customer(rs2.getString("Name"));
                             custom.setEmail_customer(rs2.getString("ID_mail"));
-                            custom.setCard_nb_customer("0000000000000000");
                             netchill.setCustomer(custom);
 
                         }
@@ -110,6 +117,9 @@ public class loginController {
             else
             {
                 System.out.println("NONONNN");
+                required_fields.setText("Email or Password wrong, try again");
+                required_fields.setTextFill(Color.RED);
+
             }
         } else
         {
@@ -133,7 +143,6 @@ public class loginController {
                             Customer custom = netchill.getCustomer();
                             custom.setName_customer(rs2.getString("Name"));
                             custom.setEmail_customer(rs2.getString("Email"));
-                            custom.setCard_nb_customer(rs2.getString("Card_number"));
                             netchill.setCustomer(custom);
 
 
@@ -165,6 +174,9 @@ public class loginController {
             else
             {
                 System.out.println("NONONNN");
+                required_fields.setText("Email or Password wrong, try again");
+                required_fields.setTextFill(Color.RED);
+
             }
 
         }
