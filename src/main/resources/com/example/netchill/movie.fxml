@@ -78,14 +78,14 @@
          </font>
       </Button>
       <Spinner fx:id="spinnerNbOfTicket" layoutX="940.0" layoutY="325.0" onMouseClicked="#show_total_price" prefHeight="25.0" prefWidth="67.0" />
-      <Text fill="WHITE" layoutX="765.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your schedules :">
+      <Text fill="WHITE" layoutX="757.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your schedules :">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="menuSchedule" layoutX="989.0" layoutY="137.0" prefHeight="25.0" prefWidth="196.0" />
-      <DatePicker fx:id="datePck" layoutX="940.0" layoutY="188.0" onAction="#setCheck2" prefHeight="25.0" prefWidth="244.0" />
-      <Text fill="WHITE" layoutX="765.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your date : ">
+      <ChoiceBox fx:id="menuSchedule" layoutX="981.0" layoutY="195.0" prefHeight="25.0" prefWidth="196.0" />
+      <DatePicker fx:id="datePck" layoutX="933.0" layoutY="134.0" onAction="#setCheck2" prefHeight="25.0" prefWidth="244.0" />
+      <Text fill="WHITE" layoutX="758.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your date : ">
          <font>
             <Font size="20.0" />
          </font>

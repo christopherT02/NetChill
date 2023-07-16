@@ -117,7 +117,8 @@ public class movieController {
             System.out.println(e2);
         }
 
-        menuCinema.setOnAction(this::init_schedules_info);
+        //menuCinema.setOnAction(this::init_schedules_info);
+        datePck.setOnAction(this::init_schedules_info);
     }
 
     //TODO : verify if there is still empty seats in the room's session
@@ -141,16 +142,27 @@ public class movieController {
 
             ArrayList<Time> schedules = new ArrayList<>();
 
+            boolean verif = false;
+
+            if(LocalDate.now().equals(datePck.getValue()))
+                verif = true;
+
             while(rs.next())
             {
+
                 System.out.println(rs.getTime("start"));
 
-                LocalTime currentHour = LocalTime.now();
-                int comparing = currentHour.compareTo(rs.getTime("start").toLocalTime());
-                System.out.println("comparaison heure : " + comparing);
+                if(verif)
+                {
+                    LocalTime currentHour = LocalTime.now();
+                    int comparing = currentHour.compareTo(rs.getTime("start").toLocalTime());
+                    System.out.println("comparaison hour : " + comparing);
 
-                if(comparing<0)
-                    schedules.add(rs.getTime("start"));
+                    if(comparing<0)
+                        schedules.add(rs.getTime("start"));
+                }
+                else schedules.add(rs.getTime("start"));
+
             }
 
             menuSchedule.getItems().addAll(schedules);
@@ -182,7 +194,7 @@ public class movieController {
 
     public void changeStateBtn()
     {
-        if(check1 && check2)
+        if(check1)
             btnCS.setDisable(false);
     }
 
@@ -213,6 +225,8 @@ public class movieController {
         }
 
     }
+
+    //TODO : can be deleted
     @FXML
     public void setCheck2(ActionEvent event){check2=true;
         changeStateBtn();
