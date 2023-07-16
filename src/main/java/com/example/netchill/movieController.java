@@ -224,6 +224,8 @@ public class movieController {
             System.out.println(e2);
         }
 
+        netchill.setDate_for_ticket(datePck.getValue());
+
     }
 
     //TODO : can be deleted
