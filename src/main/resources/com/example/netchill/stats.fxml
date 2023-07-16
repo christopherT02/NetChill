@@ -41,10 +41,22 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="txt_StatsCinema" fill="WHITE" layoutX="822.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="557.0" />
-      <Text fx:id="txt_StatsRoom" fill="WHITE" layoutX="800.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="557.0" />
-      <Text fx:id="txt_StatsSession" fill="WHITE" layoutX="773.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="598.0" />
-      <Text fx:id="txt_StatsMovie" fill="WHITE" layoutX="773.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="598.0" />
+      <Text fx:id="txt_StatsCinema" fill="WHITE" layoutX="773.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="557.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Text>
+      <Text fx:id="txt_StatsRoom" fill="WHITE" layoutX="773.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="557.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Text>
+      <Text fx:id="txt_StatsSession" fill="WHITE" layoutX="773.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="598.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Text>
+      <Text fx:id="txt_StatsMovie" fill="WHITE" layoutX="773.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="598.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Text>
       <Label fx:id="label_unuse" layoutX="14.0" layoutY="569.0" text="Label" />
    </children>
 </AnchorPane>
