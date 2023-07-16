@@ -389,8 +389,8 @@ public class modify_playing_movies_Controller {
     public void apply_modifMovieInfos_btnClick()
     {
         // SQL update statement
-        String sql1 = "UPDATE `movie` SET `ID_name_movie`= ?, `Time`=?, `Price`=?, `Discount`=?, `Description`=?, `Image_movie`=? WHERE ID_name_movie='"+netchill.getMovD().getId_name()+"'";
-        String sql2 = "UPDATE `movie` SET `ID_name_movie`= ?, `Time`=?, `Price`=?, `Discount`=?, `Description`=? WHERE ID_name_movie='"+netchill.getMovD().getId_name()+"'";
+        String sql1 = "UPDATE `movie` SET `ID_name_movie`= ?, `Time`=?, `Price`=?, `Description`=?, `Image_movie`=? WHERE ID_name_movie='"+netchill.getMovD().getId_name()+"'";
+        String sql2 = "UPDATE `movie` SET `ID_name_movie`= ?, `Time`=?, `Price`=?, `Description`=? WHERE ID_name_movie='"+netchill.getMovD().getId_name()+"'";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -421,18 +421,14 @@ public class modify_playing_movies_Controller {
                 stat.setDouble(3, netchill.getMovD().getPrice());
             else stat.setDouble(3, Double.parseDouble(txt_newPrice.getText()));
 
-            if(txt_newDiscount.getText().isEmpty())
-                stat.setDouble(4, 0);
-            else stat.setDouble(4, Double.parseDouble(txt_newDiscount.getText()));
-
             if(txt_newDescription.getText().isEmpty())
-                stat.setString(5, netchill.getMovD().getDescription());
-            else stat.setString(5, txt_newDescription.getText());
+                stat.setString(4, netchill.getMovD().getDescription());
+            else stat.setString(4, txt_newDescription.getText());
 
             if(im_newPoster.getImage() != null)
             {
                 InputStream posterB = new FileInputStream(file);
-                stat.setBlob(6, posterB);
+                stat.setBlob(5, posterB);
             }
 
 
@@ -452,7 +448,28 @@ public class modify_playing_movies_Controller {
     @FXML
     public void apply_modifChanges_btnClick()
     {
+        // SQL update statement
+        String sql = "UPDATE `session` SET `ID_name_movie`= ? WHERE start ='"+menu_session.getValue()+"' AND ID_nb_room = '" + menu_room.getValue() +"'";
 
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+
+            PreparedStatement stat;
+            stat = con.prepareStatement(sql);
+
+            // Set the new values for the columns
+            stat.setString(1, netchill.getMovD().getId_name());
+
+            // Execute the update statement
+            int rowsAffected = stat.executeUpdate();
+
+            System.out.println("Rows affected: " + rowsAffected);
+
+            con.close();
+        } catch (Exception e2) {
+            System.out.println(e2);
+        }
 
         initialize();
     }
