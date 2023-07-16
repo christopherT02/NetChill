@@ -120,6 +120,7 @@ public class movieController {
     }
 
     //TODO : verify if there is still empty seats in the room's session
+    //TODO : verify the selected date (day and hour)
     @FXML
     public void init_schedules_info(ActionEvent event)
     {
