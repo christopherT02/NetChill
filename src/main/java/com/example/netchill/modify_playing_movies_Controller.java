@@ -476,7 +476,7 @@ public class modify_playing_movies_Controller {
 
 
     @FXML
-    public void update_customer_deletemovie(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
+    public void update_customer_modif_movie(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
         netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
         label_unuse.setText(netchill.getCustomer().getName_customer());
