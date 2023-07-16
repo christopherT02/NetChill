@@ -120,9 +120,12 @@ public class movieController {
     }
 
     //TODO : verify if there is still empty seats in the room's session
+    //TODO : verify the selected date (day and hour)
     @FXML
     public void init_schedules_info(ActionEvent event)
     {
+        menuSchedule.getItems().clear();
+
         //add schedules where the movie is displayed in the choicebox
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -213,9 +216,26 @@ public class movieController {
         System.out.println(netchill.getDate_for_ticket());
     }
 
+    public void init_datePicker()
+    {
+        // Set the minimum and maximum date range
+        LocalDate minDate = LocalDate.now().minusDays(0);
+        LocalDate maxDate = LocalDate.now().plusDays(14);
+
+        datePck.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                setDisable(date.isBefore(minDate) || date.isAfter(maxDate));
+            }
+        });
+    }
+
 
     public void init()
     {
+        menuCinema.getItems().clear();
+        init_datePicker();
         init_movie_infos();
         init_cinemas_info();
         showSpinnerValue();

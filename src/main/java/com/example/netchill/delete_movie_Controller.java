@@ -221,6 +221,8 @@ public class delete_movie_Controller {
         } catch (Exception ee) {
             System.out.println("non image " +ee);
         }
+
+        initialize();
     }
 
 

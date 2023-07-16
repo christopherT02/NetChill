@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="midPane" prefHeight="600.0" prefWidth="1400.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.modify_playing_movies_Controller">
+   <children>
+      <ImageView fx:id="imPoster" fitHeight="216.0" fitWidth="192.0" layoutX="40.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
+      <Separator layoutX="769.0" layoutY="44.0" orientation="VERTICAL" prefHeight="522.0" prefWidth="15.0" />
+      <Text fill="WHITE" layoutX="277.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title : ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="277.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="283.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration : ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtTitle" fill="WHITE" layoutX="277.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtDescription" fill="WHITE" layoutX="277.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="487.0" />
+      <Text fx:id="txtTime" fill="WHITE" layoutX="283.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <TableView fx:id="availableMoviesTable" layoutX="802.0" layoutY="91.0" onMouseClicked="#selectAvailableMovie" prefHeight="237.0" prefWidth="559.0">
+         <columns>
+            <TableColumn fx:id="availableMovieTitleCol" prefWidth="171.0" text="Title" />
+            <TableColumn fx:id="availableMovieDescriptionCol" prefWidth="310.0" text="Description" />
+            <TableColumn fx:id="availableMovieDurationCol" minWidth="0.0" prefWidth="77.0" text="Duration" />
+         </columns>
+      </TableView>
+      <TextField fx:id="researchInput" layoutX="802.0" layoutY="50.0" onAction="#researchMovie" prefHeight="26.0" prefWidth="344.5" promptText="movie name">
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextField>
+      <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="808.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@glass.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_applyChanges" layoutX="1198.0" layoutY="522.0" mnemonicParsing="false" onAction="#apply_modifChanges_btnClick" style="-fx-background-color: ORANGE;" text="Apply changes">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Button>
+      <Label fx:id="label_unuse" layoutX="34.0" layoutY="590.0" />
+      <Separator layoutX="14.0" layoutY="342.0" prefHeight="15.0" prefWidth="753.0" />
+      <ChoiceBox fx:id="menu_cinema" layoutX="802.0" layoutY="436.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="menu_session" layoutX="1211.0" layoutY="433.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="menu_room" layoutX="1007.0" layoutY="434.0" prefWidth="150.0" />
+      <Text fill="WHITE" layoutX="802.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CINEMA">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1211.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SESSION">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1007.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ROOM">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="btn_applyMovieModif" layoutX="492.0" layoutY="522.0" mnemonicParsing="false" onAction="#apply_modifMovieInfos_btnClick" style="-fx-background-color: ORANGE;" text="Apply movie modification">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="23.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New title : ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="23.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Description :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txt_newTitle" layoutX="26.0" layoutY="415.0" />
+      <TextField fx:id="txt_newDescription" layoutX="26.0" layoutY="529.0" />
+      <Text fill="WHITE" layoutX="226.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New duration :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txt_newDuration" layoutX="229.0" layoutY="412.0" />
+      <Text fill="WHITE" layoutX="228.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New price :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txt_newPrice" layoutX="231.0" layoutY="531.0" />
+      <Rectangle fx:id="rectDD" arcHeight="5.0" arcWidth="5.0" height="135.0" layoutX="562.0" layoutY="380.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" width="200.0" />
+      <ImageView fx:id="im_newPoster" fitHeight="135.0" fitWidth="200.0" layoutX="564.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fill="WHITE" layoutX="436.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New poster :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
