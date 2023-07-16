@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -75,6 +76,11 @@ public class Border_modelController {
             CustomerInformation customerInformation = loader.getController();
             //customerInformation.update_customer_custoInfo(customer.getName_customer(),customer.getEmail_customer(),customer.getCard_nb_customer());
             customerInformation.update_customer_custoInfo(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+            try {
+                customerInformation.initialize();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             bpane.setCenter(root);
         }
     }
@@ -200,6 +206,20 @@ public class Border_modelController {
             control.update_customer_deletemovie(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         }
+        else if (login_signin==10) { // basket
+            login_signin=0;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Basket_customer.fxml"));
+            Parent root = loader.load();
+            BasketCustomerController control = loader.getController();
+            control.update_customer_basket(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+            try {
+                control.initialize();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            bpane.setCenter(root);
+        }
+
     }
 
     @FXML

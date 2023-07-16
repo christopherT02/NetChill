@@ -6,6 +6,7 @@ public class Basket {
 
     private ArrayList<Ticket> all_tickets_basket = new ArrayList<>();
 
+    private int price_giftCard=0;
     public ArrayList<Ticket> getAll_tickets_basket() {
         return all_tickets_basket;
     }

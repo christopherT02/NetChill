@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="1400.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.BasketCustomerController">
+   <children>
+      <Label layoutX="648.0" layoutY="14.0" text="Basket" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Separator layoutX="523.0" layoutY="66.0" prefHeight="0.0" prefWidth="353.0" style="-fx-background-color: white;" />
+      <Label layoutX="291.0" layoutY="84.0" text="Ticket" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Separator layoutX="697.0" layoutY="69.0" orientation="VERTICAL" prefHeight="461.0" prefWidth="6.0" style="-fx-background-color: white;" />
+      <Label layoutX="1024.0" layoutY="76.0" text="Gift Card" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="902.0" layoutY="228.0" prefHeight="144.0" prefWidth="354.0" style="-fx-background-color: grey;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@gift_card2.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="label_giftCard" layoutX="65.0" layoutY="36.0" text="£0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="250.0" layoutY="48.0" mnemonicParsing="false" onAction="#click_buttonRemove" prefHeight="47.0" prefWidth="89.0" text="Remove" />
+         </children>
+      </AnchorPane>
+      <ListView fx:id="listView_basket" layoutX="14.0" layoutY="124.0" prefHeight="390.0" prefWidth="673.0" />
+      <Label fx:id="label_unuse" layoutX="31.0" layoutY="23.0" />
+      <Button layoutX="653.0" layoutY="538.0" mnemonicParsing="false" onAction="#click_buttonPayment" text="Payment">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

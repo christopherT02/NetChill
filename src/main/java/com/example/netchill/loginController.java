@@ -143,6 +143,7 @@ public class loginController {
                             Customer custom = netchill.getCustomer();
                             custom.setName_customer(rs2.getString("Name"));
                             custom.setEmail_customer(rs2.getString("Email"));
+                            custom.setID_customer(rs2.getInt("ID_customer"));
                             netchill.setCustomer(custom);
 
 
