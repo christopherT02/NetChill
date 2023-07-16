@@ -203,7 +203,15 @@ public class Border_modelController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("modify_playing_movies.fxml"));
             Parent root = loader.load();
             modify_playing_movies_Controller control = loader.getController();
-            control.update_customer_deletemovie(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+            control.update_customer_modif_movie(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+            bpane.setCenter(root);
+        }
+        else if (login_signin==11) { // stats
+            login_signin=0;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("stats.fxml"));
+            Parent root = loader.load();
+            stats_Controller control = loader.getController();
+            control.update_customer_stats(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
             bpane.setCenter(root);
         }
         else if (login_signin==10) { // basket
