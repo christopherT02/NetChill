@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class movieController {
@@ -120,7 +121,6 @@ public class movieController {
     }
 
     //TODO : verify if there is still empty seats in the room's session
-    //TODO : verify the selected date (day and hour)
     @FXML
     public void init_schedules_info(ActionEvent event)
     {
@@ -145,7 +145,12 @@ public class movieController {
             {
                 System.out.println(rs.getTime("start"));
 
-                schedules.add(rs.getTime("start"));
+                LocalTime currentHour = LocalTime.now();
+                int comparing = currentHour.compareTo(rs.getTime("start").toLocalTime());
+                System.out.println("comparaison heure : " + comparing);
+
+                if(comparing<0)
+                    schedules.add(rs.getTime("start"));
             }
 
             menuSchedule.getItems().addAll(schedules);
