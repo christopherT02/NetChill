@@ -89,7 +89,7 @@ public class BasketCustomerController {
                 while (rs.next())
                 {
                     //we look for all not paid tickets of person connected
-                    if(rs.getInt("ID_customer")==netchill.getCustomer().getID_customer() && rs.getInt("ID_customer")==0)
+                    if(rs.getInt("ID_customer")==netchill.getCustomer().getID_customer() && rs.getInt("state")==0)
                     {
                         System.out.println("DANS BDD "+rs.getInt("ID_customer")+ "DANS LA CLasse "+netchill.getCustomer().getID_customer());
                         String sentence;

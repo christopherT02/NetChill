@@ -147,8 +147,46 @@ public class Payment_pageController implements Initializable {
                 } catch (Exception e1) {
                     System.out.println(e1);
                 }
+
+                update_cinema_sell_data();
             }
         }
+    }
+
+    public void update_cinema_sell_data()
+    {
+        //to go through each tickets
+        for(int i = 0; i<netchill.getTicketList().size(); i++)
+        {
+            //update sold tickets for cinema
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+
+                String sqlQuery = "SELECT * FROM `cinema` JOIN room ON room.ID_cinema = cinema.ID_cinema JOIN session ON session.ID_nb_room = room.ID_nb_room WHERE session.ID_session = '"+netchill.getTicketList().get(i).getIdSession()+"'";
+                Statement state = con.createStatement();
+                ResultSet rs = state.executeQuery(sqlQuery);
+
+                while (rs.next())
+                {
+                    // SQL update statement
+                    String sql = "UPDATE `cinema` SET nb_sell_cinema = ? WHERE name_cinema = '" + rs.getString("name_cinema") + "'";
+                    PreparedStatement stat = con.prepareStatement(sql);
+
+                    stat.setInt(1, rs.getInt("nb_sell_cinema") + 1);
+
+                    // Execute the update statement
+                    int rowsAffected = stat.executeUpdate();
+
+                    System.out.println("execute 2nd query : " + rowsAffected);
+                }
+
+                con.close();
+            } catch (Exception e1) {
+                System.out.println(e1);
+            }
+        }
+
     }
 
 
