@@ -224,6 +224,12 @@ public class Payment_pageController implements Initializable {
         }
     }
 
+    //TODO
+    public void update_session_sell_data()
+    {
+
+    }
+
 
 
     @FXML
