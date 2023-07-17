@@ -234,6 +234,7 @@ public class chooseSeatController {
 
     public void nextPage(ActionEvent event) throws IOException
     {
+        //if all tickets have a seat
         if(netchill.getIncrementor() == netchill.getNb_ticket())
         {
             ///call the payement page
@@ -241,7 +242,7 @@ public class chooseSeatController {
             root=fxmlLoader.load();
             Border_modelController border = fxmlLoader.getController();
             border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
-            border.initialize(7);
+            border.initialize(10);
             lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
             scene=new Scene(root);
             lstage.setScene(scene);
