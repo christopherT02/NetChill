@@ -4,9 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -23,13 +29,26 @@ public class BasketCustomerController {
     @FXML
     private ListView<String> listView_basket;
 
+    private Parent root;
+    private Stage lstage;
+    private Scene scene;
+
     @FXML
     void click_buttonRemove(ActionEvent event) {
 
     }
     @FXML
-    void click_buttonPayment(ActionEvent event) {
-
+    void click_buttonPayment(ActionEvent event) throws IOException {
+        ///call the payement page
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
+        root=fxmlLoader.load();
+        Border_modelController border = fxmlLoader.getController();
+        border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+        border.initialize(7);
+        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
+        scene=new Scene(root);
+        lstage.setScene(scene);
+        lstage.show();
     }
     public void initialize() throws SQLException {
         ArrayList<String> panierItems = new ArrayList<>();
@@ -69,8 +88,8 @@ public class BasketCustomerController {
 
                 while (rs.next())
                 {
-                    //we look for all tickets of person connected
-                    if(rs.getInt("ID_customer")==netchill.getCustomer().getID_customer())
+                    //we look for all not paid tickets of person connected
+                    if(rs.getInt("ID_customer")==netchill.getCustomer().getID_customer() && rs.getInt("ID_customer")==0)
                     {
                         System.out.println("DANS BDD "+rs.getInt("ID_customer")+ "DANS LA CLasse "+netchill.getCustomer().getID_customer());
                         String sentence;

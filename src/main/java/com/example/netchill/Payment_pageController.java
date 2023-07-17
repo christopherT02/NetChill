@@ -126,6 +126,28 @@ public class Payment_pageController implements Initializable {
             } catch (Exception e1) {
                 System.out.println(e1);
             }
+
+            //update ticket state
+            if(good)
+            {
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+
+                    // SQL update statement
+                    String sql = "UPDATE `ticket` SET `state`= 1 WHERE ID_customer='"+netchill.getCustomer().getID_customer()+"'";
+                    PreparedStatement stat = con.prepareStatement(sql);
+
+                    // Execute the update statement
+                    int rowsAffected = stat.executeUpdate();
+
+                    System.out.println("Rows affected: " + rowsAffected);
+
+                    con.close();
+                } catch (Exception e1) {
+                    System.out.println(e1);
+                }
+            }
         }
     }
 

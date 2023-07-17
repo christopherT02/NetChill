@@ -211,7 +211,7 @@ public class chooseSeatController {
 
             //Parameters
             preparedStatement.setString(1, netchill.getMovD().getId_name());
-            preparedStatement.setInt(2, 0); //TODO : utiliser l'ID du customer connecte
+            preparedStatement.setInt(2, netchill.getCustomer().getID_customer());
             preparedStatement.setInt(3, netchill.getNb_ticket());
             preparedStatement.setDouble(4, netchill.getMovD().getPrice());
             preparedStatement.setDate(5, Date.valueOf(netchill.getDate_for_ticket()));
@@ -237,7 +237,7 @@ public class chooseSeatController {
         //if all tickets have a seat
         if(netchill.getIncrementor() == netchill.getNb_ticket())
         {
-            ///call the payement page
+            ///call the basket page
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
             root=fxmlLoader.load();
             Border_modelController border = fxmlLoader.getController();
