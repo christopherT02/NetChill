@@ -3,46 +3,35 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="midPane" prefHeight="600.0" prefWidth="1400.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.HelloController">
    <children>
-      <ImageView fitHeight="375.0" fitWidth="600.0" layoutX="30.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="375.0" fitWidth="600.0" layoutX="763.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
-      <Text fill="WHITE" layoutX="45.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRIPTION" wrappingWidth="290.13671875">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Text>
-      <Text fill="WHITE" layoutX="359.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRICE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Text>
-      <Text fill="WHITE" layoutX="784.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRIPTION" wrappingWidth="290.13671875">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Text>
-      <Button layoutX="1221.0" layoutY="506.0" mnemonicParsing="false" text="See more">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Button>
-      <Text fill="WHITE" layoutX="1098.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRICE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Text>
-      <Button layoutX="451.0" layoutY="506.0" mnemonicParsing="false" text="See more">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <Separator layoutX="697.0" layoutY="63.0" orientation="VERTICAL" prefHeight="516.0" prefWidth="0.0" />
       <Label layoutX="551.0" layoutY="14.0" text="Movies of the week" textFill="WHITE">
          <font>
             <Font size="34.0" />
          </font>
       </Label>
       <Label fx:id="label_unuse" layoutX="14.0" layoutY="570.0" />
+      <AnchorPane layoutY="64.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane layoutY="150.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <Button layoutX="-1.0" layoutY="155.0" mnemonicParsing="false" onAction="#click_button_left" prefHeight="140.0" prefWidth="30.0" text="&lt;">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="1329.0" layoutY="155.0" mnemonicParsing="false" onAction="#click_button_right" prefHeight="140.0" prefWidth="30.0" text="&gt;">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <Separator layoutX="540.0" layoutY="64.0" prefHeight="0.0" prefWidth="314.0" />
    </children>
 </AnchorPane>

@@ -36,7 +36,15 @@ public class HelloController {
     @FXML
     private Button button_account;
 
+    @FXML
+    void click_button_left(ActionEvent event) {
 
+    }
+
+    @FXML
+    void click_button_right(ActionEvent event) {
+
+    }
     @FXML
     public void update_customer_homepage(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
