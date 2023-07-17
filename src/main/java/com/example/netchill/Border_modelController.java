@@ -168,9 +168,6 @@ public class Border_modelController {
             control.init();
             //give infos about the selected movie to the new page
             //call this function because it doesnt work in the "initialize()" function
-
-
-
             bpane.setCenter(root);
         }
         else if (login_signin==6) { // choose the seat

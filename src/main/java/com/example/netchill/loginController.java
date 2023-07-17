@@ -38,10 +38,26 @@ public class loginController {
     @FXML
     private Label label_unuse_login;
 
+
+    @FXML
+    void click_button_basket(ActionEvent event) throws IOException{
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
+        root=fxmlLoader.load();
+        Border_modelController border = fxmlLoader.getController();
+        border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+        border.initialize(10);
+        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
+        scene=new Scene(root);
+        lstage.setScene(scene);
+        lstage.show();
+    }
+
+
+
     @FXML
     void click_button_sign_in(ActionEvent event) throws IOException{
-
-       FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
         border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
@@ -51,6 +67,7 @@ public class loginController {
         lstage.setScene(scene);
         lstage.show();
     }
+
 
     @FXML
     void click_button_submit(ActionEvent event) throws SQLException, IOException {

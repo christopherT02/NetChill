@@ -17,28 +17,28 @@
       <TextField fx:id="txt_field_name" layoutX="616.0" layoutY="332.0" promptText="Example" />
       <Text fill="WHITE" layoutX="531.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name*" />
       <Separator layoutX="10.0" layoutY="171.0" prefHeight="0.0" prefWidth="1400.0" />
-      <Label layoutX="571.0" layoutY="146.0" text="Log in" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="801.0" layoutY="146.0" text="Sign in" textFill="RED">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
       <Button layoutX="649.0" layoutY="392.0" mnemonicParsing="false" onAction="#click_button_submit" prefHeight="38.0" prefWidth="82.0" text="Submit" />
       <Label fx:id="required_fields" layoutX="649.0" layoutY="438.0" text="*required fields" textFill="WHITE" />
       <Button layoutX="605.0" layoutY="480.0" mnemonicParsing="false" onAction="#click_button_gotoLogin" style="-fx-background-color: black;" text="Have an account? Log in" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Label layoutX="651.0" layoutY="50.0" text="Log in" textFill="WHITE">
+      <Label layoutX="547.0" layoutY="50.0" text="Create an account" textFill="WHITE">
          <font>
             <Font name="System Bold" size="34.0" />
          </font>
       </Label>
       <Separator layoutX="615.0" layoutY="508.0" prefHeight="3.0" prefWidth="150.0" />
       <Label fx:id="label_unuse" layoutX="34.0" layoutY="590.0" />
+      <Button layoutX="793.0" layoutY="124.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="82.0" style="-fx-background-color: black;" text="Sign in" textFill="RED">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="508.0" layoutY="124.0" mnemonicParsing="false" onAction="#click_button_gotoLogin" prefHeight="40.0" prefWidth="82.0" style="-fx-background-color: black;" text="Log in" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
