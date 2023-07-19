@@ -7,10 +7,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -84,13 +81,15 @@ public class stats_Controller {
             ResultSet rs = stat.executeQuery(sql);
 
             int cmpt = 0;
+            Time tempo = null;
             while(rs.next())
             {
                 cmpt++;
+                tempo = rs.getTime("start");
             }
 
             //display result
-            txt_StatsSession.setText(String.valueOf(cmpt) + " ticket(s) sold for this session.");
+            txt_StatsSession.setText(String.valueOf(cmpt) + " ticket(s) sold for the session of " + tempo +".");
 
             con.close();
         } catch (Exception e2) {
