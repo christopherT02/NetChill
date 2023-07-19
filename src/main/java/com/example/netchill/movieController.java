@@ -228,7 +228,6 @@ public class movieController {
 
     }
 
-    //TODO : can be deleted
     @FXML
     public void setCheck2(ActionEvent event){check2=true;
         changeStateBtn();

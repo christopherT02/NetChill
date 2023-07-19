@@ -36,8 +36,6 @@ public class signinController {
 
     @FXML
     private Label label_unuse;
-    @FXML
-    private TextField txt_field_cardNumber;
 
     @FXML
     private TextField txt_field_email;
@@ -75,7 +73,7 @@ public class signinController {
         }
         else///all text_field are filled
         {
-            //TODO rajouter des tests sur les saisies (mail) + test de l'argent en banque
+            //TODO rajouter des tests sur les saisies (mail)
 
             try { //test if the email adress already exist in the database
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -115,7 +113,7 @@ public class signinController {
                 //Parameters for customer
                 preparedStatement.setString(1, txt_field_name.getText());
                 preparedStatement.setString(2, txt_field_email.getText());
-                preparedStatement.setString(3, txt_field_cardNumber.getText());
+                preparedStatement.setString(3, "1234432156788765"); //TODO : voir pour supprimer ce champ
                 preparedStatement.executeUpdate();
 
                 //Parameters for customer

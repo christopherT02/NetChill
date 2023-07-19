@@ -103,7 +103,7 @@ public class Payment_pageController implements Initializable {
                     Date date = rs.getDate("Expiration_date");
                     String date_field = date.toString();
 
-                    if(txt_field_Cardnb.getText().equals(rs.getString("Card_number")) && type_card.equals(rs.getString("Type_card")) && txt_field_Name.getText().equals(rs.getString("Name_owner")) && date_field.equals(txt_field_dateexp.getText()) && rs.getDouble("Balance")>price) //TODO rajouter le fait qu'il a assez d'argent !!
+                    if(txt_field_Cardnb.getText().equals(rs.getString("Card_number")) && type_card.equals(rs.getString("Type_card")) && txt_field_Name.getText().equals(rs.getString("Name_owner")) && date_field.equals(txt_field_dateexp.getText()) && rs.getDouble("Balance")>price)
                     {
                         String sql = "UPDATE bank SET Balance = ? WHERE Card_number = ?";
                         PreparedStatement statement = con.prepareStatement(sql);
@@ -119,6 +119,10 @@ public class Payment_pageController implements Initializable {
                         }
                         good=true;
 
+                    }
+                    else
+                    {
+                        System.out.println("Not all the condition has been fulfilled correctly (verify your balance");
                     }
                 }
 
