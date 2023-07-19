@@ -17,28 +17,31 @@
    <children>
       <ImageView fx:id="imPoster" fitHeight="216.0" fitWidth="192.0" layoutX="40.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
       <Separator layoutX="634.0" layoutY="44.0" orientation="VERTICAL" prefHeight="522.0" prefWidth="10.0" />
-      <Text fill="WHITE" layoutX="277.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title : ">
+      <Text fill="WHITE" layoutX="251.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title : ">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="277.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
+      <Text fill="WHITE" layoutX="251.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="277.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration : ">
+      <Text fill="WHITE" layoutX="14.0" layoutY="553.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration : ">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="txtTitle" fill="WHITE" layoutX="277.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0">
+      <Text fx:id="txtTitle" fill="WHITE" layoutX="251.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Text>
-      <Text fx:id="txtDescription" fill="WHITE" layoutX="277.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="350.0" />
-      <Text fx:id="txtTime" fill="WHITE" layoutX="277.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0">
+      <Text fx:id="txtDescription" fill="WHITE" layoutX="251.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="377.0">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text fx:id="txtTime" fill="WHITE" layoutX="14.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="206.0">
          <font>
             <Font size="16.0" />
          </font>
@@ -63,7 +66,7 @@
             <Image url="@glass.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btn_MoreDetails" layoutX="276.0" layoutY="502.0" mnemonicParsing="false" onAction="#btn_moreDetails_click" text="See more">
+      <Button fx:id="btn_MoreDetails" layoutX="415.0" layoutY="523.0" mnemonicParsing="false" onAction="#btn_moreDetails_click" text="See more">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
