@@ -3,6 +3,7 @@ package com.example.netchill;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
@@ -27,7 +28,7 @@ public class stats_Controller {
     private ChoiceBox<String> menu_Movies;
 
     @FXML
-    private ChoiceBox<Integer> menu_Rooms;
+    private DatePicker datePicker;
 
     @FXML
     private ChoiceBox<Integer> menu_Sessions;
@@ -37,7 +38,7 @@ public class stats_Controller {
     @FXML
     private Text txt_StatsMovie;
     @FXML
-    private Text txt_StatsRoom;
+    private Text txt_StatsDay;
     @FXML
     private Text txt_StatsSession;
 
@@ -60,7 +61,7 @@ public class stats_Controller {
                 System.out.println(rs.getInt("nb_sell_cinema"));
 
                 //display result
-                txt_StatsCinema.setText(String.valueOf(rs.getInt("nb_sell_cinema")) + " tickets sold in this cinema.");
+                txt_StatsCinema.setText(String.valueOf(rs.getInt("nb_sell_cinema")) + " ticket(s) sold in this cinema.");
             }
 
             con.close();
@@ -69,34 +70,7 @@ public class stats_Controller {
         }
     }
 
-    public void room_stats(ActionEvent event)
-    {
-        txt_StatsRoom.setText("");
-
-        String sql = "SELECT `Nb_sell_place` FROM `room` WHERE `ID_nb_room` = '"+menu_Rooms.getValue()+"'";
-        //add cinemas to the choicebox
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
-
-            Statement stat = con.createStatement();
-            ResultSet rs = stat.executeQuery(sql);
-
-            while(rs.next())
-            {
-                System.out.println(rs.getInt("Nb_sell_place"));
-
-                //display result
-                txt_StatsRoom.setText(String.valueOf(rs.getInt("Nb_sell_place")) + " tickets sold for this room.");
-            }
-
-            con.close();
-        } catch (Exception e2) {
-            System.out.println(e2);
-        }
-    }
-
-    private void session_stats(ActionEvent event)
+    public void session_stats(ActionEvent event)
     {
         txt_StatsSession.setText("");
 
@@ -116,7 +90,7 @@ public class stats_Controller {
             }
 
             //display result
-            txt_StatsSession.setText(String.valueOf(cmpt) + " tickets sold for this session.");
+            txt_StatsSession.setText(String.valueOf(cmpt) + " ticket(s) sold for this session.");
 
             con.close();
         } catch (Exception e2) {
@@ -124,7 +98,7 @@ public class stats_Controller {
         }
     }
 
-    private void movie_stats(ActionEvent event)
+    public void movie_stats(ActionEvent event)
     {
         txt_StatsMovie.setText("");
 
@@ -142,8 +116,35 @@ public class stats_Controller {
                 System.out.println(rs.getInt("Nb_sale"));
 
                 //display result
-                txt_StatsMovie.setText(String.valueOf(rs.getInt("Nb_sale")) + " tickets sold for this movie.");
+                txt_StatsMovie.setText(String.valueOf(rs.getInt("Nb_sale")) + " ticket(s) sold for this movie.");
             }
+
+            con.close();
+        } catch (Exception e2) {
+            System.out.println(e2);
+        }
+    }
+
+    public void day_stats(ActionEvent event)
+    {
+        txt_StatsDay.setText("");
+
+        String sql = "SELECT * FROM `ticket` WHERE `Date_ticket` =  '"+datePicker.getValue()+"'";
+        //get athe number of ticket created for the selected day
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+
+            int compt = 0;
+            while(rs.next())
+            {
+                compt++;
+            }
+
+            txt_StatsDay.setText(compt + " sold ticket(s) for the selected day.");
 
             con.close();
         } catch (Exception e2) {
@@ -182,33 +183,6 @@ public class stats_Controller {
             System.out.println(e2);
         }
         menu_Cinemas.setOnAction(this::cinema_stats);
-
-
-        sql = "SELECT `ID_nb_room` FROM `room` WHERE 1";
-        //add room to the choicebox
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
-
-            Statement stat = con.createStatement();
-            ResultSet rs = stat.executeQuery(sql);
-
-            ArrayList<Integer> rooms = new ArrayList<>();
-
-            while(rs.next())
-            {
-                System.out.println(rs.getString("ID_nb_room"));
-
-                rooms.add(rs.getInt("ID_nb_room"));
-            }
-
-            menu_Rooms.getItems().addAll(rooms);
-
-            con.close();
-        } catch (Exception e2) {
-            System.out.println(e2);
-        }
-        menu_Rooms.setOnAction(this::room_stats);
 
 
         sql = "SELECT `ID_session` FROM `session` WHERE 1";
@@ -263,6 +237,8 @@ public class stats_Controller {
             System.out.println(e2);
         }
         menu_Movies.setOnAction(this::movie_stats);
+
+        datePicker.setOnAction(this::day_stats);
 
     }
 

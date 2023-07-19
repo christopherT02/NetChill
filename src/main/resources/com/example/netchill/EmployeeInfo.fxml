@@ -19,7 +19,7 @@
       </Label>
       <Label fx:id="label_unuse" layoutX="34.0" layoutY="590.0" />
       <Separator layoutX="384.0" layoutY="88.0" prefHeight="1.0" prefWidth="700.0" />
-      <AnchorPane layoutX="491.0" layoutY="137.0" prefHeight="423.0" prefWidth="417.0" style="-fx-background-color: grey;">
+      <AnchorPane layoutX="491.0" layoutY="137.0" prefHeight="293.0" prefWidth="417.0" style="-fx-background-color: grey;">
          <children>
             <Button layoutX="4.0" layoutY="14.0" mnemonicParsing="false" onAction="#click_add_movie" style="-fx-background-color: grey;" text="Add movie" textFill="WHITE">
                <font>
@@ -37,17 +37,7 @@
                </font>
             </Button>
             <Separator layoutX="16.0" layoutY="215.0" prefHeight="3.0" prefWidth="222.0" style="-fx-background-color: black;" />
-            <Button layoutX="4.0" layoutY="292.0" mnemonicParsing="false" onAction="#click_stat_per_room" style="-fx-background-color: grey;" text="Statistic per room" textFill="WHITE">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Button>
-            <Button layoutX="4.0" layoutY="225.0" mnemonicParsing="false" onAction="#click_stat_per_cinema" style="-fx-background-color: grey;" text="Statistic per cinema" textFill="WHITE">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Button>
-            <Button layoutY="349.0" mnemonicParsing="false" onAction="#click_stat_per_movie" style="-fx-background-color: grey;" text="Statistic per movie" textFill="WHITE">
+            <Button layoutX="4.0" layoutY="225.0" mnemonicParsing="false" onAction="#click_stat_per_cinema" style="-fx-background-color: grey;" text="Statistics" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>

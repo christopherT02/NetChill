@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,21 +23,20 @@
       </Text>
       <Separator layoutX="28.0" layoutY="217.0" prefHeight="25.0" prefWidth="1345.0" />
       <Separator layoutX="28.0" layoutY="335.0" prefHeight="25.0" prefWidth="1345.0" />
-      <ChoiceBox fx:id="menu_Rooms" layoutX="475.0" layoutY="280.0" prefWidth="150.0" />
-      <Text fill="WHITE" layoutX="291.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room number : ">
+      <Text fill="WHITE" layoutX="396.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="menu_Sessions" layoutX="478.0" layoutY="391.0" prefWidth="150.0" />
-      <Text fill="WHITE" layoutX="294.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session number :">
+      <ChoiceBox fx:id="menu_Sessions" layoutX="478.0" layoutY="390.0" prefWidth="150.0" />
+      <Text fill="WHITE" layoutX="275.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session number :">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
       <Separator layoutX="28.0" layoutY="441.0" prefHeight="25.0" prefWidth="1345.0" />
       <ChoiceBox fx:id="menu_Movies" layoutX="478.0" layoutY="491.0" prefWidth="150.0" />
-      <Text fill="WHITE" layoutX="294.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Movie name :">
+      <Text fill="WHITE" layoutX="315.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Movie name :">
          <font>
             <Font size="24.0" />
          </font>
@@ -45,7 +45,7 @@
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Text>
-      <Text fx:id="txt_StatsRoom" fill="WHITE" layoutX="773.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="557.0">
+      <Text fx:id="txt_StatsDay" fill="WHITE" layoutX="773.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="557.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Text>
@@ -58,5 +58,6 @@
             <Font name="System Bold" size="24.0" />
          </font></Text>
       <Label fx:id="label_unuse" layoutX="14.0" layoutY="569.0" text="Label" />
+      <DatePicker fx:id="datePicker" layoutX="478.0" layoutY="280.0" />
    </children>
 </AnchorPane>
