@@ -14,7 +14,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -34,6 +36,11 @@ public class addMovieController {
 
     @FXML
     private Label label_unuse;
+    @FXML
+    private Label label_required;
+    @FXML
+    private Label label_Success;
+
     @FXML
     private ImageView imViewPoster;
     private Image posterImage;
@@ -95,6 +102,14 @@ public class addMovieController {
     //method that add a Movie in the DataBase
     public void addMovieToBdd() throws FileNotFoundException {
 
+        //verification of the inputs
+        if(txtMovieName.getText().isEmpty() || txtDescription.getText().isEmpty() || txtPrice.getText().isEmpty() || txtTime.getText().isEmpty() || imViewPoster.getImage()==null)
+        {
+            System.out.println("Please, fill in all fields.");
+            label_required.setTextFill(Color.RED);
+            return;
+        }
+
         Movie movieToAdd = new Movie();
 
         movieToAdd.setId_name(txtMovieName.getText());
@@ -130,6 +145,8 @@ public class addMovieController {
             preparedStatement.executeUpdate();
 
             System.out.println("Movie data successfully send.");
+            label_Success.setText("The new movie has been successfully added !");
+            label_required.setTextFill(Color.WHITE);
 
         } catch (SQLException e) {
             e.printStackTrace();
