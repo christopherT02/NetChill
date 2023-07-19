@@ -117,15 +117,26 @@ public class movieController {
             System.out.println(e2);
         }
 
-        //menuCinema.setOnAction(this::init_schedules_info);
+        menuCinema.setOnAction(this::justReset);
         datePck.setOnAction(this::init_schedules_info);
     }
+
+    //reset some state after clicking on the cinema menu
+    private void justReset(ActionEvent event) {
+        menuSchedule.setValue(null);
+        menuSchedule.getItems().clear();
+        btnCS.setDisable(true);
+    }
+
+
 
     //TODO : verify if there is still empty seats in the room's session
     @FXML
     public void init_schedules_info(ActionEvent event)
     {
+        menuSchedule.setValue(null);
         menuSchedule.getItems().clear();
+
 
         //add schedules where the movie is displayed in the choicebox
         try {
