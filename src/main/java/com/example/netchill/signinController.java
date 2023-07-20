@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class signinController {
     private Netchill netchill = new Netchill();
@@ -61,9 +63,8 @@ public class signinController {
     }
 
     @FXML
-    void click_button_submit(ActionEvent event) throws SQLException {
-
-
+    void click_button_submit(ActionEvent event) throws SQLException
+    {
         boolean new_account = true;
 
         if(txt_field_name.getText().equals("") || txt_field_email.getText().equals("")|| txt_field_password.getText().equals(""))
@@ -75,7 +76,8 @@ public class signinController {
         {
             //TODO rajouter des tests sur les saisies (mail)
 
-            try { //test if the email adress already exist in the database
+            try //test if the email adress already exist in the database
+            {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
 
@@ -98,47 +100,62 @@ public class signinController {
                 System.out.println(e1);
             }
 
+            //testing if all text_field is properly filled
             if(new_account)
             {
+                //verify the email adress
+                //format of an email adress
+                String emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
 
+                //create a pattern object
+                Pattern pattern = Pattern.compile(emailRegex);
 
-            //send account data in the DB
-            String insertQuery = "INSERT INTO `customer` (`ID_customer`, `Name`, `Email`, `Card_number`) VALUES (NULL, ?, ?, ?)";
-            String insertQuery2 = "INSERT INTO `account` (`Email`, `Password`) VALUES (?, ?)";
-            try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", ""))
-            {
-                PreparedStatement preparedStatement = con.prepareStatement(insertQuery);
-                PreparedStatement preparedStatement2 = con.prepareStatement(insertQuery2);
+                //create an object to verify the pattern needed
+                Matcher matcher = pattern.matcher(txt_field_email.getText());
 
-                //Parameters for customer
-                preparedStatement.setString(1, txt_field_name.getText());
-                preparedStatement.setString(2, txt_field_email.getText());
-                preparedStatement.setString(3, "1234432156788765"); //TODO : voir pour supprimer ce champ
-                preparedStatement.executeUpdate();
-
-                //Parameters for customer
-                preparedStatement2.setString(1, txt_field_email.getText());
-                preparedStatement2.setString(2, txt_field_password.getText());
-                preparedStatement2.executeUpdate();
-
-                System.out.println("Account + Customer data successfully send.");
-
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-                root=fxmlLoader.load();
-                Border_modelController border = fxmlLoader.getController();
-                border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
-
-                border.initialize(3);
-                lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
-                scene=new Scene(root);
-                lstage.setScene(scene);
-                lstage.show();
-
-
-
-            } catch (Exception e1) {
-                System.out.println(e1);
+                if(!matcher.matches())
+                    new_account = false;
             }
+
+            if(new_account)
+            {
+                //send account data in the DB
+                String insertQuery = "INSERT INTO `customer` (`ID_customer`, `Name`, `Email`, `Card_number`) VALUES (NULL, ?, ?, ?)";
+                String insertQuery2 = "INSERT INTO `account` (`Email`, `Password`) VALUES (?, ?)";
+                try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", ""))
+                {
+                    PreparedStatement preparedStatement = con.prepareStatement(insertQuery);
+                    PreparedStatement preparedStatement2 = con.prepareStatement(insertQuery2);
+
+                    //Parameters for customer
+                    preparedStatement.setString(1, txt_field_name.getText());
+                    preparedStatement.setString(2, txt_field_email.getText());
+                    preparedStatement.setString(3, "1234432156788765"); //TODO : voir pour supprimer ce champ
+                    preparedStatement.executeUpdate();
+
+                    //Parameters for customer
+                    preparedStatement2.setString(1, txt_field_email.getText());
+                    preparedStatement2.setString(2, txt_field_password.getText());
+                    preparedStatement2.executeUpdate();
+
+                    System.out.println("Account + Customer data successfully send.");
+
+                    //return to the home page
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
+                    root=fxmlLoader.load();
+                    Border_modelController border = fxmlLoader.getController();
+
+                    border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+                    border.initialize(3);
+
+                    lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
+                    scene=new Scene(root);
+                    lstage.setScene(scene);
+                    lstage.show();
+
+                } catch (Exception e1) {
+                    System.out.println(e1);
+                }
             }
         }
     }

@@ -280,7 +280,6 @@ public class Payment_pageController implements Initializable {
 
     public void return_main_page(ActionEvent event) throws IOException
     {
-
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
