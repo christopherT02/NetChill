@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 
         //delete from the db all ticket from ID = 0
-        String query = "DELETE FROM `ticket` WHERE `ID_customer` = 0";
+        String query = "DELETE FROM `ticket` WHERE `ID_customer` = 0 AND `state` = 0";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
