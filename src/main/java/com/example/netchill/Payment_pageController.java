@@ -64,7 +64,12 @@ public class Payment_pageController implements Initializable {
 
     @FXML
     void click_buttonPay(ActionEvent event) throws SQLException, IOException {
-        double price = netchill.getMovD().getPrice()*netchill.getNb_ticket();
+
+        double price = 0;
+        for(int i = 0; i<netchill.getTicketList().size(); i++)
+        {
+            price += netchill.getTicketList().get(i).getMv().getPrice();
+        }
 
 
         if(txt_field_Name.getText().equals("") || txt_field_cvc.getText().equals("") || txt_field_Cardnb.getText().equals("") || choiceBox_day.getValue().equals("") ||choiceBox_month.getValue().equals("") ||choiceBox_year.getValue().equals("") )
