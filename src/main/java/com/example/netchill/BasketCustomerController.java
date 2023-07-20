@@ -136,3 +136,5 @@ public class BasketCustomerController {
         System.out.println("DANS basket : "+netchill.getCustomer().getName_customer()+" ID : "+netchill.getCustomer().getID_customer());
     }
 }
+
+//TODO : be able to delete a ticker from the basket
