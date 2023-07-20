@@ -2,9 +2,14 @@ package com.example.netchill;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,13 +22,10 @@ import java.util.ResourceBundle;
 public class Payment_pageController implements Initializable {
     @FXML
     private ToggleGroup RadioButton_type_card;
-
     @FXML
     private RadioButton radio_american;
-
     @FXML
     private RadioButton radio_mastercard;
-
     @FXML
     private RadioButton radio_visa;
 
@@ -32,32 +34,33 @@ public class Payment_pageController implements Initializable {
 
     @FXML
     private ChoiceBox<String>choiceBox_day;
-
     @FXML
     private ChoiceBox<String>choiceBox_month;
-
     @FXML
     private ChoiceBox<String> choiceBox_year;
+
     @FXML
     private TextField txt_field_Cardnb;
-
     @FXML
     private Label label_required;
     @FXML
     private TextField txt_field_Name;
-
     @FXML
     private Label label_unuse;
+
     private Netchill netchill = new Netchill();
     @FXML
     private TextField txt_field_cvc;
-
     @FXML
     private TextField txt_field_dateexp;
 
     private String[] years = {"2023","2024","2025","2026","2027","2028","2029","2030"} ;
     private String[] month = {"01","02","03","04","05","06","07","08","09","10","11","12"} ;
     private String[] day = {"01"} ;
+
+    private Parent root;
+    private Stage lstage;
+    private Scene scene;
 
 
 
@@ -70,7 +73,6 @@ public class Payment_pageController implements Initializable {
         {
             price += netchill.getTicketList().get(i).getMv().getPrice();
         }
-
 
         if(txt_field_Name.getText().equals("") || txt_field_cvc.getText().equals("") || txt_field_Cardnb.getText().equals("") || choiceBox_day.getValue().equals("") ||choiceBox_month.getValue().equals("") ||choiceBox_year.getValue().equals("") )
         {
@@ -160,6 +162,11 @@ public class Payment_pageController implements Initializable {
                 update_cinema_sell_data();
                 update_movie_sell_data();
                 update_room_sell_data();
+            }
+
+            if(good)
+            {
+                return_main_page(event);
             }
         }
     }
@@ -271,6 +278,22 @@ public class Payment_pageController implements Initializable {
 
 
 
+    public void return_main_page(ActionEvent event) throws IOException
+    {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
+        root=fxmlLoader.load();
+        Border_modelController border = fxmlLoader.getController();
+
+        border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+        border.initialize(3);
+
+        lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
+        scene=new Scene(root);
+        lstage.setScene(scene);
+        lstage.show();
+    }
+
     @FXML
     public void update_customer_payment(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
@@ -279,7 +302,6 @@ public class Payment_pageController implements Initializable {
         label_unuse.setVisible(false);
         System.out.println("DANS Payment : "+netchill.getCustomer().getName_customer());
     }
-
 
 
     @Override

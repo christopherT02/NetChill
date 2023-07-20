@@ -216,7 +216,6 @@ public class moviesController {
         scene=new Scene(root);
         lstage.setScene(scene);
         lstage.show();
-
     }
 
 
