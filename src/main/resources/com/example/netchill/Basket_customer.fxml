@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="1400.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.BasketCustomerController">
    <children>
       <Label layoutX="648.0" layoutY="14.0" text="Basket" textFill="WHITE">
@@ -44,12 +43,13 @@
             <Button layoutX="250.0" layoutY="48.0" mnemonicParsing="false" onAction="#click_buttonRemove" prefHeight="47.0" prefWidth="89.0" text="Remove" />
          </children>
       </AnchorPane>
-      <ListView fx:id="listView_basket" layoutX="14.0" layoutY="124.0" prefHeight="390.0" prefWidth="673.0" />
+      <ListView fx:id="listView_basket" layoutX="14.0" layoutY="124.0" onMouseClicked="#selectTicket" prefHeight="351.0" prefWidth="673.0" />
       <Label fx:id="label_unuse" layoutX="31.0" layoutY="23.0" />
       <Button layoutX="653.0" layoutY="538.0" mnemonicParsing="false" onAction="#click_buttonPayment" text="Payment">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <Button fx:id="btn_del" layoutX="302.0" layoutY="490.0" mnemonicParsing="false" onAction="#btn_delete" style="-fx-background-color: red;" text="DELETE" />
    </children>
 </AnchorPane>

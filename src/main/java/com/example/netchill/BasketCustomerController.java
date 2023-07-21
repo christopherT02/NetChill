@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
@@ -28,6 +29,10 @@ public class BasketCustomerController {
     private Label label_unuse;
     @FXML
     private ListView<String> listView_basket;
+    @FXML
+    private Button btn_del;
+
+    private int id_TicketSel;
 
     private Parent root;
     private Stage lstage;
@@ -50,7 +55,10 @@ public class BasketCustomerController {
         lstage.setScene(scene);
         lstage.show();
     }
-    public void initialize() throws SQLException {
+    public void initialize() throws SQLException
+    {
+        btn_del.setDisable(true);
+
         ArrayList<String> panierItems = new ArrayList<>();
         panierItems.add("Number of Ticket                    Movie                    Date                    Time                   Number of seat                    Price");
 
@@ -93,7 +101,7 @@ public class BasketCustomerController {
                     {
                         System.out.println("DANS BDD "+rs.getInt("ID_customer")+ "DANS LA CLasse "+netchill.getCustomer().getID_customer());
                         String sentence;
-                        sentence=Integer.toString(rs.getInt("ID_session"));
+                        sentence=Integer.toString(rs.getInt("ID_ticket"));
                         sentence=sentence+"                                           ";
                         sentence=sentence+rs.getString("ID_name_movie");
                         sentence=sentence+"              ";
@@ -126,6 +134,60 @@ public class BasketCustomerController {
         label_giftCard.setText("£"+netchill.getCustomer().getAmount_gift_card());
 
     }
+
+    @FXML
+    public void selectTicket()
+    {
+        btn_del.setDisable(false);
+
+        String tempo = listView_basket.getSelectionModel().getSelectedItem();
+        int index = listView_basket.getSelectionModel().getSelectedIndex();
+
+        if((index -1) < -1)
+            return;
+
+        System.out.println("TEMPOOOOO : " + tempo);
+
+        //put each element of the string into a String tab
+        String[] elements = tempo.split("\\s+");
+
+        if(elements.length > 0) {
+            String firstValue = elements[0];
+            System.out.println("first value : " + firstValue);
+        } else {
+            System.out.println("String has no value");
+        }
+
+        id_TicketSel = Integer.parseInt(elements[0]);
+    }
+
+    @FXML
+    public void btn_delete() throws SQLException
+    {
+        //delete from the DB
+        String query = "DELETE FROM `ticket` WHERE `ID_ticket` = '" + id_TicketSel + "'";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+
+            Statement stat = con.createStatement();
+            int rs = stat.executeUpdate(query);
+
+            if(rs>0)
+                System.out.println("Line successfully deleted");
+            else
+                System.out.println("No line deleted");
+
+            con.close();
+        } catch (Exception ee) {
+            System.out.println("non ticket " +ee);
+        }
+
+        btn_del.setDisable(true);
+        initialize();
+    }
+
 
     @FXML
     public void update_customer_basket(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
