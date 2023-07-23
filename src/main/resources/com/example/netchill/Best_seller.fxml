@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1400.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1400.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.HelloController">
    <children>
       <AnchorPane layoutX="600.0" layoutY="200.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="100.0">
          <children>
-            <AnchorPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="pane1" layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fitHeight="470.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <image>
@@ -21,7 +20,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="16.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="pane2" layoutX="16.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fitHeight="470.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,7 +29,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="16.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="pane3" layoutX="16.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fitHeight="470.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -41,12 +40,28 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Button layoutX="253.0" layoutY="277.0" mnemonicParsing="false" prefHeight="116.0" prefWidth="46.0" text="&lt;" />
-      <Button layoutX="1100.0" layoutY="277.0" mnemonicParsing="false" prefHeight="116.0" prefWidth="46.0" text="&gt;" />
+      <Button layoutX="253.0" layoutY="277.0" mnemonicParsing="false" onAction="#clck_bck" prefHeight="116.0" prefWidth="46.0" style="-fx-background-color: white;" text="&lt;" />
+      <Button layoutX="1100.0" layoutY="277.0" mnemonicParsing="false" onAction="#clck_nxt" prefHeight="116.0" prefWidth="46.0" style="-fx-background-color: white;" text="&gt;" />
       <Label layoutX="622.0" layoutY="21.0" text="Best Seller" textFill="WHITE">
          <font>
             <Font size="34.0" />
          </font>
       </Label>
+      <Label fx:id="label_middle" layoutX="733.0" layoutY="516.0" prefHeight="70.0" prefWidth="7.0" text="." textFill="WHITE">
+         <font>
+            <Font size="64.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_right" layoutX="755.0" layoutY="516.0" prefHeight="70.0" prefWidth="7.0" text="." textFill="WHITE">
+         <font>
+            <Font size="64.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_left" layoutX="711.0" layoutY="516.0" prefHeight="70.0" prefWidth="7.0" text="." textFill="RED">
+         <font>
+            <Font size="64.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_unuse" layoutX="327.0" layoutY="37.0" prefHeight="18.0" prefWidth="155.0" />
    </children>
 </AnchorPane>
