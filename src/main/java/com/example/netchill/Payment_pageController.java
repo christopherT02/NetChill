@@ -83,6 +83,7 @@ public class Payment_pageController implements Initializable {
     @FXML
     void click_button_Gift(ActionEvent event) throws IOException, SQLException{
         double value = Double.parseDouble(txt_field_gc.getText());
+        System.out.println("Amount saisie :"+value);
         double amount_gift_card_paid=0;
         try
         {
@@ -112,13 +113,10 @@ public class Payment_pageController implements Initializable {
 
         } else
         {
-            Customer custom = new Customer();
-            custom = netchill.getCustomer();
-            custom.setAmount_gift_card(custom.getAmount_gift_card()-value);
-            netchill.setCustomer(custom);
+
             price=price-value;
             button_pay.setText("Pay: £"+price);
-
+            label_required_gift.setText(value+" has been remove from your payment");
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
@@ -129,8 +127,8 @@ public class Payment_pageController implements Initializable {
 
                 String sql = "UPDATE customer SET Gift_Card = ? WHERE ID_customer = ?";
                 PreparedStatement statement = con.prepareStatement(sql);
-                double final_price=rs.getDouble("Gift_Card") - value;
-                statement.setDouble(1, final_price);
+                amount_gift_card_paid= amount_gift_card_paid - value;
+                statement.setDouble(1, amount_gift_card_paid);
                 statement.setInt(2, netchill.getCustomer().getID_customer());
                 System.out.println("ID OF THE CUSTOMER WHO IS PAYING IS :"+netchill.getCustomer().getID_customer());
                 int rowsUpdated = statement.executeUpdate();
@@ -254,7 +252,7 @@ public class Payment_pageController implements Initializable {
                     Date date = rs.getDate("Expiration_date");
                     String date_field = date.toString();
 
-                    if(txt_field_Cardnb.getText().equals(rs.getString("Card_number")) && type_card.equals(rs.getString("Type_card")) && txt_field_Name.getText().equals(rs.getString("Name_owner")) && date_field.equals(txt_field_dateexp.getText()) && rs.getDouble("Balance")>price)
+                    if(txt_field_Cardnb.getText().equals(rs.getString("Card_number")) && type_card.equals(rs.getString("Type_card")) && txt_field_Name.getText().equals(rs.getString("Name_owner")) && date_field.equals(txt_field_dateexp.getText()) && rs.getDouble("Balance")>price &&txt_field_cvc.getText().equals(rs.getString("CVC")))
                     {
                         String sql = "UPDATE bank SET Balance = ? WHERE Card_number = ?";
                         PreparedStatement statement = con.prepareStatement(sql);
@@ -273,7 +271,8 @@ public class Payment_pageController implements Initializable {
                     }
                     else
                     {
-                        System.out.println("Not all the condition has been fulfilled correctly (verify your balance");
+                        label_required.setText("Error, please try again");
+                        System.out.println("Not all the condition has been fulfilled correctly (verify your balance)");
                     }
                 }
 
