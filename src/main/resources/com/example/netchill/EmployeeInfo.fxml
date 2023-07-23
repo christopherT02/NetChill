@@ -8,11 +8,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1400.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.netchill.EmployeeInfo_Controller">
    <children>
-      <Button layoutX="663.0" layoutY="90.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Sign out" textFill="WHITE">
+      <Button layoutX="663.0" layoutY="90.0" mnemonicParsing="false" onAction="#click_signout" style="-fx-background-color: black;" text="Sign out" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Label fx:id="txt_welcome" layoutX="630.0" layoutY="24.0" text="Welcome" textFill="WHITE">
+      <Label fx:id="txt_welcome" layoutX="558.0" layoutY="24.0" text="Welcome" textFill="WHITE">
          <font>
             <Font size="34.0" />
          </font>
@@ -44,5 +44,6 @@
             </Button>
          </children>
       </AnchorPane>
+      <Separator layoutX="671.0" layoutY="117.0" prefHeight="3.0" prefWidth="56.0" />
    </children>
 </AnchorPane>

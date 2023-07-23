@@ -1,5 +1,7 @@
 package com.example.netchill;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Payment_pageController implements Initializable {
+    double price = 0;
     @FXML
     private ToggleGroup RadioButton_type_card;
     @FXML
@@ -44,10 +47,23 @@ public class Payment_pageController implements Initializable {
     @FXML
     private Label label_required;
     @FXML
+    private Label label_required_discount;
+    @FXML
     private TextField txt_field_Name;
     @FXML
     private Label label_unuse;
+    @FXML
+    private Label label_required_gift;
+    @FXML
+    private TextField txt_field_discount;
 
+    @FXML
+    private TextField txt_field_gc;
+    @FXML
+    private ListView<String> listView_basket;
+
+    @FXML
+    private Label label_giftCard;
     private Netchill netchill = new Netchill();
     @FXML
     private TextField txt_field_cvc;
@@ -64,15 +80,143 @@ public class Payment_pageController implements Initializable {
 
 
 
+    @FXML
+    void click_button_Gift(ActionEvent event) throws IOException, SQLException{
+        double value = Double.parseDouble(txt_field_gc.getText());
+        double amount_gift_card_paid=0;
+        try
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+
+
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery("SELECT * FROM `customer` WHERE customer.ID_customer = '"+netchill.getCustomer().getID_customer()+"'");
+
+            while (rs.next())
+            {
+                amount_gift_card_paid = rs.getDouble("Gift_Card");
+            }
+
+            con.close();
+        } catch (Exception e1) {
+            System.out.println(e1);
+        }
+        if(value > amount_gift_card_paid)
+        {
+            label_required_gift.setText("Amount cannot be superior than £"+amount_gift_card_paid);
+        label_required_gift.setVisible(true);
+        } else if (value>price) {
+            label_required_gift.setText("Amount cannot be superior than the basket £"+price);
+            label_required_gift.setVisible(true);
+
+        } else
+        {
+            Customer custom = new Customer();
+            custom = netchill.getCustomer();
+            custom.setAmount_gift_card(custom.getAmount_gift_card()-value);
+            netchill.setCustomer(custom);
+            price=price-value;
+            button_pay.setText("Pay: £"+price);
+
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+
+
+                Statement stat = con.createStatement();
+                ResultSet rs = stat.executeQuery("SELECT * FROM `customer` ");
+
+                String sql = "UPDATE customer SET Gift_Card = ? WHERE ID_customer = ?";
+                PreparedStatement statement = con.prepareStatement(sql);
+                double final_price=rs.getDouble("Gift_Card") - value;
+                statement.setDouble(1, final_price);
+                statement.setInt(2, netchill.getCustomer().getID_customer());
+                System.out.println("ID OF THE CUSTOMER WHO IS PAYING IS :"+netchill.getCustomer().getID_customer());
+                int rowsUpdated = statement.executeUpdate();
+                if (rowsUpdated > 0) {
+                    System.out.println("Update success !");
+                } else {
+                    System.out.println("No update, check your code");
+                }
+
+                con.close();
+            } catch (Exception e1) {
+                System.out.println(e1);
+            }
+
+
+        }
+    }
+
+    @FXML
+    void click_button_apply(ActionEvent event) throws SQLException{
+        //try discount
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+
+
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery("SELECT * FROM `discount` ");
+
+            int find = 0;
+            int its_guest=0;
+            while (rs.next())
+            {
+                its_guest=0;
+                if(netchill.getCustomer().getName_customer().equals("Guest"))
+                {
+                    find=3;
+                    its_guest=1;
+                    label_required_discount.setText("You cannot use discount as guest");
+                    label_required_discount.setVisible(true);
+
+                }
+
+                if(txt_field_discount.getText().equals(rs.getString("Code_discount")) && its_guest==0)
+                {
+                    find = 1;
+                    price = price - (rs.getDouble("Value_discount")*price/100);
+
+                }
+                else
+                {
+                    System.out.println("Not all the condition has been fulfilled correctly (verify your balance");
+                }
+            }
+            if(find==1)
+            {
+                label_required_discount.setText("Discount of "+txt_field_discount.getText()+"% apply!");
+                label_required_discount.setVisible(true);
+                button_pay.setText("Pay: £"+price);
+
+            } else if (find==2) {
+
+                label_required_discount.setText("Code unknown");
+                label_required_discount.setVisible(true);
+
+            }
+
+            con.close();
+        } catch (Exception e1) {
+            System.out.println(e1);
+        }
+    }
+
+    @FXML
+    void click_buttonRemove(ActionEvent event) {
+        Customer customer = netchill.getCustomer();
+        price=price-netchill.getCustomer().getAmount_gift_card();
+        customer.setAmount_gift_card(0);
+        netchill.setCustomer(customer);
+        label_giftCard.setText("£0.0");
+        button_pay.setText("Pay: £"+price);
+    }
 
     @FXML
     void click_buttonPay(ActionEvent event) throws SQLException, IOException {
 
-        double price = 0;
-        for(int i = 0; i<netchill.getTicketList().size(); i++)
-        {
-            price += netchill.getTicketList().get(i).getMv().getPrice();
-        }
 
         if(txt_field_Name.getText().equals("") || txt_field_cvc.getText().equals("") || txt_field_Cardnb.getText().equals("") || choiceBox_day.getValue().equals("") ||choiceBox_month.getValue().equals("") ||choiceBox_year.getValue().equals("") )
         {
@@ -306,11 +450,93 @@ public class Payment_pageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        label_required_gift.setVisible(false);
+        label_required_discount.setVisible(false);
         txt_field_dateexp.setDisable(true);
         choiceBox_day.getItems().addAll(day);
         choiceBox_month.getItems().addAll(month);
         choiceBox_year.getItems().addAll(years);
+
     }
 
+
+        public void initialize() throws SQLException {
+        price=netchill.getCustomer().getAmount_gift_card();
+        ArrayList<String> panierItems = new ArrayList<>();
+        panierItems.add("Number of Ticket                    Movie                    Date                    Time                   Number of seat                    Price");
+
+       /* if(netchill.getCustomer().getName_customer().equals("Guest"))
+        {
+            for(int i=0;i<netchill.getTicketList().size();i++)
+            {
+                String sentence;
+                sentence=Integer.toString(netchill.getTicketList().get(i).getIdSession());
+                sentence=sentence+"                                      ";
+                sentence=sentence+netchill.getTicketList().get(i).getMv().getId_name();
+                sentence=sentence+"                   ";
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                sentence=sentence+netchill.getTicketList().get(i).getDate().format(formatter);
+                sentence=sentence+"                    ";
+                SimpleDateFormat time_movie = new SimpleDateFormat("hh:mm:ss");
+                sentence=sentence+time_movie.format(rs.getTime("start"));
+                sentence=sentence+"                    ";
+                sentence=sentence+Integer.toString(netchill.getTicketList().get(i).getId_seat());
+                sentence=sentence+"                    ";
+                sentence=sentence+Double.toString(netchill.getTicketList().get(i).getMv().getPrice());
+                panierItems.add(sentence);
+            }
+        }
+        else
+        {*/
+        try
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+
+
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery("SELECT * FROM `ticket` JOIN session ON session.ID_session = ticket.ID_session");
+
+            while (rs.next())
+            {
+                //we look for all not paid tickets of person connected
+                if(rs.getInt("ID_customer")==netchill.getCustomer().getID_customer() && rs.getInt("state")==0)
+                {
+                    price=price + rs.getDouble("Price_ticket");
+                    System.out.println("DANS BDD "+rs.getInt("ID_customer")+ "DANS LA CLasse "+netchill.getCustomer().getID_customer());
+                    String sentence;
+                    sentence=Integer.toString(rs.getInt("ID_session"));
+                    sentence=sentence+"                                           ";
+                    sentence=sentence+rs.getString("ID_name_movie");
+                    sentence=sentence+"              ";
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                    sentence=sentence+formatter.format(rs.getDate("Date_ticket"));
+                    sentence=sentence+"               ";
+                    SimpleDateFormat time_movie = new SimpleDateFormat("hh:mm:ss");
+                    sentence=sentence+time_movie.format(rs.getTime("start"));
+                    sentence=sentence+"                    ";
+                    sentence=sentence+Integer.toString(rs.getInt("ID_seat"));
+                    sentence=sentence+"                              ";
+                    sentence=sentence+Double.toString(rs.getDouble("Price_ticket"));
+                    panierItems.add(sentence);
+                }
+            }
+
+            con.close();
+        } catch (Exception e1) {
+            System.out.println(e1);
+        }
+        //}
+
+
+        // observable list
+        ObservableList<String> observableList = FXCollections.observableArrayList(panierItems);
+
+        // display it on the screen
+        listView_basket.setItems(observableList);
+        button_pay.setText("Pay: £"+Double.toString(price));
+            label_giftCard.setText("£"+Double.toString(netchill.getCustomer().getAmount_gift_card()));
+
+    }
 
 }

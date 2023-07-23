@@ -185,6 +185,11 @@ public class Border_modelController {
             Parent root = loader.load();
             Payment_pageController control = loader.getController();
             control.update_customer_payment(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+            try {
+                control.initialize();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             bpane.setCenter(root);
         }
         else if (login_signin==8) { // delete movie

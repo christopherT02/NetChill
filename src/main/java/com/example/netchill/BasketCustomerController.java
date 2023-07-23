@@ -35,7 +35,10 @@ public class BasketCustomerController {
 
     @FXML
     void click_buttonRemove(ActionEvent event) {
-
+        Customer customer = netchill.getCustomer();
+        customer.setAmount_gift_card(0);
+        netchill.setCustomer(customer);
+        label_giftCard.setText("£0.0");
     }
     @FXML
     void click_buttonPayment(ActionEvent event) throws IOException {

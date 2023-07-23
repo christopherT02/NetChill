@@ -3,10 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -61,5 +64,27 @@
       </Button>
       <Label fx:id="label_required" layoutX="1030.0" layoutY="550.0" text="*Required fields" textFill="WHITE" />
       <Label fx:id="label_unuse" layoutX="34.0" layoutY="590.0" />
+      <TextField fx:id="txt_field_discount" layoutX="829.0" layoutY="437.0" prefHeight="30.0" prefWidth="193.0" promptText="Discount Code" style="-fx-background-color: white;" />
+      <Button layoutX="1022.0" layoutY="437.0" mnemonicParsing="false" onAction="#click_button_apply" prefHeight="30.0" prefWidth="52.0" style="-fx-background-color: grey;" text="Apply" />
+      <ListView fx:id="listView_basket" layoutX="14.0" layoutY="198.0" prefHeight="86.0" prefWidth="667.0" />
+      <TextField fx:id="txt_field_gc" layoutX="1079.0" layoutY="437.0" prefHeight="30.0" prefWidth="193.0" promptText="Gift Card" style="-fx-background-color: white;" />
+      <Button layoutX="1273.0" layoutY="437.0" mnemonicParsing="false" onAction="#click_button_Gift" prefHeight="30.0" prefWidth="52.0" style="-fx-background-color: grey;" text="Apply" />
+      <Label fx:id="label_required_gift" layoutX="1133.0" layoutY="467.0" text="*Required fields" textFill="WHITE" />
+      <Label fx:id="label_required_discount" layoutX="883.0" layoutY="467.0" text="Discount apply" textFill="WHITE" />
+      <AnchorPane layoutX="14.0" layoutY="334.0" prefHeight="93.0" prefWidth="194.0" style="-fx-background-color: grey;">
+         <children>
+            <ImageView fitHeight="86.0" fitWidth="147.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@gift_card2.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="label_giftCard" layoutX="31.0" layoutY="14.0" text="£0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="159.0" layoutY="34.0" mnemonicParsing="false" onAction="#click_buttonRemove" prefHeight="20.0" prefWidth="69.0" text="Remove" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

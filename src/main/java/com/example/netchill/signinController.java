@@ -120,7 +120,7 @@ public class signinController {
             if(new_account)
             {
                 //send account data in the DB
-                String insertQuery = "INSERT INTO `customer` (`ID_customer`, `Name`, `Email`, `Card_number`) VALUES (NULL, ?, ?, ?)";
+                String insertQuery = "INSERT INTO `customer` (`ID_customer`, `Name`, `Email`, `Gift_Card`) VALUES (NULL, ?, ?, ?)";
                 String insertQuery2 = "INSERT INTO `account` (`Email`, `Password`) VALUES (?, ?)";
                 try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", ""))
                 {
@@ -130,15 +130,35 @@ public class signinController {
                     //Parameters for customer
                     preparedStatement.setString(1, txt_field_name.getText());
                     preparedStatement.setString(2, txt_field_email.getText());
-                    preparedStatement.setString(3, "1234432156788765"); //TODO : voir pour supprimer ce champ
+                    preparedStatement.setDouble(3, 0);
+
                     preparedStatement.executeUpdate();
 
-                    //Parameters for customer
+                    //Parameters for account
                     preparedStatement2.setString(1, txt_field_email.getText());
                     preparedStatement2.setString(2, txt_field_password.getText());
                     preparedStatement2.executeUpdate();
 
                     System.out.println("Account + Customer data successfully send.");
+
+
+
+                        Statement stat = con.createStatement();
+                        ResultSet rs = stat.executeQuery("SELECT * FROM `customer` WHERE customer.Email = ' "+txt_field_email.getText()+"'");
+
+                        int id=0;
+                        while (rs.next())
+                        {
+                            id=rs.getInt("ID_customer");
+                        }
+                    Customer customer = new Customer();
+                    customer.setName_customer(txt_field_name.getText());
+                    customer.setEmail_customer(txt_field_email.getText());
+                    customer.setAmount_gift_card(0);
+                    customer.setID_customer(id);
+                    netchill.setCustomer(customer);
+
+
 
                     //return to the home page
                     FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
