@@ -261,7 +261,41 @@ public class Payment_pageController implements Initializable {
                         statement.setDouble(1, final_price);
                         statement.setString(2, txt_field_Cardnb.getText());
 
+
                         int rowsUpdated = statement.executeUpdate();
+                        if (rowsUpdated > 0) {
+                            System.out.println("Mise à jour réussie !");
+                        } else {
+                            System.out.println("Aucune mise à jour effectuée.");
+                        }
+                        good=true;
+
+
+                        double amount_gift_card_paid=0;
+                        try
+                        {
+
+                            Class.forName("com.mysql.cj.jdbc.Driver");
+                            Connection con2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
+
+                            Statement stat2 = con2.createStatement();
+                            ResultSet rs2 = stat2.executeQuery("SELECT * FROM `customer` WHERE customer.ID_customer = '"+netchill.getCustomer().getID_customer()+"'");
+
+                            while (rs2.next())
+                            {
+                                amount_gift_card_paid = rs2.getDouble("Gift_Card");
+                            }
+                            con2.close();
+                        } catch (Exception e1) {
+                            System.out.println(e1);
+                        }
+                         sql = "UPDATE customer SET Gift_Card = ? WHERE ID_customer = ?";
+                         statement = con.prepareStatement(sql);
+                        statement.setDouble(1, amount_gift_card_paid + netchill.getCustomer().getAmount_gift_card());
+                        statement.setInt(2, netchill.getCustomer().getID_customer());
+
+
+                         rowsUpdated = statement.executeUpdate();
                         if (rowsUpdated > 0) {
                             System.out.println("Mise à jour réussie !");
                         } else {
