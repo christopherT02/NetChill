@@ -355,6 +355,7 @@ public class modify_playing_movies_Controller {
     }
 
     private void getSessionInfos(ActionEvent event) {
+        menu_session.getItems().clear();
         //add schedules where the movie is displayed in the choicebox
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -474,6 +475,14 @@ public class modify_playing_movies_Controller {
         initialize();
     }
 
+    public void resetInfosDeisplayed()
+    {
+        txtTitle.setText("");
+        txtDescription.setText("");
+        txtTime.setText("");
+        imPoster.setImage(null);
+    }
+
 
     @FXML
     public void update_customer_modif_movie(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
@@ -488,6 +497,7 @@ public class modify_playing_movies_Controller {
     void initialize()
     {
         menu_cinema.getItems().clear();
+        resetInfosDeisplayed();
 
         dragAndDrop();
         getMovieList();
