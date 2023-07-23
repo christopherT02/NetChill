@@ -93,6 +93,11 @@ public class signinController {
                         System.out.println("Account already exist !\n");
                         //TODO AFFICHER DE MANIERE DYNAMIQUE UN MESSAGE QUI DIT QUE LE COMPTE EXISTE DEJA + rajouter l'interdiction de faire un mail qui fini par @cinema.fr
                     }
+                    else if(txt_field_email.getText().contains("@cinema.fr"))
+                    {
+                        new_account = false;
+                        System.out.println("Account is not valid\n");
+                    }
                 }
 
                 con.close();
