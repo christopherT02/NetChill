@@ -54,6 +54,7 @@ public class GiftCardController implements Initializable {
     void click_buttonAdd1(ActionEvent event) {
         int price = Integer.parseInt(choice_box1.getValue());
 
+        //add gift card
         price = price*10;
         label_finalprice1.setText("£"+price);
         int price1=0,price2=0,price3=0;
@@ -69,6 +70,7 @@ public class GiftCardController implements Initializable {
 
     @FXML
     void click_buttonAdd2(ActionEvent event) {
+        //add gift card of 20£
         int price = Integer.parseInt(choice_box2.getValue());
         price = price*20;
         label_finalprice2.setText("£"+price);
@@ -83,6 +85,7 @@ public class GiftCardController implements Initializable {
 
     @FXML
     void click_buttonAdd3(ActionEvent event) {
+        //add gift card of £50
         int price = Integer.parseInt(choice_box3.getValue());
         price = price*50;
         label_finalprice3.setText("£"+price);
@@ -98,6 +101,7 @@ public class GiftCardController implements Initializable {
     @FXML
     void click_button_basket(ActionEvent event) throws IOException {
 
+        //update basket and call border and send the good value
         int price1,price2,price3;
         int final_price=0;
         price1=Integer.parseInt(choice_box1.getValue());
@@ -125,6 +129,7 @@ public class GiftCardController implements Initializable {
     @FXML
     public void update_customer_giftCard(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
+        //add gift card of 20£
         netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
         label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);

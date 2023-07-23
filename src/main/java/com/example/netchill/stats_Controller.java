@@ -42,6 +42,7 @@ public class stats_Controller {
 
     public void cinema_stats(ActionEvent event)
     {
+        //display stats
         txt_StatsCinema.setText("");
 
         String sql = "SELECT `nb_sell_cinema` FROM `cinema` WHERE `name_cinema` = '"+ menu_Cinemas.getValue() +"'";

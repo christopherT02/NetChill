@@ -140,6 +140,7 @@ public class moviesController {
     @FXML
     public void showAvailableMovies()
     {
+
         availableMovieTitleCol.setCellValueFactory(new PropertyValueFactory<>("id_name"));
         availableMovieDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         availableMovieDurationCol.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -223,6 +224,8 @@ public class moviesController {
     @FXML
     public void update_customer_movies(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
+        //update information about customer to know who is connected and recup all info
+
         netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
         label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);

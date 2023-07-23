@@ -229,6 +229,8 @@ public class delete_movie_Controller {
     @FXML
     public void update_customer_deletemovie(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
+        //update information about customer to know who is connected and recup all info
+
         netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
         label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);
@@ -238,6 +240,7 @@ public class delete_movie_Controller {
     @FXML
     void initialize()
     {
+        //initialize info
         getMovieList();
         showAvailableMovies();
         btn_MoreDetails.setDisable(true);

@@ -82,6 +82,7 @@ public class Payment_pageController implements Initializable {
 
     @FXML
     void click_button_Gift(ActionEvent event) throws IOException, SQLException{
+        //take value of gift card already paid and check if there is no problem to use it
         double value = Double.parseDouble(txt_field_gc.getText());
         System.out.println("Amount saisie :"+value);
         double amount_gift_card_paid=0;
@@ -205,6 +206,7 @@ public class Payment_pageController implements Initializable {
 
     @FXML
     void click_buttonRemove(ActionEvent event) {
+        //remove gift card from basket
         Customer customer = netchill.getCustomer();
         price=price-netchill.getCustomer().getAmount_gift_card();
         customer.setAmount_gift_card(0);
@@ -216,7 +218,7 @@ public class Payment_pageController implements Initializable {
     @FXML
     void click_buttonPay(ActionEvent event) throws SQLException, IOException {
 
-
+//check card information, balance and remove price from bank account and add value for statistics
         if(txt_field_Name.getText().equals("") || txt_field_cvc.getText().equals("") || txt_field_Cardnb.getText().equals("") || choiceBox_day.getValue().equals("") ||choiceBox_month.getValue().equals("") ||choiceBox_year.getValue().equals("") )
         {
             label_required.setTextFill(Color.web("#ff0000"));
@@ -458,6 +460,7 @@ public class Payment_pageController implements Initializable {
 
     public void return_main_page(ActionEvent event) throws IOException
     {
+        //go back main page after the payment
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
@@ -474,6 +477,8 @@ public class Payment_pageController implements Initializable {
     @FXML
     public void update_customer_payment(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
+        //update information about customer to know who is connected and recup all info
+
         netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
         label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);

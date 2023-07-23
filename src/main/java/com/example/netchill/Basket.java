@@ -2,6 +2,8 @@ package com.example.netchill;
 
 import java.util.ArrayList;
 
+//Not use
+
 public class Basket {
 
     private ArrayList<Ticket> all_tickets_basket = new ArrayList<>();

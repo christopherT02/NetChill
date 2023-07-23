@@ -30,6 +30,7 @@ public class EmployeeInfo_Controller {
     private Label label_unuse;
     @FXML
     void click_add_movie(ActionEvent event) throws IOException {
+        //choose to add movie
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
@@ -43,6 +44,7 @@ public class EmployeeInfo_Controller {
 
     @FXML
     void click_playing_film(ActionEvent event) throws IOException {
+        //chhange playing movies
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
@@ -55,6 +57,7 @@ public class EmployeeInfo_Controller {
     }
     @FXML
     void click_delete_movie(ActionEvent event) throws IOException {
+        //go to page to delete movie
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
@@ -68,6 +71,7 @@ public class EmployeeInfo_Controller {
 
     @FXML
     void click_stat_per_cinema(ActionEvent event) throws IOException {
+        //display all stats
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
@@ -86,6 +90,7 @@ public class EmployeeInfo_Controller {
     void click_signout(ActionEvent event) throws IOException {
         Customer customer = netchill.getCustomer();
 
+        //sign out and be a guest, so forget all customer's info
         customer.setName_customer("Guest");
         customer.setEmail_customer("guest@mail.fr");
         customer.setID_customer(0);
@@ -107,6 +112,8 @@ public class EmployeeInfo_Controller {
     @FXML
     public void update_customer_employeeinfo(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
+        //update information about customer to know who is connected and recup all info
+
         netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
         label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);

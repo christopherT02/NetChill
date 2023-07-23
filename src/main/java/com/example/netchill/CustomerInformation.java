@@ -47,6 +47,7 @@ public class CustomerInformation {
 
     @FXML
     void click_button_basket(ActionEvent event) throws IOException{
+        //click on button go to basket, so we call border and we send the right number in initialize
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
@@ -66,6 +67,7 @@ public class CustomerInformation {
     void click_button_signout(ActionEvent event) throws IOException {
         Customer customer = netchill.getCustomer();
 
+        //update info with to be a guest and go to border and send the right number
         customer.setName_customer("Guest");
         customer.setEmail_customer("guest@mail.fr");
         customer.setID_customer(0);
@@ -87,6 +89,8 @@ public class CustomerInformation {
     @FXML
     public void update_customer_custoInfo(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
+        //update information about customer to know who is connected and recup all info
+
         netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
         label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);
@@ -106,6 +110,7 @@ public class CustomerInformation {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
 
 
+            //recup amount of gift card
             Statement stat = con.createStatement();
             ResultSet rs = stat.executeQuery("SELECT * FROM `customer` WHERE customer.ID_customer = '"+netchill.getCustomer().getID_customer()+"'");
 

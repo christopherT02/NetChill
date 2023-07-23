@@ -86,6 +86,7 @@ public class Border_modelController {
     @FXML
     void click_button_giftCard(ActionEvent event) throws IOException {
 
+        //click on gift card button
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Gift_card.fxml"));
         Parent root = loader.load();
         GiftCardController helloController = loader.getController();
@@ -98,6 +99,7 @@ public class Border_modelController {
 
     @FXML
     void click_button_netchill(ActionEvent event) throws IOException{
+        //go to homepage thanks to the button Netchill
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Best_seller.fxml"));
         Parent root = loader.load();
         HelloController helloController = loader.getController();
@@ -109,6 +111,7 @@ public class Border_modelController {
 
     @FXML
     void click_button_homepage(ActionEvent event) throws IOException {
+        //go to homepage thanks to the top button
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Best_seller.fxml"));
         Parent root = loader.load();
         HelloController helloController = loader.getController();
@@ -121,7 +124,7 @@ public class Border_modelController {
 
     @FXML
     void click_button_movie(ActionEvent event) throws IOException {
-
+        //go to all movies
         FXMLLoader loader = new FXMLLoader(getClass().getResource("movies.fxml"));
         Parent root = loader.load();
         moviesController movies = loader.getController();
@@ -133,6 +136,7 @@ public class Border_modelController {
 
     public void test() throws IOException
     {
+        //choose which page is called, we go to border_model to keep the top and bottom
         System.out.println("Initialize lance : "+login_signin);
         if(login_signin==1)
         {
@@ -244,6 +248,7 @@ public class Border_modelController {
     @FXML
     void initialize(int i) throws IOException
     {
+        //test of calling in the terminal
         System.out.println("Name Border : "+netchill.getCustomer().getName_customer());
         String test_employee="";
         int length = netchill.getCustomer().getEmail_customer().length();
@@ -263,6 +268,8 @@ public class Border_modelController {
     @FXML
     public void update_customer_border(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
+        //update information about customer to know who is connected and recup all info
+
         netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
     }
 

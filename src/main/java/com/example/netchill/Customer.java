@@ -10,6 +10,7 @@ public class Customer {
     private int ID_customer;
     public Customer()
     {
+        //before be connected we are known as Guest
         name_customer="Guest";
         Email_customer="guest@mail.fr";
     }
@@ -67,6 +68,7 @@ public class Customer {
 
     public void set_all_info_customer(String name,String email,int ID,double price_gift)
     {
+        //general setter
         name_customer=name;
         Email_customer = email;
         ID_customer=ID;

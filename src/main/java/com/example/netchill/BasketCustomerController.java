@@ -40,6 +40,7 @@ public class BasketCustomerController {
 
     @FXML
     void click_buttonRemove(ActionEvent event) {
+        //button to remove gift card in the basket
         Customer customer = netchill.getCustomer();
         customer.setAmount_gift_card(0);
         netchill.setCustomer(customer);
@@ -47,11 +48,12 @@ public class BasketCustomerController {
     }
     @FXML
     void click_buttonPayment(ActionEvent event) throws IOException {
-        ///call the payement page
+        ///call the payment page
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
         border.update_customer_border(netchill.getCustomer(),netchill.getMovD(),netchill.getTicketList(),netchill.getNb_ticket(),netchill.getID_session_selected(),netchill.getIncrementor(),netchill.getDate_for_ticket());
+        //we send 7 to be understand by border_model
         border.initialize(7);
         lstage=(Stage)((Node)(event.getSource())).getScene().getWindow();
         scene=new Scene(root);
@@ -62,6 +64,7 @@ public class BasketCustomerController {
     {
         btn_del.setDisable(true);
 
+        //creation of basket thanks to database and display it in the ArrayList
         ArrayList<String> panierItems = new ArrayList<>();
         panierItems.add("Number of Ticket                    Movie                    Date                    Time                   Number of seat                    Price");
 
@@ -90,6 +93,7 @@ public class BasketCustomerController {
         {*/
             try
             {
+
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/netchill?useSSL=FALSE", "root", "");
 
@@ -167,7 +171,7 @@ public class BasketCustomerController {
     @FXML
     public void btn_delete() throws SQLException
     {
-        //delete from the DB
+        //delete from the DB and from the basket of the customer
         String query = "DELETE FROM `ticket` WHERE `ID_ticket` = '" + id_TicketSel + "'";
 
         try {
@@ -195,6 +199,8 @@ public class BasketCustomerController {
     @FXML
     public void update_customer_basket(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
+        //update information about customer to know who is connected and recup all info
+
         netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
         label_unuse.setText(netchill.getCustomer().getName_customer());
         label_unuse.setVisible(false);

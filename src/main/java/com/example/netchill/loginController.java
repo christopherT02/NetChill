@@ -42,6 +42,7 @@ public class loginController {
     @FXML
     void click_button_basket(ActionEvent event) throws IOException{
 
+        //go to basket
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
@@ -57,6 +58,7 @@ public class loginController {
 
     @FXML
     void click_button_sign_in(ActionEvent event) throws IOException{
+        //go to sign in
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Border_model.fxml"));
         root=fxmlLoader.load();
         Border_modelController border = fxmlLoader.getController();
@@ -72,6 +74,7 @@ public class loginController {
     @FXML
     void click_button_submit(ActionEvent event) throws SQLException, IOException {
 
+        //check log in and password and if it's good take all information from database
         int length = txt_field_ID.getText().length();
         String type_of_email = txt_field_ID.getText().substring(length-10);
 
@@ -203,6 +206,8 @@ public class loginController {
     @FXML
     public void update_customer_login(Customer custom, Movie mov, ArrayList<Ticket> tickets, int nb_ticket_, int session_selected, int incrementor_, LocalDate date)
     {
+        //update information about customer to know who is connected and recup all info
+
         netchill.send_all_info_netchill(custom,mov,tickets,nb_ticket_,session_selected,incrementor_,date);
         label_unuse_login.setText(netchill.getCustomer().getName_customer());
         label_unuse_login.setVisible(false);
