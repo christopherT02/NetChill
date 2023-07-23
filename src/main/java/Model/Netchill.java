@@ -1,4 +1,4 @@
-package com.example.netchill;
+package Model;
 
 import javafx.fxml.FXML;
 

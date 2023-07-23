@@ -8,4 +8,6 @@ module com.example.netchill {
 
     opens com.example.netchill to javafx.fxml;
     exports com.example.netchill;
+    exports Model;
+    opens Model to javafx.fxml;
 }

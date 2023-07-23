@@ -1,7 +1,8 @@
-package com.example.netchill;
+package Model;
+
+import Model.Movie;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Ticket {
     private Movie mv;

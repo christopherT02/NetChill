@@ -1,5 +1,9 @@
 package com.example.netchill;
 
+import Model.Customer;
+import Model.Movie;
+import Model.Netchill;
+import Model.Ticket;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

@@ -1,4 +1,4 @@
-package com.example.netchill;
+package Model;
 
 //TODO model in MVC
 public class Customer {
