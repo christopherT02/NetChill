@@ -58,14 +58,14 @@ public class HelloController{
     void clck_bck(ActionEvent event) {
         if(show==1)
         {
-            translateAnimation(0.5,pane2,1400);
+            translateAnimation(0.5,pane3,1400);
             show--;
             label_left.setTextFill(Color.RED);
             label_right.setTextFill(Color.WHITE);
 
             label_middle.setTextFill(Color.WHITE);
         } else if (show==2) {
-            translateAnimation(0.5,pane3,1400);
+            translateAnimation(0.5,pane2,1400);
             show--;
             label_left.setTextFill(Color.WHITE);
             label_right.setTextFill(Color.WHITE);
@@ -78,14 +78,14 @@ public class HelloController{
     void clck_nxt(ActionEvent event) {
         if(show==0)
         {
-            translateAnimation(0.5,pane2,-1400);
+            translateAnimation(0.5,pane3,-1400);
             show++;
             label_left.setTextFill(Color.WHITE);
             label_right.setTextFill(Color.WHITE);
 
             label_middle.setTextFill(Color.RED);
         } else if (show==1) {
-            translateAnimation(0.5,pane3,-1400);
+            translateAnimation(0.5,pane2,-1400);
             show++;
             label_left.setTextFill(Color.WHITE);
             label_right.setTextFill(Color.RED);
