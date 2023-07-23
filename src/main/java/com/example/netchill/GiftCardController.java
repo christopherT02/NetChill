@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -33,11 +34,19 @@ public class GiftCardController implements Initializable {
     private ChoiceBox<String> choice_box3;
 
     @FXML
-    private Label label_finalprice1;
+    private Button btn_add1;
+    @FXML
+    private Button btn_add2;
+    @FXML
+    private Button btn_add3;
 
     @FXML
-    private Label label_finalprice2;
+    private Text txt_error;
 
+    @FXML
+    private Label label_finalprice1;
+    @FXML
+    private Label label_finalprice2;
     @FXML
     private Label label_finalprice3;
 
@@ -65,6 +74,12 @@ public class GiftCardController implements Initializable {
         price3= Integer.parseInt(choice_box3.getValue());
         final_price=price1*10 + price2*20 + price3*50;
         button_basket.setText("Basket: £"+final_price);
+
+        if(netchill.getCustomer().getID_customer()==0)
+        {
+            button_basket.setDisable(true);
+            txt_error.setText("You can't buy gift card as a guest !");
+        }
     }
 
     @FXML
@@ -79,6 +94,12 @@ public class GiftCardController implements Initializable {
         price3= Integer.parseInt(choice_box3.getValue());
         final_price=price1*10 + price2*20 + price3*50;
         button_basket.setText("Basket: £"+final_price);
+
+        if(netchill.getCustomer().getID_customer()==0)
+        {
+            button_basket.setDisable(true);
+            txt_error.setText("You can't buy gift card as a guest !");
+        }
     }
 
     @FXML
@@ -93,6 +114,13 @@ public class GiftCardController implements Initializable {
         price3= Integer.parseInt(choice_box3.getValue());
         final_price=price1*10 + price2*20 + price3*50;
         button_basket.setText("Basket: £"+final_price);
+
+        if(netchill.getCustomer().getID_customer()==0)
+        {
+            button_basket.setDisable(true);
+            txt_error.setText("You can't buy gift card as a guest !");
+        }
+
     }
 
     @FXML
@@ -136,7 +164,6 @@ public class GiftCardController implements Initializable {
         choice_box1.setValue("0");
         choice_box2.setValue("0");
         choice_box3.setValue("0");
-
 
         choice_box1.getItems().addAll(choices);
         choice_box2.getItems().addAll(choices);
