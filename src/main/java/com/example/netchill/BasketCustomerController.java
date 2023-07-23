@@ -1,5 +1,9 @@
 package com.example.netchill;
 
+import Model.Customer;
+import Model.Movie;
+import Model.Netchill;
+import Model.Ticket;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +21,6 @@ import java.io.IOException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class BasketCustomerController {

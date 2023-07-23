@@ -1,4 +1,6 @@
-package com.example.netchill;
+package Model;
+
+import Model.Ticket;
 
 import java.util.ArrayList;
 
