@@ -145,6 +145,7 @@ public class Payment_pageController implements Initializable {
 
 
         }
+        txt_field_gc.setText("0");
     }
 
     @FXML
