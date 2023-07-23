@@ -166,6 +166,7 @@ public class Payment_pageController implements Initializable {
 
             int find = 0;
             int its_guest=0;
+            double value_discount=0;
             while (rs.next())
             {
                 its_guest=0;
@@ -181,6 +182,7 @@ public class Payment_pageController implements Initializable {
                 if(txt_field_discount.getText().equals(rs.getString("Code_discount")) && its_guest==0)
                 {
                     find = 1;
+                    value_discount=rs.getDouble("Value_discount");
                     price = price - (rs.getDouble("Value_discount")*price/100);
 
                 }
@@ -191,11 +193,11 @@ public class Payment_pageController implements Initializable {
             }
             if(find==1)
             {
-                label_required_discount.setText("Discount of "+txt_field_discount.getText()+"% apply!");
+                label_required_discount.setText("Discount of "+value_discount+"% apply!");
                 label_required_discount.setVisible(true);
                 button_pay.setText("Pay: £"+price);
 
-            } else if (find==2) {
+            } else if (find==0) {
 
                 label_required_discount.setText("Code unknown");
                 label_required_discount.setVisible(true);
