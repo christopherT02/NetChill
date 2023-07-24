@@ -25,7 +25,7 @@
       </Label>
       <Separator layoutX="604.0" layoutY="484.0" prefHeight="3.0" prefWidth="182.0" />
       <Label fx:id="label_unuse_login" layoutX="36.0" layoutY="560.0" text="fdp" />
-      <Button layoutX="791.0" layoutY="116.0" mnemonicParsing="false" onAction="#click_button_sign_in" prefHeight="40.0" prefWidth="82.0" style="-fx-background-color: black;" text="Sign in" textFill="WHITE">
+      <Button layoutX="754.0" layoutY="116.0" mnemonicParsing="false" onAction="#click_button_sign_in" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: black;" text="Sign in" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

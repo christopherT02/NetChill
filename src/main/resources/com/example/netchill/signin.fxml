@@ -30,7 +30,7 @@
       </Label>
       <Separator layoutX="615.0" layoutY="508.0" prefHeight="3.0" prefWidth="150.0" />
       <Label fx:id="label_unuse" layoutX="34.0" layoutY="590.0" />
-      <Button layoutX="793.0" layoutY="124.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="82.0" style="-fx-background-color: black;" text="Sign in" textFill="RED">
+      <Button layoutX="753.0" layoutY="124.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="139.0" style="-fx-background-color: black;" text="Sign in" textFill="RED">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
